@@ -7,7 +7,7 @@ book:
   date: "2024-02-05"
   chapters:
     - index.qmd
-    - intro.qmd
+    - 1_Basic_R.qmd
     - summary.qmd
     - references.qmd
 
