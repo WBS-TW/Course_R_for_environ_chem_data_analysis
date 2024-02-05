@@ -1,0 +1,36 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Preface {.unnumbered}
+
+This is the handbook for the PhD course on ***R for environmental chemistry data analysis***
+
+<!-- Use this HTML syntax to comment out text from the rendered book. THIS TEXT WILL NOT SHOW IN THE BOOK.-->
+
+<!-- If you use RStudio, you can use the keyboard shortcut Ctrl + Shift + C (Command + Shift + C on macOS) to comment out a line of text. -->
+
+To learn more about Quarto books visit:
+
+-   <https://quarto.org/docs/books>
+
+-   <https://r4ds.hadley.nz/quarto.html>
+
+Some usefule links to other R for data science books:
+
+-   <https://www.r4epi.com/installing-r-and-rstudio>
+
+-   
+
+```{r startup}
+#| echo: true
+library(tidyverse)
+library(plotly)
+
+```
+
+```{r}
+
+```
