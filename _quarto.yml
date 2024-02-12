@@ -8,7 +8,7 @@ book:
   chapters:
     - index.qmd
     - 1_Basic_R.qmd
-    - summary.qmd
+    - Appendix_Version_control.qmd
     - references.qmd
 
 bibliography: references.bib

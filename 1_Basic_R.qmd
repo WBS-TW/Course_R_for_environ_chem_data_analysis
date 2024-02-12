@@ -6,3 +6,228 @@ editor_options:
 ---
 
 # Familiarize yourself with R
+
+## [Data types]{.underline} in R
+
+Basic data types in R can be divided into the following types:
+
+-   `numeric` : (10.5, 55, 787)
+
+-   `integer` (a.k.a. double) : (1L, 55L, 100L, where the letter "L" declares this as an integer)
+
+-   `complex` : (9 + 3i, where "i" is the imaginary part)
+
+-   `character` (a.k.a. string) : ("k", "R is exciting", "FALSE", "11.5")
+
+-   `logical` (a.k.a. boolean) : (TRUE or FALSE)
+
+We can use the `class()` function to check the data type of a variable:
+
+Numeric (also called double)
+
+```{r}
+x <- 10.5
+class(x)
+
+```
+
+Integer
+
+```{r}
+
+x <- 1000L
+class(x)
+
+```
+
+Complex
+
+```{r}
+# We will not deal with complex data in this course
+x <- 9i + 3
+class(x)
+```
+
+Character/String
+
+```{r}
+
+x <- "Hello World"
+
+# You can also use str() to check the data type of an object. This function will give more detailed information about the elements in the object
+str(x)
+```
+
+Logical/Boolean
+
+```{r}
+
+# a vector of logical/boolean
+x <- c(TRUE, FALSE)
+
+str(x)
+
+```
+
+If you concatenate elements of different data types in a vector, then R will convert the elements in the following order: 1. string; 2. numeric; 3. integer; 4. logical. It means that all other data types will be converted to a string if you combine these elements with a string element.
+
+```{r}
+# If you want to create an object of a specific data type, then use the as.xxx functions
+a_string <- as.character("A Space Odyssey")
+a_integer <- as.integer(2001)
+a_numeric <- as.numeric(99.999)
+a_logical <-  as.logical(TRUE)
+
+c(a_integer, a_string)
+c(a_integer, a_numeric)
+c(a_integer, a_logical)
+
+```
+
+You cannot create a datatype that R doesn't recognize
+
+```{r}
+object1 <- as.integer("Hello")
+str(object1)
+```
+
+## [Data structures]{.underline} in R
+
+Below are some basic data structures in R:
+
+-   `vectors`
+-   `lists`
+-   `matrices`
+-   `dataframes`
+-   `factors`
+
+**Vectors**
+
+-   `vectors`: also called `atomic vectors`, where all elements must be of the same basic data types.
+
+```{r}
+# A string vector
+a_vector_strings <- c("This", "is", "a", "vector", "of", "string", "elements")
+str(a_vector_strings)
+
+
+```
+
+```{r}
+# integer vectors
+a_vector_integers1 <- c(99, 98)
+a_vector_integers2 <- c(1, 2, 3, 4, 5)
+
+str(a_vector_integers1)
+```
+
+What happens when we perform operations with two or more vectors of different length? First, we can use the `length()` function to check the length of an object
+
+```{r}
+
+length(a_vector_integers1)
+
+length(a_vector_integers2)
+
+```
+
+We can use `==` as an equal operator to check if both vectors have the same length
+
+```{r}
+
+length(a_vector_integers1) == length(a_vector_integers2)
+
+
+```
+
+We can see that this will be `FALSE` since the length of the two vectors are not equal.
+
+The opposite is to use the \`!=\` (not equal to) operator:
+
+```{r}
+length(a_vector_integers1)!= length(a_vector_integers2)
+```
+
+Finally, we can see that when performing addition operation of a_vector_integers1 `(99, 98)` with a_vector_integers2 `(1, 2, 3, 4, 5)`, R will recycle the shorter vector
+
+```{r}
+combine_vectors <- a_vector_integers1 + a_vector_integers2
+
+str(combine_vectors)
+```
+
+R will therefore perform the element-wise operations `99+1`, `98+2`, `99+3`, `98+4`, `99+5`, and the resulting object will have the same length as a_vector_integers2.
+
+**Matrices**
+
+A matrix is a 2 dimensional data structure for vectors of the same datatype.
+
+**Lists**
+
+We can also store elements of different datatypes in objects
+
+**Dataframes**
+
+**Factors**
+
+### [Object types]{.underline} in R
+
+(from https://discdown.org/rprogramming/vectors.html)
+
+R is an object-oriented programming language with the fundamental design principle: Everything in R is an object. In R, objects can be:
+
+-   Variables (e.g., a, b, result).
+-   Functions (e.g., mean(), max(), sin()).
+-   Connection handlers.
+-   ...
+
+### Operators in R
+
+The different comparison operators will be handy for various data analysis:
+
+See: <https://www.w3schools.com/r/r_operators.asp>
+
+*Comparison operators*
+
+| Operator | Name                  | Example |
+|----------|-----------------------|---------|
+| `==`     | equal to              |         |
+| `!=`     | not equal to          |         |
+| `=>`     | equal or greater than |         |
+| `=<`     | equal or less than    |         |
+| `>`      | greater than          |         |
+| `<`      | less than             |         |
+
+*Arithmetic Operators*
+
+| Operator | Name                              | Example |
+|----------|-----------------------------------|---------|
+| \+       | Addition                          | x + y   |
+| \-       | Subtraction                       | x - y   |
+| \*       | Multiplication                    | x \* y  |
+| /        | Division                          | x / y   |
+| \^       | Exponent                          | x \^ y  |
+| %%       | Modulus (Remainder from division) | x %% y  |
+| %/%      | Integer Division                  | x%/%y   |
+
+*Logical Operators*
+
+| Operator | Description                                                                       |
+|-----------------|-------------------------------------------------------|
+| &        | Element-wise Logical AND operator. It returns TRUE if both elements are TRUE      |
+| &&       | Logical AND operator - Returns TRUE if both statements are TRUE                   |
+| \|       | Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE |
+| \|\|     | Logical OR operator. It returns TRUE if one of the statement is TRUE.             |
+| !\|      | Logical NOT - returns FALSE if statement is TRUE                                  |
+
+*Other useful operators*
+
+| Operator | Description                                |
+|----------|--------------------------------------------|
+| :        | Creates a series of numbers in a sequence  |
+| %in%     | Find out if an element belongs to a vector |
+| %\*%     | Matrix Multiplication                      |
+
+### [Loading or importing data files]{.underline}
+
+https://r-graphics.org/loading-a-delimited-text-data-file https://r-graphics.org/loading-data-from-an-excel-file
