@@ -5,4 +5,38 @@ editor_options:
   chunk_output_type: console
 ---
 
-# `If` statements
+# Version control using Git and Github
+
+### Step-by-step instructions
+
+This guide to install and use Git and Github follows the guide: https://happygitwithr.com
+
+You should consult this website for more detailed instructions.
+
+### 1. [Register a Github account](https://happygitwithr.com/github-acct)
+
+Register a github account: [https://github.com](https://github.com/)
+
+### 2. [Install Git](https://happygitwithr.com/install-git)
+
+**a.** Download git for Windows here: https://gitforwindows.org/
+
+-   NOTE: When asked about "Adjusting your PATH environment", make sure to select "Git from the command line and also from 3rd-party software".
+
+-   Note that RStudio for Windows prefers for Git to be installed below C:/Program Files and this appears to be the default. This implies, for example, that the Git executable on my Windows system is found at C:/Program Files/Git/bin/git.exe. Unless you have specific reasons to otherwise, follow this convention.
+
+**b.** Install a Git client, such as GithubDesktop: https://desktop.github.com/
+
+### 3. [Set up keys for SSH](https://happygitwithr.com/ssh-keys#ssh-keys)
+
+**a.** Create an SSH key pair
+
+-   In RStudio, go to *Tools \> Global Options...\> Git/SVN \> Create RSA Key...*.
+
+    -   Passphrase is optional and needed when you want extra security
+
+-   After setting up the SSH key, Go to Tools \> Global Options...\> Git/SVN. click "View public key". Copy the key text to your clipboard (Ctrl+c).
+
+**b.** On Github - Now we register the public key with GitHub. Click on your profile pic in upper right corner and go to Settings \> SSH and GPG keys. Click "New SSH key". Paste your public key in the "Key" box. Give it an informative title, presumably repeating the descriptive comment you used above, during key creation. Click "Add SSH key".
+
+### 4. [Connect to GitHub](https://happygitwithr.com/push-pull-github)

@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./Appendix_Version_control.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -147,6 +147,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Appendix_Version_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Step-by-step instructions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -165,7 +171,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-structures-in-r" id="toc-data-structures-in-r" class="nav-link" data-scroll-target="#data-structures-in-r"><span class="header-section-number">2.2</span> <u>Data structures</u> in R</a>
   <ul class="collapse">
   <li><a href="#object-types-in-r" id="toc-object-types-in-r" class="nav-link" data-scroll-target="#object-types-in-r"><span class="header-section-number">2.2.1</span> <u>Object types</u> in R</a></li>
-  <li><a href="#loading-or-importing-data-files" id="toc-loading-or-importing-data-files" class="nav-link" data-scroll-target="#loading-or-importing-data-files"><span class="header-section-number">2.2.2</span> <u>Loading or importing data files</u></a></li>
+  <li><a href="#operators-in-r" id="toc-operators-in-r" class="nav-link" data-scroll-target="#operators-in-r"><span class="header-section-number">2.2.2</span> Operators in R</a></li>
+  <li><a href="#loading-or-importing-data-files" id="toc-loading-or-importing-data-files" class="nav-link" data-scroll-target="#loading-or-importing-data-files"><span class="header-section-number">2.2.3</span> <u>Loading or importing data files</u></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -337,16 +344,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>The different comparison operators will be handy for various data analysis:</p>
-<p><a href="https://www.w3schools.com/r/r_operators.asp" class="uri">https://www.w3schools.com/r/r_operators.asp</a></p>
-<p>|Operator | Name | Example |</p>
-<p>|:----------:|:--------:|:----------:|</p>
-<p><code>==</code> : equal to</p>
-<p><code>!=</code> : not equal to</p>
-<p><code>=&gt;</code> : equal or larger than</p>
-<p><code>=&lt;</code> : equal or smaller than</p>
-<p><code>&gt;</code> : larger than</p>
-<p><code>&lt;</code> : small than</p>
 <p>Finally, we can see that when performing addition operation of a_vector_integers1 <code>(99, 98)</code> with a_vector_integers2 <code>(1, 2, 3, 4, 5)</code>, R will recycle the shorter vector</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>combine_vectors <span class="ot">&lt;-</span> a_vector_integers1 <span class="sc">+</span> a_vector_integers2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -377,8 +374,160 @@ a multiple of shorter object length</code></pre>
 <li>…</li>
 </ul>
 </section>
-<section id="loading-or-importing-data-files" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="loading-or-importing-data-files"><span class="header-section-number">2.2.2</span> <u>Loading or importing data files</u></h3>
+<section id="operators-in-r" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="operators-in-r"><span class="header-section-number">2.2.2</span> Operators in R</h3>
+<p>The different comparison operators will be handy for various data analysis:</p>
+<p>See: <a href="https://www.w3schools.com/r/r_operators.asp" class="uri">https://www.w3schools.com/r/r_operators.asp</a></p>
+<p><em>Comparison operators</em></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Name</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>==</code></td>
+<td>equal to</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>not equal to</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>=&gt;</code></td>
+<td>equal or greater than</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>=&lt;</code></td>
+<td>equal or less than</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>&gt;</code></td>
+<td>greater than</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>&lt;</code></td>
+<td>less than</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>Arithmetic Operators</em></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Name</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+</td>
+<td>Addition</td>
+<td>x + y</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>Subtraction</td>
+<td>x - y</td>
+</tr>
+<tr class="odd">
+<td>*</td>
+<td>Multiplication</td>
+<td>x * y</td>
+</tr>
+<tr class="even">
+<td>/</td>
+<td>Division</td>
+<td>x / y</td>
+</tr>
+<tr class="odd">
+<td>^</td>
+<td>Exponent</td>
+<td>x ^ y</td>
+</tr>
+<tr class="even">
+<td>%%</td>
+<td>Modulus (Remainder from division)</td>
+<td>x %% y</td>
+</tr>
+<tr class="odd">
+<td>%/%</td>
+<td>Integer Division</td>
+<td>x%/%y</td>
+</tr>
+</tbody>
+</table>
+<p><em>Logical Operators</em></p>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&amp;</td>
+<td>Element-wise Logical AND operator. It returns TRUE if both elements are TRUE</td>
+</tr>
+<tr class="even">
+<td>&amp;&amp;</td>
+<td>Logical AND operator - Returns TRUE if both statements are TRUE</td>
+</tr>
+<tr class="odd">
+<td>|</td>
+<td>Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE</td>
+</tr>
+<tr class="even">
+<td>||</td>
+<td>Logical OR operator. It returns TRUE if one of the statement is TRUE.</td>
+</tr>
+<tr class="odd">
+<td>!|</td>
+<td>Logical NOT - returns FALSE if statement is TRUE</td>
+</tr>
+</tbody>
+</table>
+<p><em>Other useful operators</em></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>:</td>
+<td>Creates a series of numbers in a sequence</td>
+</tr>
+<tr class="even">
+<td>%in%</td>
+<td>Find out if an element belongs to a vector</td>
+</tr>
+<tr class="odd">
+<td>%*%</td>
+<td>Matrix Multiplication</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="loading-or-importing-data-files" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="loading-or-importing-data-files"><span class="header-section-number">2.2.3</span> <u>Loading or importing data files</u></h3>
 <p>https://r-graphics.org/loading-a-delimited-text-data-file https://r-graphics.org/loading-data-from-an-excel-file</p>
 
 
@@ -626,8 +775,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Appendix_Version_control.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Step-by-step instructions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
