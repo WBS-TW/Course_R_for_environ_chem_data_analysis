@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "LiU PhD course: R for Environmental Chemistry Data Analysis"

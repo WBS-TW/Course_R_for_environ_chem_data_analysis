@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>LiU PhD course: R for Environmental Chemistry Data Analysis - 4&nbsp; Publish your Quarto project as book in Posit Cloud</title>
+<title>LiU PhD course: R for Environmental Chemistry Data Analysis - 3&nbsp; Version control using Git and Github</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Appendix_DatabaseDesign.html" rel="next">
-<link href="./Appendix_Version_control.html" rel="prev">
+<link href="./Appendix_Quarto.html" rel="next">
+<link href="./1_Basic_R.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Appendix_Quarto.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your Quarto project as book in Posit Cloud</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Appendix_Version_control.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -113,13 +113,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Appendix_Version_control.html" class="sidebar-item-text sidebar-link">
+  <a href="./Appendix_Version_control.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Appendix_Quarto.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Appendix_Quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your Quarto project as book in Posit Cloud</span></span></a>
   </div>
 </li>
@@ -145,7 +145,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#publish-your-quarto-project-as-website-in-github-pages" id="toc-publish-your-quarto-project-as-website-in-github-pages" class="nav-link active" data-scroll-target="#publish-your-quarto-project-as-website-in-github-pages"><span class="header-section-number">5</span> Publish your Quarto project as website in Github pages</a></li>
+  <li><a href="#step-by-step-instructions" id="toc-step-by-step-instructions" class="nav-link active" data-scroll-target="#step-by-step-instructions"><span class="header-section-number">3.0.1</span> Step-by-step instructions</a></li>
+  <li><a href="#register-a-github-account" id="toc-register-a-github-account" class="nav-link" data-scroll-target="#register-a-github-account"><span class="header-section-number">3.0.2</span> 1. Register a Github account</a></li>
+  <li><a href="#install-git" id="toc-install-git" class="nav-link" data-scroll-target="#install-git"><span class="header-section-number">3.0.3</span> 2. Install Git</a></li>
+  <li><a href="#set-up-keys-for-ssh" id="toc-set-up-keys-for-ssh" class="nav-link" data-scroll-target="#set-up-keys-for-ssh"><span class="header-section-number">3.0.4</span> 3. Set up keys for SSH</a></li>
+  <li><a href="#connect-your-project-to-github" id="toc-connect-your-project-to-github" class="nav-link" data-scroll-target="#connect-your-project-to-github"><span class="header-section-number">3.0.5</span> 4. Connect your project to GitHub</a></li>
   </ul>
 </nav>
     </div>
@@ -154,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your Quarto project as book in Posit Cloud</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></h1>
 </div>
 
 
@@ -169,14 +173,41 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Check: <a href="https://quarto.org/docs/publishing/posit-cloud.html" class="uri">https://quarto.org/docs/publishing/posit-cloud.html</a></p>
-<section id="publish-your-quarto-project-as-website-in-github-pages" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Publish your Quarto project as website in Github pages</h1>
-<p>Tutorial: https://github.com/jtr13/website-template.</p>
+<section id="step-by-step-instructions" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="step-by-step-instructions"><span class="header-section-number">3.0.1</span> Step-by-step instructions</h3>
+<p>This guide to install and use Git and Github follows the guide: https://happygitwithr.com</p>
+<p>You should consult this website for more detailed instructions.</p>
+</section>
+<section id="register-a-github-account" class="level3" data-number="3.0.2">
+<h3 data-number="3.0.2" class="anchored" data-anchor-id="register-a-github-account"><span class="header-section-number">3.0.2</span> 1. <a href="https://happygitwithr.com/github-acct">Register a Github account</a></h3>
+<p>Register a github account: <a href="https://github.com/">https://github.com</a></p>
+</section>
+<section id="install-git" class="level3" data-number="3.0.3">
+<h3 data-number="3.0.3" class="anchored" data-anchor-id="install-git"><span class="header-section-number">3.0.3</span> 2. <a href="https://happygitwithr.com/install-git">Install Git</a></h3>
+<p><strong>a.</strong> Download git for Windows here: https://gitforwindows.org/</p>
 <ul>
-<li><p>You’ve now left the template page and are viewing your new repo on GitHub. On the home page, click Settings. Click the “Pages” section on the left. In the Build and Deployment section, set Source to “Deploy from a branch” (Classic Pages experience) and Branch to main with /docs folder. Click Save.</p></li>
-<li><p>Click the little gear button near “About” on the top right side of the home page of the repo and check the “Use your Github Pages website” box under “Website”. Click “Save changes”. Test the link and you should see a web site with a stick figure on it. It may take a few minutes to build so if it’s not working do a few more steps and then come back to check.</p></li>
-<li><p>Click the green Code button, choose “HTTPS” and copy the link below.</p></li>
+<li><p>NOTE: When asked about “Adjusting your PATH environment”, make sure to select “Git from the command line and also from 3rd-party software”.</p></li>
+<li><p>Note that RStudio for Windows prefers for Git to be installed below C:/Program Files and this appears to be the default. This implies, for example, that the Git executable on my Windows system is found at C:/Program Files/Git/bin/git.exe. Unless you have specific reasons to otherwise, follow this convention.</p></li>
+</ul>
+<p><strong>b.</strong> Install a Git client, such as GithubDesktop: https://desktop.github.com/</p>
+</section>
+<section id="set-up-keys-for-ssh" class="level3" data-number="3.0.4">
+<h3 data-number="3.0.4" class="anchored" data-anchor-id="set-up-keys-for-ssh"><span class="header-section-number">3.0.4</span> 3. <a href="https://happygitwithr.com/ssh-keys#ssh-keys">Set up keys for SSH</a></h3>
+<p><strong>a.</strong> Create an SSH key pair</p>
+<ul>
+<li><p>In RStudio, go to&nbsp;<em>Tools &gt; Global Options…&gt; Git/SVN &gt; Create RSA Key…</em>.</p>
+<ul>
+<li>Passphrase is optional and needed when you want extra security</li>
+</ul></li>
+<li><p>After setting up the SSH key, Go to Tools &gt; Global Options…&gt; Git/SVN. click “View public key”. Copy the key text to your clipboard (Ctrl+c).</p></li>
+</ul>
+<p><strong>b.</strong> On Github: - Click on your profile pic in upper right corner - Go to Settings &gt; SSH and GPG keys. Click “New SSH key”. - Paste your public key in the “Key” box. Give it an informative title, presumably repeating the descriptive comment (such as RStudio_LiU) you used above, during key creation. - Click “Add SSH key”.</p>
+</section>
+<section id="connect-your-project-to-github" class="level3" data-number="3.0.5">
+<h3 data-number="3.0.5" class="anchored" data-anchor-id="connect-your-project-to-github"><span class="header-section-number">3.0.5</span> 4. <a href="https://happygitwithr.com/push-pull-github">Connect your project to GitHub</a></h3>
+<p>It is recommended to first create a new repository in Github and then link it to a new project in Rstudio <a href="https://happygitwithr.com/new-github-first">GitHub first, then RStudio</a> or link an existing project to the created repository <a href="https://happygitwithr.com/existing-github-first">Existing project, GitHub first</a></p>
+<ul>
+<li><strong>a. GitHub first, then RStudio</strong>: follow these steps: https://happygitwithr.com/new-github-first#make-a-repo-on-github-2</li>
 </ul>
 
 
@@ -418,13 +449,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Appendix_Version_control.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span>
+      <a href="./1_Basic_R.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Familiarize yourself with R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Appendix_DatabaseDesign.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to Design a Database</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Appendix_Quarto.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your Quarto project as book in Posit Cloud</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
