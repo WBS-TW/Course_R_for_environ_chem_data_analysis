@@ -15,7 +15,7 @@ You can directly publish your quarto book or website to Posit Cloud. You need to
 
 Check: <https://quarto.org/docs/publishing/posit-cloud.html>
 
-# Publish your Quarto book in Github
+## Publish your Quarto book in Github
 
 Edit your \_quarto.yml to output the generated html book into a \docs folder.
 
@@ -28,7 +28,7 @@ project:
 
 Then follow the same steps below for websites
 
-# Publish your Quarto webiste in Github pages
+## Publish your Quarto webiste in Github pages
 
 Tutorial: https://github.com/jtr13/website-template.
 
