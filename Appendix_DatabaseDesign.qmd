@@ -1,0 +1,16 @@
+---
+Title: Database Design
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## How to Design a Database
+
+https://www.youtube.com/watch?v=cepspxPAUTA
+
+[How do NoSQL databases work? Simply Explained!](https://www.youtube.com/watch?v=0buKQHokLK8)
+
+**Create MySQL Database - MySQL Workbench Tutorial**
+
+<https://www.youtube.com/watch?v=K6w0bZjl_Lw>
