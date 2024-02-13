@@ -72,7 +72,7 @@ str(x)
 If you concatenate elements of different data types in a vector, then R will convert the elements in the following order: 1. string; 2. numeric; 3. integer; 4. logical. It means that all other data types will be converted to a string if you combine these elements with a string element.
 
 ```{r}
-# If you want to create an object of a specific data type, then use the as.xxx functions
+# If you want to create (or convert) an object of a specific data type, then use the as.xxx functions
 a_string <- as.character("A Space Odyssey")
 a_integer <- as.integer(2001)
 a_numeric <- as.numeric(99.999)
@@ -189,14 +189,14 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 
 *Comparison operators*
 
-| Operator | Name                  | Example |
-|----------|-----------------------|---------|
-| `==`     | equal to              |         |
-| `!=`     | not equal to          |         |
-| `=>`     | equal or greater than |         |
-| `=<`     | equal or less than    |         |
-| `>`      | greater than          |         |
-| `<`      | less than             |         |
+| Operator | Name                  |
+|----------|-----------------------|
+| `==`     | equal to              |
+| `!=`     | not equal to          |
+| `=>`     | equal or greater than |
+| `=<`     | equal or less than    |
+| `>`      | greater than          |
+| `<`      | less than             |
 
 *Arithmetic Operators*
 
@@ -213,7 +213,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Logical Operators*
 
 | Operator | Description                                                                       |
-|-----------------|-------------------------------------------------------|
+|----------|-----------------------------------------------------------------------------------|
 | &        | Element-wise Logical AND operator. It returns TRUE if both elements are TRUE      |
 | &&       | Logical AND operator - Returns TRUE if both statements are TRUE                   |
 | \|       | Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE |
@@ -222,11 +222,11 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 
 *Other useful operators*
 
-| Operator | Description                                |
-|----------|--------------------------------------------|
-| :        | Creates a series of numbers in a sequence  |
-| %in%     | Find out if an element belongs to a vector |
-| %\*%     | Matrix Multiplication                      |
+| Operator | Description                                | Example                                                                |
+|----------|--------------------------------------------|------------------------------------------------------------------------|
+| :        | Creates a series of numbers in a sequence  | 1:10 (creates a sequence from 1 to 10)                                 |
+| %in%     | Find out if an element belongs to a vector | 2%in%1:10 (check if 2 is found in the vector 1:10, evaluates to TRUE ) |
+| %\*%     | Matrix Multiplication                      | m \<- matrix(1:8, nrow=2); 2\*m (will multiply every element with 2)   |
 
 ### [Loading or importing data files]{.underline}
 

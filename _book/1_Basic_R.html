@@ -148,7 +148,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_Version_control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Step-by-step instructions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Appendix_Quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your Quarto project as book in Posit Cloud</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Appendix_DatabaseDesign.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to Design a Database</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -255,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>If you concatenate elements of different data types in a vector, then R will convert the elements in the following order: 1. string; 2. numeric; 3. integer; 4. logical. It means that all other data types will be converted to a string if you combine these elements with a string element.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to create an object of a specific data type, then use the as.xxx functions</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to create (or convert) an object of a specific data type, then use the as.xxx functions</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a_string <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="st">"A Space Odyssey"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>a_integer <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">2001</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>a_numeric <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">99.999</span>)</span>
@@ -384,39 +396,32 @@ a multiple of shorter object length</code></pre>
 <tr class="header">
 <th>Operator</th>
 <th>Name</th>
-<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>==</code></td>
 <td>equal to</td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>!=</code></td>
 <td>not equal to</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>=&gt;</code></td>
 <td>equal or greater than</td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>=&lt;</code></td>
 <td>equal or less than</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>&gt;</code></td>
 <td>greater than</td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>&lt;</code></td>
 <td>less than</td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -470,8 +475,8 @@ a multiple of shorter object length</code></pre>
 <p><em>Logical Operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 76%">
+<col style="width: 10%">
+<col style="width: 89%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -504,24 +509,33 @@ a multiple of shorter object length</code></pre>
 </table>
 <p><em>Other useful operators</em></p>
 <table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 34%">
+<col style="width: 57%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Operator</th>
 <th>Description</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>:</td>
 <td>Creates a series of numbers in a sequence</td>
+<td>1:10 (creates a sequence from 1 to 10)</td>
 </tr>
 <tr class="even">
 <td>%in%</td>
 <td>Find out if an element belongs to a vector</td>
+<td>2%in%1:10 (check if 2 is found in the vector 1:10, evaluates to TRUE )</td>
 </tr>
 <tr class="odd">
 <td>%*%</td>
 <td>Matrix Multiplication</td>
+<td>m &lt;- matrix(1:8, nrow=2); 2*m (will multiply every element with 2)</td>
 </tr>
 </tbody>
 </table>
@@ -776,7 +790,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Appendix_Version_control.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Step-by-step instructions</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

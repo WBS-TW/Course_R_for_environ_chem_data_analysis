@@ -37,14 +37,11 @@ Register a github account: [https://github.com](https://github.com/)
 
 -   After setting up the SSH key, Go to Tools \> Global Options...\> Git/SVN. click "View public key". Copy the key text to your clipboard (Ctrl+c).
 
-**b.** On Github:
--   Click on your profile pic in upper right corner
--   Go to Settings \> SSH and GPG keys. Click "New SSH key". 
--   Paste your public key in the "Key" box. Give it an informative title, presumably repeating the descriptive comment (such as RStudio_LiU) you used above, during key creation. 
--   Click "Add SSH key".
+**b.** On Github: - Click on your profile pic in upper right corner - Go to Settings \> SSH and GPG keys. Click "New SSH key". - Paste your public key in the "Key" box. Give it an informative title, presumably repeating the descriptive comment (such as RStudio_LiU) you used above, during key creation. - Click "Add SSH key".
 
 ### 4. [Connect your project to GitHub](https://happygitwithr.com/push-pull-github)
-  
-You can either create a new project in Github and then 
-**a.** 
--   
+
+It is recommended to first create a new repository in Github and then link it to a new project in Rstudio [GitHub first, then RStudio](https://happygitwithr.com/new-github-first) or link an existing project to the created repository [Existing project, GitHub first](https://happygitwithr.com/existing-github-first)
+
+- **a. GitHub first, then RStudio**: follow these steps: https://happygitwithr.com/new-github-first#make-a-repo-on-github-2
+

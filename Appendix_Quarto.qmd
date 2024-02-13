@@ -1,0 +1,20 @@
+---
+Title: Publish your data analysis in Quarto
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Publish your Quarto project as book in Posit Cloud
+
+Check: <https://quarto.org/docs/publishing/posit-cloud.html>
+
+# Publish your Quarto project as website in Github pages
+
+Tutorial: https://github.com/jtr13/website-template.
+
+-   You've now left the template page and are viewing your new repo on GitHub. On the home page, click Settings. Click the "Pages" section on the left. In the Build and Deployment section, set Source to "Deploy from a branch" (Classic Pages experience) and Branch to main with /docs folder. Click Save.
+
+-   Click the little gear button near "About" on the top right side of the home page of the repo and check the "Use your Github Pages website" box under "Website". Click "Save changes". Test the link and you should see a web site with a stick figure on it. It may take a few minutes to build so if it's not working do a few more steps and then come back to check.
+
+-   Click the green Code button, choose "HTTPS" and copy the link below.

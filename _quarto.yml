@@ -9,6 +9,7 @@ book:
     - index.qmd
     - 1_Basic_R.qmd
     - Appendix_Version_control.qmd
+    - Appendix_Quarto.qmd
     - Appendix_DatabaseDesign.qmd
     - references.qmd
 
