@@ -5,7 +5,10 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Publish your Quarto book in Posit Cloud
+# Publish your data analysis in Quarto
+
+
+## Publish your Quarto book in Posit Cloud
 
 You can directly publish your quarto book or website to Posit Cloud. You need to create an account to enable publishing of your website.
 
@@ -20,6 +23,7 @@ Check: <https://quarto.org/docs/publishing/posit-cloud.html>
 Edit your \_quarto.yml to output the generated html book into a \docs folder.
 
 ```{r}
+#| eval: false
 project:
   type: book
   output-dir: docs

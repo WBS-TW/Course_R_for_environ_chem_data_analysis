@@ -42,11 +42,25 @@
     "text": "3.0.1 Step-by-step instructions\nThis guide to install and use Git and Github follows the guide: https://happygitwithr.com\nYou should consult this website for more detailed instructions.\n\n\n3.0.2 1. Register a Github account\nRegister a github account: https://github.com\n\n\n3.0.3 2. Install Git\na. Download git for Windows here: https://gitforwindows.org/\n\nNOTE: When asked about “Adjusting your PATH environment”, make sure to select “Git from the command line and also from 3rd-party software”.\nNote that RStudio for Windows prefers for Git to be installed below C:/Program Files and this appears to be the default. This implies, for example, that the Git executable on my Windows system is found at C:/Program Files/Git/bin/git.exe. Unless you have specific reasons to otherwise, follow this convention.\n\nb. Install a Git client, such as GithubDesktop: https://desktop.github.com/\n\n\n3.0.4 3. Set up keys for SSH\na. Create an SSH key pair\n\nIn RStudio, go to Tools &gt; Global Options…&gt; Git/SVN &gt; Create RSA Key….\n\nPassphrase is optional and needed when you want extra security\n\nAfter setting up the SSH key, Go to Tools &gt; Global Options…&gt; Git/SVN. click “View public key”. Copy the key text to your clipboard (Ctrl+c).\n\nb. On Github: - Click on your profile pic in upper right corner - Go to Settings &gt; SSH and GPG keys. Click “New SSH key”. - Paste your public key in the “Key” box. Give it an informative title, presumably repeating the descriptive comment (such as RStudio_LiU) you used above, during key creation. - Click “Add SSH key”.\n\n\n3.0.5 4. Connect your project to GitHub\nIt is recommended to first create a new repository in Github and then link it to a new project in Rstudio GitHub first, then RStudio or link an existing project to the created repository Existing project, GitHub first\n\na. GitHub first, then RStudio: follow these steps: https://happygitwithr.com/new-github-first#make-a-repo-on-github-2"
   },
   {
-    "objectID": "Appendix_Quarto.html",
-    "href": "Appendix_Quarto.html",
-    "title": "4  Publish your Quarto project as book in Posit Cloud",
-    "section": "",
-    "text": "Check: https://quarto.org/docs/publishing/posit-cloud.html\n\n5 Publish your Quarto project as website in Github pages\nTutorial: https://github.com/jtr13/website-template.\n\nYou’ve now left the template page and are viewing your new repo on GitHub. On the home page, click Settings. Click the “Pages” section on the left. In the Build and Deployment section, set Source to “Deploy from a branch” (Classic Pages experience) and Branch to main with /docs folder. Click Save.\nClick the little gear button near “About” on the top right side of the home page of the repo and check the “Use your Github Pages website” box under “Website”. Click “Save changes”. Test the link and you should see a web site with a stick figure on it. It may take a few minutes to build so if it’s not working do a few more steps and then come back to check.\nClick the green Code button, choose “HTTPS” and copy the link below."
+    "objectID": "Appendix_Quarto.html#publish-your-quarto-book-in-posit-cloud",
+    "href": "Appendix_Quarto.html#publish-your-quarto-book-in-posit-cloud",
+    "title": "4  Publish your data analysis in Quarto",
+    "section": "4.1 Publish your Quarto book in Posit Cloud",
+    "text": "4.1 Publish your Quarto book in Posit Cloud\nYou can directly publish your quarto book or website to Posit Cloud. You need to create an account to enable publishing of your website.\n\nMake sure to click on the Render Book button on the Build tab to update the book with the newest changes.\nClick the Publish the application or document button (next to the Run button)\n\nCheck: https://quarto.org/docs/publishing/posit-cloud.html"
+  },
+  {
+    "objectID": "Appendix_Quarto.html#publish-your-quarto-book-in-github",
+    "href": "Appendix_Quarto.html#publish-your-quarto-book-in-github",
+    "title": "4  Publish your data analysis in Quarto",
+    "section": "4.2 Publish your Quarto book in Github",
+    "text": "4.2 Publish your Quarto book in Github\nEdit your _quarto.yml to output the generated html book into a folder.\n\nproject:\n  type: book\n  output-dir: docs\n\nThen follow the same steps below for websites"
+  },
+  {
+    "objectID": "Appendix_Quarto.html#publish-your-quarto-webiste-in-github-pages",
+    "href": "Appendix_Quarto.html#publish-your-quarto-webiste-in-github-pages",
+    "title": "4  Publish your data analysis in Quarto",
+    "section": "4.3 Publish your Quarto webiste in Github pages",
+    "text": "4.3 Publish your Quarto webiste in Github pages\nTutorial: https://github.com/jtr13/website-template.\n\nYou’ve now left the template page and are viewing your new repo on GitHub. On the home page, click Settings. Click the “Pages” section on the left. In the Build and Deployment section, set Source to “Deploy from a branch” (Classic Pages experience) and Branch to main with /docs folder. Click Save.\nClick the little gear button near “About” on the top right side of the home page of the repo and check the “Use your Github Pages website” box under “Website”. Click “Save changes”. Test the link and you should see a web site with a stick figure on it. It may take a few minutes to build so if it’s not working do a few more steps and then come back to check.\nClick the green Code button, choose “HTTPS” and copy the link below."
   },
   {
     "objectID": "Appendix_DatabaseDesign.html",

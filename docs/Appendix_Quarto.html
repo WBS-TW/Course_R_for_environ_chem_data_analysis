@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>LiU PhD course: R for Environmental Chemistry Data Analysis - 4&nbsp; Publish your Quarto project as book in Posit Cloud</title>
+<title>LiU PhD course: R for Environmental Chemistry Data Analysis - 4&nbsp; Publish your data analysis in Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -74,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Appendix_Quarto.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your Quarto project as book in Posit Cloud</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Appendix_Quarto.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -120,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_Quarto.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your Quarto project as book in Posit Cloud</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -145,7 +179,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#publish-your-quarto-project-as-website-in-github-pages" id="toc-publish-your-quarto-project-as-website-in-github-pages" class="nav-link active" data-scroll-target="#publish-your-quarto-project-as-website-in-github-pages"><span class="header-section-number">5</span> Publish your Quarto project as website in Github pages</a></li>
+  <li><a href="#publish-your-quarto-book-in-posit-cloud" id="toc-publish-your-quarto-book-in-posit-cloud" class="nav-link active" data-scroll-target="#publish-your-quarto-book-in-posit-cloud"><span class="header-section-number">4.1</span> Publish your Quarto book in Posit Cloud</a></li>
+  <li><a href="#publish-your-quarto-book-in-github" id="toc-publish-your-quarto-book-in-github" class="nav-link" data-scroll-target="#publish-your-quarto-book-in-github"><span class="header-section-number">4.2</span> Publish your Quarto book in Github</a></li>
+  <li><a href="#publish-your-quarto-webiste-in-github-pages" id="toc-publish-your-quarto-webiste-in-github-pages" class="nav-link" data-scroll-target="#publish-your-quarto-webiste-in-github-pages"><span class="header-section-number">4.3</span> Publish your Quarto webiste in Github pages</a></li>
   </ul>
 </nav>
     </div>
@@ -154,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your Quarto project as book in Posit Cloud</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></h1>
 </div>
 
 
@@ -169,9 +205,27 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="publish-your-quarto-book-in-posit-cloud" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="publish-your-quarto-book-in-posit-cloud"><span class="header-section-number">4.1</span> Publish your Quarto book in Posit Cloud</h2>
+<p>You can directly publish your quarto book or website to Posit Cloud. You need to create an account to enable publishing of your website.</p>
+<ul>
+<li><p>Make sure to click on the <code>Render Book</code> button on the <code>Build</code> tab to update the book with the newest changes.</p></li>
+<li><p>Click the <code>Publish the application or document</code> button (next to the Run button)</p></li>
+</ul>
 <p>Check: <a href="https://quarto.org/docs/publishing/posit-cloud.html" class="uri">https://quarto.org/docs/publishing/posit-cloud.html</a></p>
-<section id="publish-your-quarto-project-as-website-in-github-pages" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Publish your Quarto project as website in Github pages</h1>
+</section>
+<section id="publish-your-quarto-book-in-github" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="publish-your-quarto-book-in-github"><span class="header-section-number">4.2</span> Publish your Quarto book in Github</h2>
+<p>Edit your _quarto.yml to output the generated html book into a folder.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> book</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">-</span>dir<span class="sc">:</span> docs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then follow the same steps below for websites</p>
+</section>
+<section id="publish-your-quarto-webiste-in-github-pages" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="publish-your-quarto-webiste-in-github-pages"><span class="header-section-number">4.3</span> Publish your Quarto webiste in Github pages</h2>
 <p>Tutorial: https://github.com/jtr13/website-template.</p>
 <ul>
 <li><p>You’ve now left the template page and are viewing your new repo on GitHub. On the home page, click Settings. Click the “Pages” section on the left. In the Build and Deployment section, set Source to “Deploy from a branch” (Classic Pages experience) and Branch to main with /docs folder. Click Save.</p></li>
