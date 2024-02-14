@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Thanh Wang">
-<meta name="dcterms.date" content="2024-02-13">
 
-<title>R for Environmental Chemistry Data Analysis</title>
+<title>R for Environmental Chemistry Data Analysis - 3&nbsp; Conditional statements: if, else, switch()</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./1_Basic_R.html" rel="next">
+<link href="./3_Functions.html" rel="next">
+<link href="./1_Basic_R.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -96,6 +95,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/viz-1.8.2/viz.js"></script>
+<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="site_libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 </head>
@@ -109,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Course content</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_Conditions_Loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: `if`, `else`, `switch()`</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -136,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Course content</span></span></a>
   </div>
 </li>
@@ -148,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_Conditions_Loops.html" class="sidebar-item-text sidebar-link">
+  <a href="./2_Conditions_Loops.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></span></a>
   </div>
 </li>
@@ -194,43 +197,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#course-content" id="toc-course-content" class="nav-link active" data-scroll-target="#course-content"><span class="header-section-number">1</span> Course content</a>
-  <ul class="collapse">
-  <li><a href="#recommended-literature" id="toc-recommended-literature" class="nav-link" data-scroll-target="#recommended-literature"><span class="header-section-number">1.1</span> <u>Recommended literature:</u></a></li>
-  <li><a href="#plan-for-course" id="toc-plan-for-course" class="nav-link" data-scroll-target="#plan-for-course"><span class="header-section-number">1.2</span> <strong>Plan for course</strong></a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R for Environmental Chemistry Data Analysis</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Thanh Wang </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 13, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -238,124 +219,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="course-content" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Course content</h1>
-<p>This is the handbook for the PhD course on <strong><em>R for environmental chemistry data analysis</em></strong></p>
-<!-- Use this HTML syntax to comment out text from the rendered book. THIS TEXT WILL NOT SHOW IN THE BOOK.-->
-<!-- If you use RStudio, you can use the keyboard shortcut Ctrl + Shift + C (Command + Shift + C on macOS) to comment out a line of text. -->
-<section id="recommended-literature" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="recommended-literature"><span class="header-section-number">1.1</span> <u>Recommended literature:</u></h2>
-<p>Introduction to Programming with R. <a href="https://discdown.org/rprogramming/introduction.html" class="uri">https://discdown.org/rprogramming/introduction.html</a></p>
-<p>Hands-On Programming with R. <a href="https://rstudio-education.github.io/hopr/" class="uri">https://rstudio-education.github.io/hopr/</a></p>
-<p>R for Data Science (2e). Hadley Wickham. Freely available at: <a href="https://r4ds.hadley.nz/" class="uri">https://r4ds.hadley.nz/</a></p>
-<p>R for Data Science: Exercise Solutions. <a href="https://jrnold.github.io/r4ds-exercise-solutions/" class="uri">https://jrnold.github.io/r4ds-exercise-solutions/</a></p>
-<p>R Graphics Cookbook, 2nd edition. Winston Chang. Freely available at: <a href="https://r-graphics.org/" class="uri">https://r-graphics.org/</a></p>
-<p>Posit Cheatsheets: <a href="https://posit.co/resources/cheatsheets/" class="uri">https://posit.co/resources/cheatsheets/</a></p>
-<p>Statistical Inference via Data Science: A ModernDive into R and the Tidyverse. <a href="https://moderndive.com/index.html" class="uri">https://moderndive.com/index.html</a></p>
-<p>Interactive web-based data visualization with R, plotly, and shiny. <a href="https://plotly-r.com/" class="uri">https://plotly-r.com/</a></p>
-<p>Data Visualization: A practical introduction. Kieran Healy. <a href="https://socviz.co/" class="uri">https://socviz.co/</a></p>
-<p>Mastering Software Development in R: <a href="https://bookdown.org/rdpeng/RProgDA/" class="uri">https://bookdown.org/rdpeng/RProgDA/</a></p>
-<p>To learn more about Quarto books visit:</p>
-<ul>
-<li><p><a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a></p></li>
-<li><p><a href="https://r4ds.hadley.nz/quarto.html" class="uri">https://r4ds.hadley.nz/quarto.html</a></p></li>
-<li><p><a href="https://quarto.org/docs/computations/execution-options.html" class="uri">https://quarto.org/docs/computations/execution-options.html</a></p></li>
-</ul>
-<p>Some useful links to other R for data science books:</p>
-<ul>
-<li><a href="https://www.r4epi.com/installing-r-and-rstudio" class="uri">https://www.r4epi.com/installing-r-and-rstudio</a></li>
-</ul>
-</section>
-<section id="plan-for-course" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="plan-for-course"><span class="header-section-number">1.2</span> <strong>Plan for course</strong></h2>
-<p>The final report will be an online book with chapters with one containing a learning diary, and others should contain a scientific report documenting the descriptive analysis and visualization of environmental chemistry relevant data sets.</p>
-<p><u>Start with R software</u></p>
-<p><a href="https://moderndive.com/1-getting-started.html" class="uri">https://moderndive.com/1-getting-started.html</a></p>
-<ul>
-<li><p>Install R and RStudio</p></li>
-<li><p>Install RTools</p></li>
-</ul>
-<p>-Install packages</p>
-<p>-Managing R with .Rprofile,..: <a href="https://support.posit.co/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf" class="uri">https://support.posit.co/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf</a></p>
-<section id="basic-r" class="level4" data-number="1.2.0.1">
-<h4 data-number="1.2.0.1" class="anchored" data-anchor-id="basic-r"><span class="header-section-number">1.2.0.1</span> Basic R</h4>
-<ul>
-<li><p>Basic concepts</p></li>
-<li><p>Data types: vector, dataframe, list,…</p></li>
-<li><p>Using base R functions: c, paste,..</p></li>
-<li><p>Using functions from installed packages</p></li>
-</ul>
-<p>– library()</p>
-<p>– Use help “?”</p>
-<ul>
-<li><p>If statements, for loops</p></li>
-<li><p>Basic plotting</p></li>
-<li><p>Importing excel, csv,..</p></li>
-</ul>
-<p><u>Using version control with Git and Github</u></p>
-<ul>
-<li><p>Version Control with Git and SVN: <a href="https://support.posit.co/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN" class="uri">https://support.posit.co/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN</a></p></li>
-<li><p>Happy Git and GitHub for the user: <a href="https://happygitwithr.com/" class="uri">https://happygitwithr.com/</a></p></li>
-</ul>
-<p><u>Writing and creating markdown documents</u></p>
-<ul>
-<li><p>Markdown syntax: <a href="https://quarto.org/docs/authoring/markdown-basics.html" class="uri">https://quarto.org/docs/authoring/markdown-basics.html</a></p></li>
-<li><p>Quarto Books: <a href="https://quarto.org/docs/books/" class="uri">https://quarto.org/docs/books/</a></p></li>
-<li><p>Quarto blog: <a href="https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html" class="uri">https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html</a></p></li>
-</ul>
-</section>
-<section id="tidyverse" class="level4" data-number="1.2.0.2">
-<h4 data-number="1.2.0.2" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">1.2.0.2</span> Tidyverse</h4>
-<ul>
-<li><p>Tidyverse concepts</p></li>
-<li><p>The pipe: %&gt;% or |&gt;&nbsp; <a href="https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/" class="uri">https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/</a></p></li>
-<li><p>ggplot2: <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a></p></li>
-<li><p>dplyr: <a href="https://dplyr.tidyverse.org/" class="uri">https://dplyr.tidyverse.org/</a></p></li>
-<li><p>pivot</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>tidyr: <a href="https://tidyr.tidyverse.org/" class="uri">https://tidyr.tidyverse.org/</a></p></li>
-<li><p>readr, readxl: <a href="https://readr.tidyverse.org/" class="uri">https://readr.tidyverse.org/</a> ; <a href="https://readxl.tidyverse.org/" class="uri">https://readxl.tidyverse.org/</a></p></li>
-</ul>
-</section>
-<section id="interactive-plotting-with-r" class="level4" data-number="1.2.0.3">
-<h4 data-number="1.2.0.3" class="anchored" data-anchor-id="interactive-plotting-with-r"><span class="header-section-number">1.2.0.3</span> Interactive plotting with R</h4>
-<ul>
-<li><p>Javascript and htmlwidgets: <a href="https://www.htmlwidgets.org/" class="uri">https://www.htmlwidgets.org/</a></p></li>
-<li><p>Plotly: <a href="https://plotly.com/r/" class="uri">https://plotly.com/r/</a> &nbsp;</p></li>
-<li><p>DT: <a href="https://rstudio.github.io/DT/" class="uri">https://rstudio.github.io/DT/</a></p></li>
-</ul>
-</section>
-<section id="statistics" class="level4" data-number="1.2.0.4">
-<h4 data-number="1.2.0.4" class="anchored" data-anchor-id="statistics"><span class="header-section-number">1.2.0.4</span> Statistics</h4>
-<ul>
-<li><p>Basic stats</p></li>
-<li><p>Comparison between groups (t-test, K-W, ANOVA,…)</p></li>
-<li><p>Regression/correlation</p></li>
-<li><p>Multivariate statistics (PCA, HCA,…)</p></li>
-</ul>
-</section>
-<section id="chatgpt" class="level4" data-number="1.2.0.5">
-<h4 data-number="1.2.0.5" class="anchored" data-anchor-id="chatgpt"><span class="header-section-number">1.2.0.5</span> ChatGPT</h4>
-</section>
-<section id="database-optional" class="level4" data-number="1.2.0.6">
-<h4 data-number="1.2.0.6" class="anchored" data-anchor-id="database-optional"><span class="header-section-number">1.2.0.6</span> Database (optional)</h4>
-<p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Relational database management system, MySQL</p>
-<p>o&nbsp;&nbsp; <a href="https://www.hostinger.com/tutorials/database-schema" class="uri">https://www.hostinger.com/tutorials/database-schema</a></p>
-<p>o&nbsp;&nbsp; …</p>
-<p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dbplyr: https://dbplyr.tidyverse.org/</p>
-<p>This handbook uses the following packages:</p>
+<p>Check: <a href="https://discdown.org/rprogramming/conditional-execution.html" class="uri">https://discdown.org/rprogramming/conditional-execution.html</a></p>
+<p>´If´ statements tell R to run a line of code if a condition returns TRUE and also another line of code if the condition returns FALSE. For example:</p>
+<p>IF (A = TRUE)</p>
+<p>then B</p>
+<p>else C</p>
+<p>Here is an anology to an environmental pollutant case.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># https://graphviz.org/doc/info/shapes.html</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">grViz</span>(<span class="st">"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">digraph condition_PFOS {</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st"># node definitions with substituted label text</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">node [fontname = Helvetica]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">a [label = '@@1', shape = 'box']</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">b [label = '@@2', shape = 'box']</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">c [label = '@@3']</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">d [label = '@@4']</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st"># edge definitions with the node IDs</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">a -&gt; b [label = 'IF']</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">b -&gt; c [label = 'TRUE']</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">b -&gt; d [label = 'ELSE']</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">[1]: 'Pollutant level'</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">[2]: 'Higher than threshold level'</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">[3]: 'Take actions'</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">[4]: 'No actions'</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-b37dbfcbbee7faa2db0a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b37dbfcbbee7faa2db0a">{"x":{"diagram":"\ndigraph condition_PFOS {\n\n# node definitions with substituted label text\nnode [fontname = Helvetica]\na [label = \"Pollutant level\", shape = \"box\"]\nb [label = \"Higher than threshold level\", shape = \"box\"]\nc [label = \"Take actions\"]\nd [label = \"No actions\"]\n\n\n# edge definitions with the node IDs\na -> b [label = \"IF\"]\nb -> c [label = \"TRUE\"]\nb -> d [label = \"ELSE\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
 </div>
 
 
-</section>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -593,10 +494,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./1_Basic_R.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Familiarize yourself with R</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./1_Basic_R.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Familiarize yourself with R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./3_Functions.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

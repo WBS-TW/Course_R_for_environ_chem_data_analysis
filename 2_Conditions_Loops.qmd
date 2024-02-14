@@ -5,4 +5,44 @@ editor_options:
   chunk_output_type: console
 ---
 
-# `If` statements
+# Conditional statements: `if`, `else`, `switch()`
+
+Check: <https://discdown.org/rprogramming/conditional-execution.html>
+
+´If´ statements tell R to run a line of code if a condition returns TRUE and also another line of code if the condition returns FALSE. For example:
+
+IF (A = TRUE)
+
+then B
+
+else C
+
+Here is an anology to an environmental pollutant case.
+
+```{r}
+
+# https://graphviz.org/doc/info/shapes.html
+
+DiagrammeR::grViz("
+digraph condition_PFOS {
+
+# node definitions with substituted label text
+node [fontname = Helvetica]
+a [label = '@@1', shape = 'box']
+b [label = '@@2', shape = 'box']
+c [label = '@@3']
+d [label = '@@4']
+
+
+# edge definitions with the node IDs
+a -> b [label = 'IF']
+b -> c [label = 'TRUE']
+b -> d [label = 'ELSE']
+}
+
+[1]: 'Pollutant level'
+[2]: 'Higher than threshold level'
+[3]: 'Take actions'
+[4]: 'No actions'
+")
+```

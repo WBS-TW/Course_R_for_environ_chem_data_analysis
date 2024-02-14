@@ -7,6 +7,9 @@ editor_options:
 
 # Publish your data analysis in Quarto
 
+-   Handbook on Quarto for R can be found here: <https://r4ds.hadley.nz/quarto.html>
+
+-   You can either publish your book/webpage in Posit Cloud or Github Pages. Below are instructions on how to publish in these two platforms.
 
 ## Publish your Quarto book in Posit Cloud
 

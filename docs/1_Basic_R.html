@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>LiU PhD course: R for Environmental Chemistry Data Analysis - 2&nbsp; Familiarize yourself with R</title>
+<title>R for Environmental Chemistry Data Analysis - 2&nbsp; Familiarize yourself with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Appendix_Version_control.html" rel="next">
+<link href="./2_Conditions_Loops.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">LiU PhD course: R for Environmental Chemistry Data Analysis</a> 
+      <a href="./">R for Environmental Chemistry Data Analysis</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,20 +147,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./2_Conditions_Loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_Tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tidyverse</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Appendix_Version_control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_Quarto.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_DatabaseDesign.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">How to Design a Database</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How to Design a Database</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -185,6 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#object-types-in-r" id="toc-object-types-in-r" class="nav-link" data-scroll-target="#object-types-in-r"><span class="header-section-number">2.2.1</span> <u>Object types</u> in R</a></li>
   <li><a href="#operators-in-r" id="toc-operators-in-r" class="nav-link" data-scroll-target="#operators-in-r"><span class="header-section-number">2.2.2</span> Operators in R</a></li>
   <li><a href="#loading-or-importing-data-files" id="toc-loading-or-importing-data-files" class="nav-link" data-scroll-target="#loading-or-importing-data-files"><span class="header-section-number">2.2.3</span> <u>Loading or importing data files</u></a></li>
+  <li><a href="#basic-plots" id="toc-basic-plots" class="nav-link" data-scroll-target="#basic-plots"><span class="header-section-number">2.2.4</span> <u>Basic plots</u></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -267,13 +286,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>If you concatenate elements of different data types in a vector, then R will convert the elements in the following order: 1. string; 2. numeric; 3. integer; 4. logical. It means that all other data types will be converted to a string if you combine these elements with a string element.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to create (or convert) an object of a specific data type, then use the as.xxx functions</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a_string <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="st">"A Space Odyssey"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>a_integer <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">2001</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>a_numeric <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">99.999</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>a_logical <span class="ot">&lt;-</span>  <span class="fu">as.logical</span>(<span class="cn">TRUE</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(a_integer, a_string)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to create (or convert) an object of a specific data type, then use the as.xxx functions.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>a_string <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="st">"A Space Odyssey"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also skip the as.character and directly use: a_string &lt;- "A Space Odyssey". R will recognize is as a string and automatically choose the correct data type.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>a_integer <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">2001</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>a_numeric <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fl">99.999</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>a_logical <span class="ot">&lt;-</span>  <span class="fu">as.logical</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(a_integer, a_string)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2001"            "A Space Odyssey"</code></pre>
 </div>
@@ -372,8 +395,78 @@ a multiple of shorter object length</code></pre>
 <p><strong>Matrices</strong></p>
 <p>A matrix is a 2 dimensional data structure for vectors of the same datatype.</p>
 <p><strong>Lists</strong></p>
-<p>We can also store elements of different datatypes in objects</p>
+<p>We can also store elements of different datatypes in list objects.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>a_vector_integers1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">99</span>, <span class="dv">98</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>a_vector_strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"This"</span>, <span class="st">"is"</span>, <span class="st">"a"</span>, <span class="st">"vector"</span>, <span class="st">"of"</span>, <span class="st">"string"</span>, <span class="st">"elements"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case, we use the list() function.</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>a_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec_int =</span> a_vector_integers1, </span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">vec_str =</span> a_vector_strings)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If you dont name the elements within the list then these will be unamed.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To subset an element within the list you can use index <span class="citation" data-cites="rspatial_indexing">(<a href="references.html#ref-rspatial_indexing" role="doc-biblioref"><strong>rspatial_indexing?</strong></a>)</span>. There is difference between single <code>[]</code> and double brackets<code>[[]]</code>. Can you see the differences between the below indexing?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$vec_int
+[1] 99 98</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 99 98</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="dv">1</span>][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$vec_int
+[1] 99 98</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 99</code></pre>
+</div>
+</div>
+<p>You can also use the name of the element for subsetting.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="st">"vec_int"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$vec_int
+[1] 99 98</code></pre>
+</div>
+</div>
+<p>The dollar-sign <code>$</code> can also be used.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These three subsetting operations will give the same results</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>a_list<span class="sc">$</span>vec_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 99 98</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="st">"vec_int"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$vec_int
+[1] 99 98</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 99 98</code></pre>
+</div>
+</div>
 <p><strong>Dataframes</strong></p>
+<p>Dataframes are similar as lists but flattened into a rectangular form, similar as tables. The length of individual objects have to be the same.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sample_id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sample_name =</span> <span class="fu">c</span>(<span class="st">"Inflow"</span>, <span class="st">"Mid_stream"</span>, <span class="st">"Outflow"</span>, <span class="st">"River"</span>),</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">measured_PFOS =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">conc_PFOS_ngL =</span> <span class="fu">c</span>(<span class="dv">99</span>, <span class="dv">5</span>, <span class="dv">123</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><strong>Factors</strong></p>
 <section id="object-types-in-r" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="object-types-in-r"><span class="header-section-number">2.2.1</span> <u>Object types</u> in R</h3>
@@ -475,8 +568,8 @@ a multiple of shorter object length</code></pre>
 <p><em>Logical Operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
+<col style="width: 34%">
+<col style="width: 65%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -510,9 +603,9 @@ a multiple of shorter object length</code></pre>
 <p><em>Other useful operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 61%">
-<col style="width: 19%">
+<col style="width: 26%">
+<col style="width: 47%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -543,6 +636,9 @@ a multiple of shorter object length</code></pre>
 <section id="loading-or-importing-data-files" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="loading-or-importing-data-files"><span class="header-section-number">2.2.3</span> <u>Loading or importing data files</u></h3>
 <p>https://r-graphics.org/loading-a-delimited-text-data-file https://r-graphics.org/loading-data-from-an-excel-file</p>
+</section>
+<section id="basic-plots" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="basic-plots"><span class="header-section-number">2.2.4</span> <u>Basic plots</u></h3>
 
 
 </section>
@@ -789,8 +885,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Appendix_Version_control.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./2_Conditions_Loops.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

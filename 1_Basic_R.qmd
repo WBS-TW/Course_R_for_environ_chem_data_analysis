@@ -72,11 +72,15 @@ str(x)
 If you concatenate elements of different data types in a vector, then R will convert the elements in the following order: 1. string; 2. numeric; 3. integer; 4. logical. It means that all other data types will be converted to a string if you combine these elements with a string element.
 
 ```{r}
-# If you want to create (or convert) an object of a specific data type, then use the as.xxx functions
+# If you want to create (or convert) an object of a specific data type, then use the as.xxx functions.
+
 a_string <- as.character("A Space Odyssey")
+# You can also skip the as.character and directly use: a_string <- "A Space Odyssey". R will recognize is as a string and automatically choose the correct data type.
 a_integer <- as.integer(2001)
 a_numeric <- as.numeric(99.999)
 a_logical <-  as.logical(TRUE)
+
+
 
 c(a_integer, a_string)
 c(a_integer, a_numeric)
@@ -164,9 +168,69 @@ A matrix is a 2 dimensional data structure for vectors of the same datatype.
 
 **Lists**
 
-We can also store elements of different datatypes in objects
+We can also store elements of different datatypes in list objects.
+
+```{r}
+a_vector_integers1 <- c(99, 98)
+
+a_vector_strings <- c("This", "is", "a", "vector", "of", "string", "elements")
+
+# In this case, we use the list() function.
+a_list <- list(vec_int = a_vector_integers1, 
+               vec_str = a_vector_strings)
+
+# If you dont name the elements within the list then these will be unamed.
+```
+
+To subset an element within the list you can use index [@rspatial_indexing]. There is difference between single `[]` and double brackets`[[]]`. Can you see the differences between the below indexing?
+
+```{r}
+
+a_list[1]
+```
+
+```{r}
+a_list[[1]]
+```
+
+```{r}
+
+a_list[1][1]
+```
+
+```{r}
+a_list[[1]][1]
+```
+
+You can also use the name of the element for subsetting.
+
+```{r}
+a_list["vec_int"]
+
+```
+
+The dollar-sign `$` can also be used.
+
+```{r}
+# These three subsetting operations will give the same results
+a_list$vec_int
+a_list["vec_int"]
+a_list[[1]]
+
+```
 
 **Dataframes**
+
+Dataframes are similar as lists but flattened into a rectangular form, similar as tables. The length of individual objects have to be the same.
+
+```{r}
+
+sample_data <- data.frame(sample_id = c(1, 2, 3, 4),
+                          sample_name = c("Inflow", "Mid_stream", "Outflow", "River"),
+                          measured_PFOS = c(TRUE, TRUE, TRUE, FALSE),
+                          conc_PFOS_ngL = c(99, 5, 123, NA))
+
+```
 
 **Factors**
 
@@ -213,7 +277,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Logical Operators*
 
 | Operator | Description                                                                       |
-|--------------------|----------------------------------------------------|
+|-------------------------|------------------------------------------------|
 | &        | Element-wise Logical AND operator. It returns TRUE if both elements are TRUE      |
 | &&       | Logical AND operator - Returns TRUE if both statements are TRUE                   |
 | \|       | Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE |
@@ -223,7 +287,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Other useful operators*
 
 | Operator | Description                                | Example                                                                |
-|--------------|---------------------------------------------|--------------|
+|-------------------|-----------------------------------|-------------------|
 | :        | Creates a series of numbers in a sequence  | 1:10 (creates a sequence from 1 to 10)                                 |
 | %in%     | Find out if an element belongs to a vector | 2%in%1:10 (check if 2 is found in the vector 1:10, evaluates to TRUE ) |
 | %\*%     | Matrix Multiplication                      | m \<- matrix(1:8, nrow=2); 2\*m (will multiply every element with 2)   |
@@ -231,3 +295,16 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 ### [Loading or importing data files]{.underline}
 
 https://r-graphics.org/loading-a-delimited-text-data-file https://r-graphics.org/loading-data-from-an-excel-file
+
+We will use a dataset from a study on PFAS levels in insects around a pond in Kumla in Sweden for our data analysis.
+
+```{r}
+
+
+PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
+    sheet = "Overview")
+
+```
+
+
+### [Basic plots]{.underline}

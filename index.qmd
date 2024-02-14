@@ -18,17 +18,17 @@ This is the handbook for the PhD course on ***R for environmental chemistry data
 
 ## [Recommended literature:]{.underline}
 
-R for Data Science (2e). Hadley Wickham. Freely available at: <https://r4ds.hadley.nz/>
-
-R Graphics Cookbook, 2nd edition. Winston Chang. Freely available at: <https://r-graphics.org/>
-
 Introduction to Programming with R. <https://discdown.org/rprogramming/introduction.html>
 
 Hands-On Programming with R. <https://rstudio-education.github.io/hopr/>
 
-Posit Cheatsheets: <https://posit.co/resources/cheatsheets/>
+R for Data Science (2e). Hadley Wickham. Freely available at: <https://r4ds.hadley.nz/>
 
 R for Data Science: Exercise Solutions. <https://jrnold.github.io/r4ds-exercise-solutions/>
+
+R Graphics Cookbook, 2nd edition. Winston Chang. Freely available at: <https://r-graphics.org/>
+
+Posit Cheatsheets: <https://posit.co/resources/cheatsheets/>
 
 Statistical Inference via Data Science: A ModernDive into R and the Tidyverse. <https://moderndive.com/index.html>
 
@@ -46,7 +46,7 @@ To learn more about Quarto books visit:
 
 -   <https://quarto.org/docs/computations/execution-options.html>
 
-Some usefule links to other R for data science books:
+Some useful links to other R for data science books:
 
 -   <https://www.r4epi.com/installing-r-and-rstudio>
 
@@ -70,7 +70,7 @@ The final report will be an online book with chapters with one containing a lear
 
 -   Basic concepts
 
--   Data types: vector, datatable, list,...
+-   Data types: vector, dataframe, list,...
 
 -   Using base R functions: c, paste,..
 
@@ -104,14 +104,17 @@ The final report will be an online book with chapters with one containing a lear
 
 -   Tidyverse concepts
 
--   The pipe: %\>% OR \|\>  <https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/>
+-   The pipe: %\>% or \|\>  <https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/>
 
 -   ggplot2: <https://ggplot2.tidyverse.org/>
 
 -   dplyr: <https://dplyr.tidyverse.org/>
 
--- Pivot
+-   pivot
 
+```{=html}
+<!-- -->
+```
 -   tidyr: <https://tidyr.tidyverse.org/>
 
 -   readr, readxl: <https://readr.tidyverse.org/> ; <https://readxl.tidyverse.org/>
@@ -146,8 +149,8 @@ o   ...
 
 -        dbplyr: https://dbplyr.tidyverse.org/
 
-
 This handbook uses the following packages:
+
 ```{r startup}
 #| echo: true
 #| output: false
@@ -155,6 +158,6 @@ This handbook uses the following packages:
 
 library(tidyverse)
 library(plotly)
-
+library(DiagrammeR)
+library(readxl)
 ```
-
