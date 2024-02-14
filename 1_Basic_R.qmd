@@ -234,6 +234,12 @@ sample_data <- data.frame(sample_id = c(1, 2, 3, 4),
 
 **Factors**
 
+See these videos:
+
+<https://www.youtube.com/watch?v=xkRBfy8_2MU>
+
+<https://www.youtube.com/watch?v=cspQYQLZbCo>
+
 ### [Object types]{.underline} in R
 
 (from https://discdown.org/rprogramming/vectors.html)
@@ -277,7 +283,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Logical Operators*
 
 | Operator | Description                                                                       |
-|-------------------------|------------------------------------------------|
+|-------------------------|-----------------------------------------------|
 | &        | Element-wise Logical AND operator. It returns TRUE if both elements are TRUE      |
 | &&       | Logical AND operator - Returns TRUE if both statements are TRUE                   |
 | \|       | Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE |
@@ -287,7 +293,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Other useful operators*
 
 | Operator | Description                                | Example                                                                |
-|-------------------|-----------------------------------|-------------------|
+|-------------------|----------------------------------|-------------------|
 | :        | Creates a series of numbers in a sequence  | 1:10 (creates a sequence from 1 to 10)                                 |
 | %in%     | Find out if an element belongs to a vector | 2%in%1:10 (check if 2 is found in the vector 1:10, evaluates to TRUE ) |
 | %\*%     | Matrix Multiplication                      | m \<- matrix(1:8, nrow=2); 2\*m (will multiply every element with 2)   |
@@ -296,7 +302,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 
 https://r-graphics.org/loading-a-delimited-text-data-file https://r-graphics.org/loading-data-from-an-excel-file
 
-We will use a dataset from a study on PFAS levels in insects around a pond in Kumla in Sweden for our data analysis.
+We will use a dataset from a study on PFAS levels in insects around a pond in Kumla in Sweden for our data analysis. You can find the dataset here: <https://github.com/WBS-TW/Course_R_for_environ_chem_data_analysis/tree/master/data>
 
 ```{r}
 
@@ -305,6 +311,5 @@ PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx",
     sheet = "Overview")
 
 ```
-
 
 ### [Basic plots]{.underline}
