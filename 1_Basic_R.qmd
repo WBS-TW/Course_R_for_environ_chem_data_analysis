@@ -270,20 +270,20 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 
 *Arithmetic Operators*
 
-| Operator | Name                              | Example |
-|----------|-----------------------------------|---------|
-| \+       | Addition                          | x + y   |
-| \-       | Subtraction                       | x - y   |
-| \*       | Multiplication                    | x \* y  |
-| /        | Division                          | x / y   |
-| \^       | Exponent                          | x \^ y  |
-| %%       | Modulus (Remainder from division) | x %% y  |
-| %/%      | Integer Division                  | x%/%y   |
+| Operator | Name                              | Example   |
+|----------|-----------------------------------|-----------|
+| \+       | Addition                          | x + y     |
+| \-       | Subtraction                       | x - y     |
+| \*       | Multiplication                    | x \* y    |
+| /        | Division                          | x / y     |
+| \^       | Exponent                          | x \^ y    |
+| %%       | Modulus (Remainder from division) | `10 %% 5` |
+| %/%      | Integer Division                  | x%/%y     |
 
 *Logical Operators*
 
 | Operator | Description                                                                       |
-|-------------------------|-----------------------------------------------|
+|--------------------------|----------------------------------------------|
 | &        | Element-wise Logical AND operator. It returns TRUE if both elements are TRUE      |
 | &&       | Logical AND operator - Returns TRUE if both statements are TRUE                   |
 | \|       | Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE |
@@ -300,9 +300,9 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 
 ### [Loading or importing data files]{.underline}
 
-https://r-graphics.org/loading-a-delimited-text-data-file https://r-graphics.org/loading-data-from-an-excel-file
+See: <https://r-graphics.org/loading-a-delimited-text-data-file>, and <https://r-graphics.org/loading-data-from-an-excel-file>
 
-We will use a dataset from a study on PFAS levels in insects around a pond in Kumla in Sweden for our data analysis. You can find the dataset here: <https://github.com/WBS-TW/Course_R_for_environ_chem_data_analysis/tree/master/data>
+We will use a dataset in excel format from a study on PFAS levels in insects around a pond in Kumla in Sweden for our data analysis. You can find the dataset here: <https://github.com/WBS-TW/Course_R_for_environ_chem_data_analysis/tree/master/data>
 
 ```{r}
 

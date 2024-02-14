@@ -15,6 +15,7 @@ book:
     - Appendix_Version_control.qmd
     - Appendix_Quarto.qmd
     - Appendix_DatabaseDesign.qmd
+    - Appendix_Kumla_PFAS.qmd
     - references.qmd
 
 bibliography: references.bib

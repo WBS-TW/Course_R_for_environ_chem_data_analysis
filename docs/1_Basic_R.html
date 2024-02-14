@@ -183,6 +183,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Appendix_Kumla_PFAS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading raw data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -407,7 +413,7 @@ a multiple of shorter object length</code></pre>
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If you dont name the elements within the list then these will be unamed.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To subset an element within the list you can use index <span class="citation" data-cites="rspatial_indexing">(<a href="references.html#ref-rspatial_indexing" role="doc-biblioref"><strong>rspatial_indexing?</strong></a>)</span>. There is difference between single <code>[]</code> and double brackets<code>[[]]</code>. Can you see the differences between the below indexing?</p>
+<p>To subset an element within the list you can use index <span class="citation" data-cites="rspatial_indexing">(<a href="#ref-rspatial_indexing" role="doc-biblioref"><strong>rspatial_indexing?</strong></a>)</span>. There is difference between single <code>[]</code> and double brackets<code>[[]]</code>. Can you see the differences between the below indexing?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -468,6 +474,9 @@ a multiple of shorter object length</code></pre>
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">conc_PFOS_ngL =</span> <span class="fu">c</span>(<span class="dv">99</span>, <span class="dv">5</span>, <span class="dv">123</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Factors</strong></p>
+<p>See these videos:</p>
+<p><a href="https://www.youtube.com/watch?v=xkRBfy8_2MU" class="uri">https://www.youtube.com/watch?v=xkRBfy8_2MU</a></p>
+<p><a href="https://www.youtube.com/watch?v=cspQYQLZbCo" class="uri">https://www.youtube.com/watch?v=cspQYQLZbCo</a></p>
 <section id="object-types-in-r" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="object-types-in-r"><span class="header-section-number">2.2.1</span> <u>Object types</u> in R</h3>
 <p>(from https://discdown.org/rprogramming/vectors.html)</p>
@@ -556,7 +565,7 @@ a multiple of shorter object length</code></pre>
 <tr class="even">
 <td>%%</td>
 <td>Modulus (Remainder from division)</td>
-<td>x %% y</td>
+<td><code>10 %% 5</code></td>
 </tr>
 <tr class="odd">
 <td>%/%</td>
@@ -568,8 +577,8 @@ a multiple of shorter object length</code></pre>
 <p><em>Logical Operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 34%">
-<col style="width: 65%">
+<col style="width: 36%">
+<col style="width: 63%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -635,7 +644,12 @@ a multiple of shorter object length</code></pre>
 </section>
 <section id="loading-or-importing-data-files" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="loading-or-importing-data-files"><span class="header-section-number">2.2.3</span> <u>Loading or importing data files</u></h3>
-<p>https://r-graphics.org/loading-a-delimited-text-data-file https://r-graphics.org/loading-data-from-an-excel-file</p>
+<p>See: <a href="https://r-graphics.org/loading-a-delimited-text-data-file" class="uri">https://r-graphics.org/loading-a-delimited-text-data-file</a>, and <a href="https://r-graphics.org/loading-data-from-an-excel-file" class="uri">https://r-graphics.org/loading-data-from-an-excel-file</a></p>
+<p>We will use a dataset in excel format from a study on PFAS levels in insects around a pond in Kumla in Sweden for our data analysis. You can find the dataset here: <a href="https://github.com/WBS-TW/Course_R_for_environ_chem_data_analysis/tree/master/data" class="uri">https://github.com/WBS-TW/Course_R_for_environ_chem_data_analysis/tree/master/data</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/Statistics_Kumla_20200408.xlsx"</span>, </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sheet =</span> <span class="st">"Overview"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="basic-plots" class="level3" data-number="2.2.4">
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="basic-plots"><span class="header-section-number">2.2.4</span> <u>Basic plots</u></h3>
