@@ -1,6 +1,7 @@
 ---
 Title: Tidyverse
 output: html_document
+number-sections: true
 editor_options: 
   chunk_output_type: console
 ---

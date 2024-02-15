@@ -1,5 +1,6 @@
 ---
 output: html_document
+number-sections: true
 execute:
   echo: false
   output: false
@@ -7,6 +8,23 @@ execute:
 editor_options: 
   chunk_output_type: console
 ---
+
+This handbook uses the following packages:
+
+```{r startup}
+#| echo: true
+#| output: false
+#| warning: false
+
+library(tidyverse)
+library(plotly)
+library(DiagrammeR)
+library(readxl)
+
+
+```
+
+An example dataset will be used to demonstrate the different features of R programming. You can find information about the dataset at @sec-loadfiles.
 
 # Course content
 
@@ -112,9 +130,8 @@ The final report will be an online book with chapters with one containing a lear
 
 -   pivot
 
-```{=html}
 <!-- -->
-```
+
 -   tidyr: <https://tidyr.tidyverse.org/>
 
 -   readr, readxl: <https://readr.tidyverse.org/> ; <https://readxl.tidyverse.org/>
@@ -149,15 +166,9 @@ o   ...
 
 -        dbplyr: https://dbplyr.tidyverse.org/
 
-This handbook uses the following packages:
+**Session information with the versions of different packages**
 
-```{r startup}
-#| echo: true
-#| output: false
-#| warning: false
+```{r}
 
-library(tidyverse)
-library(plotly)
-library(DiagrammeR)
-library(readxl)
+sessionInfo()
 ```

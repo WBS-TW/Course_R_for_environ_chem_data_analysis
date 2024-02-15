@@ -1,6 +1,7 @@
 ---
 Title: Basic R
 output: html_document
+number-sections: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -283,7 +284,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Logical Operators*
 
 | Operator | Description                                                                       |
-|--------------------------|----------------------------------------------|
+|----------|-----------------------------------------------------------------------------------|
 | &        | Element-wise Logical AND operator. It returns TRUE if both elements are TRUE      |
 | &&       | Logical AND operator - Returns TRUE if both statements are TRUE                   |
 | \|       | Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE |
@@ -293,12 +294,12 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Other useful operators*
 
 | Operator | Description                                | Example                                                                |
-|-------------------|----------------------------------|-------------------|
+|----------|--------------------------------------------|------------------------------------------------------------------------|
 | :        | Creates a series of numbers in a sequence  | 1:10 (creates a sequence from 1 to 10)                                 |
 | %in%     | Find out if an element belongs to a vector | 2%in%1:10 (check if 2 is found in the vector 1:10, evaluates to TRUE ) |
 | %\*%     | Matrix Multiplication                      | m \<- matrix(1:8, nrow=2); 2\*m (will multiply every element with 2)   |
 
-### [Loading or importing data files]{.underline}
+### [Loading or importing data files]{.underline} {#sec-loadfiles}
 
 See: <https://r-graphics.org/loading-a-delimited-text-data-file>, and <https://r-graphics.org/loading-data-from-an-excel-file>
 
@@ -306,10 +307,48 @@ We will use a dataset in excel format from a study on PFAS levels in insects aro
 
 ```{r}
 
-
 PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
     sheet = "Overview")
 
 ```
 
-### [Basic plots]{.underline}
+### [Base R plots]{.underline}
+
+Base R plots are those functions that come with the R version. Additional packages that are easier to handle and have more advanced features will be demonstrated later.
+
+**Scatter plot: plot()**
+
+```{r}
+
+# http://www.sthda.com/english/wiki/scatter-plots-r-base-graphs
+
+plot(x = PFAS_insects$PFOA, y = PFAS_insects$PFOS, main = "PFOA vs PFOS concentrations",
+     xlab = "PFOA concentrations (ng/L)",
+     ylab = "PFOS concentrations (ng/L",
+     pch = 19) # choosing symbol for points in a graph (see ?pch for number/symbol) 
+# We can add a regression line into the same graph
+abline(lm(PFAS_insects$PFOS ~ PFAS_insects$PFOA, data = PFAS_insects), col = "blue")
+
+# as well as a loess fit
+lines(lowess(PFAS_insects$PFOA, PFAS_insects$PFOS), col = "red")
+
+
+```
+
+**Bar plots: barplot()**
+
+```{r}
+groupsPFOS <- PFAS_insects[, c("Group", "PFOS")] # subset two variables from the dataframe
+barplot(height = PFAS_insects$PFOS)
+
+```
+
+**Box plots: boxplot()**
+
+```{r}
+
+# Box plot of one variable
+boxplot(PFAS_insects$PFBS)
+
+
+```

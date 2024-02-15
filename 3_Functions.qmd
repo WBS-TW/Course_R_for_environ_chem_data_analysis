@@ -1,8 +1,137 @@
 ---
 Title: Function
 output: html_document
+number-sections: true
 editor_options: 
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
+    sheet = "Overview")
+```
+
 # Functions
+
+## Using functions.
+
+It is recommended to use the `?` to see the help page for the function, and see the different arguments within the function. For example, \`?round()\` will show both the help text for the `round` function as well as similar functions that shares a same help text. We can also see that the usage is `round(x, digits = 0)`, where x is a single value and digits has a default value of 0. You can change these arguments.
+
+```{r}
+round(x = 98.9893323)
+```
+
+```{r}
+round(x = 98.9893323, digits = 2)
+```
+
+You can also leave out the argument names in the function. The order of the arguments should be the same as in the function help text. Below will give the same output as the above.
+
+```{r}
+round(98.9893323, 2)
+
+```
+
+### Useful functions in base R
+
+**`apply()`**
+
+`?apply` will show the help text:
+
+Apply Functions Over Array Margins Description Returns a vector or array or list of values obtained by applying a function to margins of an array or matrix.
+
+*Usage*
+
+***apply(X, MARGIN, FUN, ..., simplify = TRUE)***
+
+*Arguments*
+
+X an array, including a matrix.
+
+MARGIN - a vector giving the subscripts which the function will be applied over. E.g., for a matrix 1 indicates rows, 2 indicates columns, c(1, 2) indicates rows and columns. Where X has named dimnames, it can be a character vector selecting dimension names.
+
+FUN - the function to be applied: see 'Details'. In the case of functions like +, %\*%, etc., the function name must be backquoted or quoted.
+
+... - optional arguments to FUN.
+
+simplify - a logical indicating whether results should be simplified if possible.
+
+Details... Value...
+
+You can specify the function with the names of the arguments:
+
+```{r}
+apply(PFAS_insects[, 13:14], 2, median)
+```
+
+This function will apply the \`median\` function across multiple columns (or rows) within a specified matrix or dataframe. In this case, we have filtered out the PFBA and PFPeA compounds from the PFAS_insects dataframe while keeping all rows (samples), and specified `MARGIN = 2` for columns, and therefore calculated the `median` of these two analytes separately. You dont need to add the `()` for the function in the FUN argument.
+
+## Writing your own functions
+
+We can write functions by using the below structure:
+
+```{r}
+#| eval: false
+
+name_of _function <- function(argument1, argument2,...) {
+  YOUR CUSTOM SCRIPT
+  return(OUTPUT)
+}
+
+```
+
+An example:
+
+When you name the functions, it is good to use a verb to describe what the function does.
+
+```{r}
+
+add_my_values <- function(values) {
+  
+  for (i in seq_along(values)) {
+    i
+    
+  }
+}
+
+```
+
+Here is another example to calculate the standard error (se) by using the standard deviation function `sd`:
+
+$$
+se = \frac{\sigma}{\sqrt{n}}
+$$
+
+(check this link on how to write Latex codes for mathematical expressions: <https://www.malinc.se/math/latex/basiccodeen.php>)
+
+```{r}
+
+stderror <- function(x) {
+  se <- sd(x, na.rm=TRUE)/sqrt(length(x[!is.na(x)]))  # the script
+  se # the output
+}
+
+```
+
+The input argument x is a numeric vector.
+
+```{r}
+sd(c(1,2,3))
+stderror(c(1,2,3))
+
+
+```
+
+Apply this function to the PFAS dataset
+
+```{r}
+
+sd(PFAS_insects$PFOS)
+stderror(PFAS_insects$PFOS)
+
+
+```
