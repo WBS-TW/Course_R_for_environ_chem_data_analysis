@@ -284,7 +284,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Logical Operators*
 
 | Operator | Description                                                                       |
-|----------|-----------------------------------------------------------------------------------|
+|--------------|----------------------------------------------------------|
 | &        | Element-wise Logical AND operator. It returns TRUE if both elements are TRUE      |
 | &&       | Logical AND operator - Returns TRUE if both statements are TRUE                   |
 | \|       | Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE |
@@ -294,7 +294,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Other useful operators*
 
 | Operator | Description                                | Example                                                                |
-|----------|--------------------------------------------|------------------------------------------------------------------------|
+|---------------|---------------------|------------------------------------|
 | :        | Creates a series of numbers in a sequence  | 1:10 (creates a sequence from 1 to 10)                                 |
 | %in%     | Find out if an element belongs to a vector | 2%in%1:10 (check if 2 is found in the vector 1:10, evaluates to TRUE ) |
 | %\*%     | Matrix Multiplication                      | m \<- matrix(1:8, nrow=2); 2\*m (will multiply every element with 2)   |
@@ -312,7 +312,7 @@ PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx",
 
 ```
 
-### [Base R plots]{.underline}
+### [Base R plots]{.underline} {#sec-baseRplots}
 
 Base R plots are those functions that come with the R version. Additional packages that are easier to handle and have more advanced features will be demonstrated later.
 
@@ -326,13 +326,15 @@ plot(x = PFAS_insects$PFOA, y = PFAS_insects$PFOS, main = "PFOA vs PFOS concentr
      xlab = "PFOA concentrations (ng/L)",
      ylab = "PFOS concentrations (ng/L",
      pch = 19) # choosing symbol for points in a graph (see ?pch for number/symbol) 
+
 # We can add a regression line into the same graph
-abline(lm(PFAS_insects$PFOS ~ PFAS_insects$PFOA, data = PFAS_insects), col = "blue")
+abline(lm(PFAS_insects$PFOS ~ PFAS_insects$PFOA, data = PFAS_insects), col = "blue", lwd = 3) # lwd is the line width
 
 # as well as a loess fit
-lines(lowess(PFAS_insects$PFOA, PFAS_insects$PFOS), col = "red")
+lines(lowess(PFAS_insects$PFOA, PFAS_insects$PFOS), col = "red", lwd = 3)
 
-
+# to clear the graphics from the Plots pane, use graphics.off() in the script or dev.off() in the console
+ 
 ```
 
 **Bar plots: barplot()**

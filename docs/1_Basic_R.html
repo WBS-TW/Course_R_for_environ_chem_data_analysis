@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#object-types-in-r" id="toc-object-types-in-r" class="nav-link" data-scroll-target="#object-types-in-r"><span class="header-section-number">2.2.1</span> <u>Object types</u> in R</a></li>
   <li><a href="#operators-in-r" id="toc-operators-in-r" class="nav-link" data-scroll-target="#operators-in-r"><span class="header-section-number">2.2.2</span> Operators in R</a></li>
   <li><a href="#sec-loadfiles" id="toc-sec-loadfiles" class="nav-link" data-scroll-target="#sec-loadfiles"><span class="header-section-number">2.2.3</span> <u>Loading or importing data files</u></a></li>
-  <li><a href="#base-r-plots" id="toc-base-r-plots" class="nav-link" data-scroll-target="#base-r-plots"><span class="header-section-number">2.2.4</span> <u>Base R plots</u></a></li>
+  <li><a href="#sec-baseRplots" id="toc-sec-baseRplots" class="nav-link" data-scroll-target="#sec-baseRplots"><span class="header-section-number">2.2.4</span> <u>Base R plots</u></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -577,8 +577,8 @@ a multiple of shorter object length</code></pre>
 <p><em>Logical Operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 89%">
+<col style="width: 19%">
+<col style="width: 80%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -612,9 +612,9 @@ a multiple of shorter object length</code></pre>
 <p><em>Other useful operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 7%">
-<col style="width: 34%">
-<col style="width: 57%">
+<col style="width: 20%">
+<col style="width: 29%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -651,8 +651,8 @@ a multiple of shorter object length</code></pre>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sheet =</span> <span class="st">"Overview"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="base-r-plots" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="base-r-plots"><span class="header-section-number">2.2.4</span> <u>Base R plots</u></h3>
+<section id="sec-baseRplots" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="sec-baseRplots"><span class="header-section-number">2.2.4</span> <u>Base R plots</u></h3>
 <p>Base R plots are those functions that come with the R version. Additional packages that are easier to handle and have more advanced features will be demonstrated later.</p>
 <p><strong>Scatter plot: plot()</strong></p>
 <div class="cell">
@@ -662,27 +662,29 @@ a multiple of shorter object length</code></pre>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"PFOA concentrations (ng/L)"</span>,</span>
 <span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"PFOS concentrations (ng/L"</span>,</span>
 <span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>) <span class="co"># choosing symbol for points in a graph (see ?pch for number/symbol) </span></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We can add a regression line into the same graph</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(PFAS_insects<span class="sc">$</span>PFOS <span class="sc">~</span> PFAS_insects<span class="sc">$</span>PFOA, <span class="at">data =</span> PFAS_insects), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as a loess fit</span></span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(PFAS_insects<span class="sc">$</span>PFOA, PFAS_insects<span class="sc">$</span>PFOS), <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We can add a regression line into the same graph</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(PFAS_insects<span class="sc">$</span>PFOS <span class="sc">~</span> PFAS_insects<span class="sc">$</span>PFOA, <span class="at">data =</span> PFAS_insects), <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">3</span>) <span class="co"># lwd is the line width</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as a loess fit</span></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(PFAS_insects<span class="sc">$</span>PFOA, PFAS_insects<span class="sc">$</span>PFOS), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="1_Basic_R_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to clear the graphics from the Plots pane, use graphics.off() in the script or dev.off() in the console</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Bar plots: barplot()</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>groupsPFOS <span class="ot">&lt;-</span> PFAS_insects[, <span class="fu">c</span>(<span class="st">"Group"</span>, <span class="st">"PFOS"</span>)] <span class="co"># subset two variables from the dataframe</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> PFAS_insects<span class="sc">$</span>PFOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>groupsPFOS <span class="ot">&lt;-</span> PFAS_insects[, <span class="fu">c</span>(<span class="st">"Group"</span>, <span class="st">"PFOS"</span>)] <span class="co"># subset two variables from the dataframe</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> PFAS_insects<span class="sc">$</span>PFOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="1_Basic_R_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><strong>Box plots: boxplot()</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot of one variable</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(PFAS_insects<span class="sc">$</span>PFBS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot of one variable</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(PFAS_insects<span class="sc">$</span>PFBS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="1_Basic_R_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
