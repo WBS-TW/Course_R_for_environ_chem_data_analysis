@@ -77,7 +77,7 @@ We can write functions by using the below structure:
 ```{r}
 #| eval: false
 
-name_of _function <- function(argument1, argument2,...) {
+name_of_function <- function(argument1, argument2,...) {
   YOUR CUSTOM SCRIPT
   return(OUTPUT)
 }
@@ -93,7 +93,7 @@ When you name the functions, it is good to use a verb to describe what the funct
 add_my_values <- function(values) {
   
   for (i in seq_along(values)) {
-    i
+    i+1
     
   }
 }

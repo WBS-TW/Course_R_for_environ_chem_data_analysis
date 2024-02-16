@@ -19,6 +19,20 @@ PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx",
 
 See: <https://www.tidyverse.org/>
 
+## dplyr
+
+The pipe operator `%>%` (or `|>`)
+
+See: <https://r4ds.hadley.nz/data-transform>
+
+<https://r4ds.hadley.nz/data-transform#sec-the-pipe>
+
+### Various dplyr functions
+
+```{r}
+ PFAS_insects |>  select(PFOS) |> filter(PFOS > 100)
+```
+
 ## ggplot2
 
 See: <https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf>
@@ -61,7 +75,7 @@ ggplot(data = PFAS_insects, mapping = aes(x = PFOA, y = PFOS)) +
 
 ```
 
-## NOT FINISHED
+### NOT FINISHED
 
 We can add another geom by mapping again new variables (PFBS \~ PFOA)
 
@@ -86,7 +100,7 @@ ggplot(data = PFAS_insects) +
   theme_classic() # This theme will remove the background colours and lines
 ```
 
-## pivot_longer 
+## pivot_longer
 
 See: <https://tidyr.tidyverse.org/reference/pivot_longer.html>
 
@@ -100,3 +114,23 @@ PFAS_insects_long <- PFAS_insects %>% # shortcut for pipe Ctrl + shift + M
 
 
 ```
+
+
+```{r}
+#check the PFAS group names
+PFAS_insects_long |> group_by(PFAS) |> tally() |> view() 
+# select PFOS isomers
+PFOS_branched <- c("1-PFOS 419/169", "3/4/5-PFOS80/98.9")
+
+PFAS_insects_long |>
+  filter(Group != "Water") |> #remove all water samples to only include solid samples
+  filter(str_detect(PFAS, "sum_", negate = TRUE)) |> #remove all sum of PFAS using the argument: negate=TRUE 
+ggplot(aes(x = PFAS, y = Conc)) +
+  geom_point() +
+  geom_boxplot() +
+  theme_classic() +
+  ylab("Concentration of PFAS (ng/g) in solid samples")
+  
+
+```
+

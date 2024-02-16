@@ -341,6 +341,7 @@ lines(lowess(PFAS_insects$PFOA, PFAS_insects$PFOS), col = "red", lwd = 3)
 
 ```{r}
 groupsPFOS <- PFAS_insects[, c("Group", "PFOS")] # subset two variables from the dataframe
+groupsPFOS$Group <- as.factor(groupsPFOS$Group)
 barplot(height = PFAS_insects$PFOS)
 
 ```
