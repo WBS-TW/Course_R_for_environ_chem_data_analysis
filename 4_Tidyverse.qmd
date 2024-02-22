@@ -280,6 +280,22 @@ PFAS_insects_long |>
 
 ```
 
+You can also plot different panels using `facet_wrap`
+
+```{r}
+
+PFAS_insects_long |> 
+  ggplot(aes(x = PFAS, y = Conc)) +
+  geom_bar(stat = "identity") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0)) +
+  facet_wrap(~Group) +
+  ylab("Concentration of individual PFAS")
+
+   
+
+```
+
 ## stringr
 
 In R, you need to escape certain special characters using `\`.

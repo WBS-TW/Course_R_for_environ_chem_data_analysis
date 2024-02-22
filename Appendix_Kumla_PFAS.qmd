@@ -1,16 +1,14 @@
 ---
 Title: Example data analysis from a PFAS study
 output: html_document
-execute: 
-  eval: false
 editor_options: 
   chunk_output_type: console
 ---
 
 # Data analysis of Kumla PFAS study
 
-```{r}
- 
+```{r start}
+
 library(tidyverse)
 library(readxl)
 library(plotly)
@@ -29,7 +27,7 @@ library(ggsignif)
 library(ggpubr)
 library(broom)
 
-options(scipen=999)
+options(scipen=9999)
 options(digits = 3)
 
 
@@ -42,10 +40,10 @@ standerror <- function(x) {
   se <- sd(x, na.rm=TRUE)/sqrt(length(x[!is.na(x)]))
 }
 #-----
-PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
+PFAS_ins <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
     sheet = "Overview")
 
-PFAS_insects <- as_tibble(PFAS_insects) %>%
+PFAS_ins <- as_tibble(PFAS_ins) %>%
   mutate(Group = as.factor(Group)) %>%
   mutate(ID = as.factor(ID)) %>%
   mutate(`Sampling site`= as.factor(`Sampling site`)) %>%
@@ -199,7 +197,7 @@ c12 <- c(
 # pie(rep(1, 11), col = c11)
 
 #color
-matrix_color <- setNames(c12, c(levels(PFAS_insects$Group)))
+matrix_color <- setNames(c12, c(levels(PFAS_ins$Group)))
 matrix_color2 <- setNames(c12, c(levels(kumla_isotopes$Group)))
 
 
@@ -236,7 +234,7 @@ PFOS_iso <- c("3/4/5-PFOS80/98.9", "6/2-PFOS169/80", "1-PFOS 419/169", "L-PFOS 9
 
 # Shapiro-Wilk test for normality 
 
-df_shapiro_ID <- PFAS_insects %>%
+df_shapiro_ID <- PFAS_ins %>%
   select(ID, sum_21PFAS) %>%
   filter()
  
@@ -250,7 +248,7 @@ hist(log10(df_shapiro_ID$sum_21PFAS))
 
 # Shapiro-Wilk test for normality PFOS
 
-df_shapiro <- PFAS_insects %>%
+df_shapiro <- PFAS_ins %>%
   select(Group, sum_PFOS) %>%
   filter(Group == "Emergent aquatic insects")
 
@@ -285,19 +283,20 @@ shapiro.test(isotope_raw_checkNormality$delta15N)
 
 # branched PFOS
 
-PFAS_insects %>%
-  select(PFOS_iso) %>%
-  ggplot(aes(x =  perc_sum_brPFOS)) +
-  geom_histogram(bins = 6) +
-  facet_wrap(~Matrix,scales = "free") +
+PFAS_ins %>%
+  select(Group, all_of(PFOS_iso)) %>%
+  pivot_longer(cols = 2:5, names_to = "branchedPFOS", values_to = "Conc") |>
+  ggplot(aes(x = Conc)) +
+  geom_histogram(bins = 10) +
+  facet_wrap(~Group, scales = "free") +
   theme_bw()
 ```
 
-```{r sum_21PFAS, include=FALSE}
+```{r sum_21PFAS}
 # boxplot concentrations
 
 #sum21_TPFASs pond
-PFAS_insects %>%
+PFAS_ins %>%
   mutate(Group = fct_relevel(Group,
                              "Aquatic insect larvae",
                              "Emergent aquatic insects",
@@ -430,13 +429,14 @@ ggplot() +
 
 ```
 
-```{r isomers, include=FALSE, warning=FALSE, eval=FALSE}
-
+### NOT WORKING YET
+```{r isomers}
+#| eval: false
 
 # %br PFOS Pond
 
 
-PFAS_insects %>% 
+PFAS_ins %>% 
 mutate(perc_sum_brPFOS = sum_brPFOS/sum_PFOS*100) %>%
   ggplot(mapping = aes(x = reorder(Group, perc_sum_brPFOS, FUN = median), 
                                y = perc_sum_brPFOS, fill = Group)) +
@@ -458,7 +458,7 @@ mutate(perc_sum_brPFOS = sum_brPFOS/sum_PFOS*100) %>%
 # %br PFHxS Pond
 # only those samples with a percentage above zero i.e. detected branched PFHxS
 perc_sum_br_PFHxS <- sum_brPFHxS/sum_PFHxS*100
-PFAS_insects %>%
+PFAS_ins %>%
   filter(sum_brPFHxS > 0.2) %>%
   mutate(perc_sum_br_PFHxS = sum_brPFHxS/sum_PFHxS*100) %>%
   ggplot(mapping = aes(x = reorder(Group, perc_sum_br_PFHxS, FUN = median), 
@@ -483,7 +483,11 @@ ANOVA and post hocs for d15N and d13C isotopes
 
 Values sharing a letter are not significantly different
 
+### NOT WORKING YET
+
 ```{r Kruskal Wallis Dunn post hoc}
+#| eval: false
+
 
 #------------ISotopes 
 
@@ -626,6 +630,8 @@ kruskal.test(list(BAF_aq_PFHxS_pond$`L-PFHxS80`, BAF_aq_PFHxS_pond$`4/2-PFHxS`))
 Correlations
 
 ```{r correlation}
+#| eval: false
+
 conc_PFAS %>%
   filter(Site == "Pond") %>% 
   ggplot(aes(x = PFOS, y = `PFHxS`)) +
@@ -674,6 +680,7 @@ pheatmap(res2,
 BAFs
 
 ```{r BAFs}
+#| eval: false
 
 ##PFSAs
 
@@ -726,7 +733,6 @@ BAF_aq %>%
         axis.title.x = element_text(color = "black", size = 16, angle = 0, hjust = .5, vjust = 0, face = "plain"),
         axis.title.y = element_text(color = "black", size = 16, angle = 90, hjust = .5, vjust = .5, face = "plain"),
         panel.grid.major = element_blank(), panel.grid.minor = element_blank())
-
 
 
 ```
