@@ -150,9 +150,6 @@ PFAS_insects |>
 PFAS_insects |> 
   mutate(across(where(is.numeric), round)) |> 
   glimpse()
-  #select(ID, PFOS, PFOA, PFBS) |> 
-  #glimpse()
-
 ```
 
 Here, we apply a `round` transformation across all variables that are numeric.
@@ -180,18 +177,6 @@ PFAS_insects_long |>
   group_by(PFAS) |> 
   tally() |> 
   glimpse() 
-# select PFOS isomers
-PFOS_branched <- c("1-PFOS 419/169", "3/4/5-PFOS80/98.9")
-
-PFAS_insects_long |>
-  filter(Group != "Water") |> #remove water samples and only include solid samples
-  filter(str_detect(PFAS, "sum_", negate = TRUE)) |> #remove all sum of PFAS using the argument by negate=TRUE 
-ggplot(aes(x = PFAS, y = Conc)) +
-  geom_point() +
-  geom_boxplot() +
-  theme_classic() +
-  ylab("Concentration of PFAS (ng/g) in solid samples")
-  
 
 ```
 
@@ -237,9 +222,24 @@ ggplot(data = PFAS_insects, mapping = aes(x = PFOA, y = PFOS)) +
 
 ```
 
+We can pipe in the dataframe into ggplot directly
+
+```{r}
+
+
+PFAS_insects_long |>
+  filter(Group != "Water") |> #remove water samples and only include solid samples
+  filter(str_detect(PFAS, "sum_", negate = TRUE)) |> #remove all sum of PFAS using the argument by negate=TRUE 
+ggplot(aes(x = PFAS, y = Conc)) +
+  geom_point() +
+  geom_boxplot() +
+  theme_classic() +
+  ylab("Concentration of PFAS (ng/g) in solid samples")
+```
+
 ### NOT FINISHED (need to use same size scale for PFOS and PFBS)
 
-We can add another geom by mapping again new variables (PFBS \~ PFOA)
+We can add another layer of geom by mapping again different variables (e.g. PFOA \~ PFOS and PFOA \~PFBS)
 
 ```{r}
 
@@ -256,7 +256,7 @@ ggplot(data = PFAS_insects) +
               se = FALSE,
               colour = "red",
               size = 2) +
-  geom_point(mapping = aes(x = PFOA, y = PFBS, # new mapping
+  geom_point(mapping = aes(x = PFOA, y = PFBS, # new layer
                            size = PFBS), # size of points according to PFBS values
              colour = "pink") + # colour outside of mappings
   ylab("PFAS") + 
@@ -264,7 +264,7 @@ ggplot(data = PFAS_insects) +
 
 ```
 
-You can add different layers based on conditions such as filtering the Conc variable by different colors.
+You can also add different layers based on conditions such as filtering the Conc variable by different colors.
 
 ```{r}
 
