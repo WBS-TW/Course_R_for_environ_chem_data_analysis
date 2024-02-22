@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_Conditions_Loops.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_Kumla_PFAS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading raw data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data analysis of Kumla PFAS study</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -577,8 +577,8 @@ a multiple of shorter object length</code></pre>
 <p><em>Logical Operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 80%">
+<col style="width: 10%">
+<col style="width: 89%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -612,9 +612,9 @@ a multiple of shorter object length</code></pre>
 <p><em>Other useful operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 29%">
-<col style="width: 50%">
+<col style="width: 7%">
+<col style="width: 34%">
+<col style="width: 57%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -676,7 +676,8 @@ a multiple of shorter object length</code></pre>
 <p><strong>Bar plots: barplot()</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>groupsPFOS <span class="ot">&lt;-</span> PFAS_insects[, <span class="fu">c</span>(<span class="st">"Group"</span>, <span class="st">"PFOS"</span>)] <span class="co"># subset two variables from the dataframe</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> PFAS_insects<span class="sc">$</span>PFOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>groupsPFOS<span class="sc">$</span>Group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(groupsPFOS<span class="sc">$</span>Group)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> PFAS_insects<span class="sc">$</span>PFOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="1_Basic_R_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -936,7 +937,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./2_Conditions_Loops.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -6,7 +6,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Conditional statements: `if`, `else`, `switch()`
+# Conditional statements
 
 ```{r}
 #| echo: false

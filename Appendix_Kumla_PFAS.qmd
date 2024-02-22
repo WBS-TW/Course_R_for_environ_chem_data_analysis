@@ -1,13 +1,16 @@
 ---
-Title: Statements, Conditions and Loops
+Title: Example data analysis from a PFAS study
 output: html_document
+execute: 
+  eval: false
 editor_options: 
   chunk_output_type: console
 ---
 
+# Data analysis of Kumla PFAS study
+
 ```{r}
-#| eval: false
-#| 
+ 
 library(tidyverse)
 library(readxl)
 library(plotly)
@@ -39,6 +42,8 @@ standerror <- function(x) {
   se <- sd(x, na.rm=TRUE)/sqrt(length(x[!is.na(x)]))
 }
 #-----
+PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
+    sheet = "Overview")
 
 PFAS_insects <- as_tibble(PFAS_insects) %>%
   mutate(Group = as.factor(Group)) %>%
@@ -51,7 +56,7 @@ PFAS_insects <- as_tibble(PFAS_insects) %>%
   mutate_if(is.numeric, round, 3) #round all numeric columns
   
 
-kumla_isotopes <- as_tibble(read_excel("D:/Projects/PFAS-riparian/experimental/Results/2020/Kumla/20200409-R_analysis/Statistics_Kumla_20200408.xlsx", 
+kumla_isotopes <- as_tibble(read_excel("data/Statistics_Kumla_20200408.xlsx", 
                                  sheet = "Overiew Iso")) %>%
   mutate(Group = as.factor(Group)) %>%
   mutate(`Sampling site`= as.factor(`Sampling site`)) %>%
@@ -220,7 +225,10 @@ PFOS_iso <- c("3/4/5-PFOS80/98.9", "6/2-PFOS169/80", "1-PFOS 419/169", "L-PFOS 9
 
 ## END START CHUNK ## 
 
-{r normality tests}
+
+```
+
+```{r normality tests}
 
 
 # PFAS histograms
@@ -283,9 +291,9 @@ PFAS_insects %>%
   geom_histogram(bins = 6) +
   facet_wrap(~Matrix,scales = "free") +
   theme_bw()
+```
 
-
-{r sum_21PFAS, include=FALSE}
+```{r sum_21PFAS, include=FALSE}
 # boxplot concentrations
 
 #sum21_TPFASs pond
@@ -318,9 +326,9 @@ PFAS_insects %>%
   facet_wrap(.~`Sampling site`, scales = "free_y")
 
 
+```
 
-
-{r isotopes}
+```{r isotopes}
 
 #--------------------------------------
 
@@ -420,11 +428,9 @@ ggplot() +
         panel.grid.major = element_blank(), panel.grid.minor = element_blank()) 
   #facet_wrap(.~ `Sampling site`, scales = "fixed") # mean and error bar not correctly mapped
 
+```
 
-
-
-
-{r isomers, include=FALSE, warning=FALSE, eval=FALSE}
+```{r isomers, include=FALSE, warning=FALSE, eval=FALSE}
 
 
 # %br PFOS Pond
@@ -471,21 +477,13 @@ PFAS_insects %>%
         axis.title.y = element_text(color = "black", size = 16, angle = 90, hjust = .5, vjust = .5, face = "plain"),
         panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   facet_grid(`Sampling site` ~., scales = "free_y")
-
-
-
-{r adult/larvae, include=FALSE}
-
-
-
-  
-
+```
 
 ANOVA and post hocs for d15N and d13C isotopes
 
 Values sharing a letter are not significantly different
 
-{r Kruskal Wallis Dunn post hoc}
+```{r Kruskal Wallis Dunn post hoc}
 
 #------------ISotopes 
 
@@ -623,11 +621,11 @@ cldList(comparison = PT_BAF_PFOS$Comparison,
 # Difference of BAF between PFHxS isomers
 kruskal.test(list(BAF_aq_PFHxS_pond$`L-PFHxS80`, BAF_aq_PFHxS_pond$`4/2-PFHxS`))
 
-
+```
 
 Correlations
 
-{r correlation}
+```{r correlation}
 conc_PFAS %>%
   filter(Site == "Pond") %>% 
   ggplot(aes(x = PFOS, y = `PFHxS`)) +
@@ -671,11 +669,11 @@ pheatmap(res2,
          clustering_method = "ward.D"
          )
     
-
+```
 
 BAFs
 
-{r BAFs}
+```{r BAFs}
 
 ##PFSAs
 
@@ -732,4 +730,3 @@ BAF_aq %>%
 
 
 ```
-

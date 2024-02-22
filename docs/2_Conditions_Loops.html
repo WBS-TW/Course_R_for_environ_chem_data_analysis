@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Environmental Chemistry Data Analysis - 3&nbsp; Conditional statements: if, else, switch()</title>
+<title>R for Environmental Chemistry Data Analysis - 3&nbsp; Conditional statements</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_Conditions_Loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: `if`, `else`, `switch()`</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_Conditions_Loops.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_Conditions_Loops.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_Kumla_PFAS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading raw data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data analysis of Kumla PFAS study</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements</span></h1>
 </div>
 
 
@@ -263,8 +263,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">[4]: 'No actions'</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-06d80542fb8dbb3973c3" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-06d80542fb8dbb3973c3">{"x":{"diagram":"\ndigraph condition_PFOS {\n\n# node definitions with substituted label text\nnode [fontname = Helvetica]\na [label = \"Pollutant level\", shape = \"box\"]\nb [label = \"Higher than threshold level\", shape = \"box\"]\nc [label = \"Take actions\"]\nd [label = \"No actions\"]\n\n\n# edge definitions with the node IDs\na -> b [label = \"IF\"]\nb -> c [label = \"TRUE\"]\nb -> d [label = \"ELSE\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-bfed72a95a5b7fbfc4b2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-bfed72a95a5b7fbfc4b2">{"x":{"diagram":"\ndigraph condition_PFOS {\n\n# node definitions with substituted label text\nnode [fontname = Helvetica]\na [label = \"Pollutant level\", shape = \"box\"]\nb [label = \"Higher than threshold level\", shape = \"box\"]\nc [label = \"Take actions\"]\nd [label = \"No actions\"]\n\n\n# edge definitions with the node IDs\na -> b [label = \"IF\"]\nb -> c [label = \"TRUE\"]\nb -> d [label = \"ELSE\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Example</p>
@@ -298,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>PFOS_terr_invcons <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>()</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create an object with an integer which we can use in below if statement so we dont need to change all values in the if statement</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(PFAS_insects<span class="sc">$</span>Group[i] <span class="sc">==</span> <span class="st">"Water"</span>){</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  PFOS_water[i] <span class="ot">&lt;-</span> PFAS_insects<span class="sc">$</span>PFOS[i]</span>
@@ -375,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>However, we can see that the <code>[i]</code>index is the same for all objects which means that once R finds the statement that evaluates to TRUE, then it will paste the value in the i:th element in the output object. Therefore any other values that evaluates to <code>FALSE</code> will get NA values.</p>
-<p>To remove NA values from each output vector, we can use a nested for loop:</p>
+<p>To remove NA values from each output vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>PFOS_water <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>PFOS_sediment <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>()</span>
@@ -421,6 +421,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>As you can see, the script becomes long and repetitive, and therefore easy to make mistakes. There are easier ways to get the same results. Can you think of a more efficient script?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(letters[j])</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a"
+[1] "b"
+[1] 1
+[1] "a"
+[1] "b"
+[1] 2
+[1] "a"
+[1] "b"
+[1] 3</code></pre>
+</div>
+</div>
 
 
 </section>

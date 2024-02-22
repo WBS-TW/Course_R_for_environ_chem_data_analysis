@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_Conditions_Loops.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements: <code>if</code>, <code>else</code>, <code>switch()</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional statements</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_Kumla_PFAS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading raw data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data analysis of Kumla PFAS study</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,9 +203,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link active" data-scroll-target="#ggplot2"><span class="header-section-number">5.1</span> ggplot2</a></li>
-  <li><a href="#not-finished" id="toc-not-finished" class="nav-link" data-scroll-target="#not-finished"><span class="header-section-number">5.2</span> NOT FINISHED</a></li>
-  <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer"><span class="header-section-number">5.3</span> pivot_longer</a></li>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link active" data-scroll-target="#dplyr"><span class="header-section-number">5.1</span> dplyr</a>
+  <ul class="collapse">
+  <li><a href="#helpful-dplyr-functions" id="toc-helpful-dplyr-functions" class="nav-link" data-scroll-target="#helpful-dplyr-functions"><span class="header-section-number">5.1.1</span> Helpful dplyr functions</a></li>
+  </ul></li>
+  <li><a href="#tidyr" id="toc-tidyr" class="nav-link" data-scroll-target="#tidyr"><span class="header-section-number">5.2</span> tidyr</a>
+  <ul class="collapse">
+  <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer"><span class="header-section-number">5.2.1</span> pivot_longer</a></li>
+  </ul></li>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">5.3</span> ggplot2</a>
+  <ul class="collapse">
+  <li><a href="#not-finished-need-to-use-same-size-scale-for-pfos-and-pfbs" id="toc-not-finished-need-to-use-same-size-scale-for-pfos-and-pfbs" class="nav-link" data-scroll-target="#not-finished-need-to-use-same-size-scale-for-pfos-and-pfbs"><span class="header-section-number">5.3.1</span> NOT FINISHED (need to use same size scale for PFOS and PFBS)</a></li>
+  </ul></li>
+  <li><a href="#stringr" id="toc-stringr" class="nav-link" data-scroll-target="#stringr"><span class="header-section-number">5.4</span> stringr</a></li>
+  <li><a href="#purr" id="toc-purr" class="nav-link" data-scroll-target="#purr"><span class="header-section-number">5.5</span> purr</a></li>
+  <li><a href="#writing-functions-with-tidyverse" id="toc-writing-functions-with-tidyverse" class="nav-link" data-scroll-target="#writing-functions-with-tidyverse"><span class="header-section-number">5.6</span> Writing functions with Tidyverse</a>
+  <ul class="collapse">
+  <li><a href="#embrace" id="toc-embrace" class="nav-link" data-scroll-target="#embrace"><span class="header-section-number">5.6.1</span> Embrace <code>{{}}</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -230,8 +245,423 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>See: <a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a></p>
-<section id="ggplot2" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">5.1</span> ggplot2</h2>
+<section id="dplyr" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="dplyr"><span class="header-section-number">5.1</span> dplyr</h2>
+<p>The pipe operator <code>%&gt;%</code> (or <code>|&gt;</code>)</p>
+<p>See: <a href="https://r4ds.hadley.nz/data-transform" class="uri">https://r4ds.hadley.nz/data-transform</a></p>
+<p><a href="https://r4ds.hadley.nz/data-transform#sec-the-pipe" class="uri">https://r4ds.hadley.nz/data-transform#sec-the-pipe</a></p>
+<p>To change the shortcut Ctrl+shift+M to use the new pipe, go to “Global options” -&gt; “Code” -&gt; “Use native pipe operator..”</p>
+<section id="helpful-dplyr-functions" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="helpful-dplyr-functions"><span class="header-section-number">5.1.1</span> Helpful dplyr functions</h3>
+<p><a href="https://dplyr.tidyverse.org/index.html" class="uri">https://dplyr.tidyverse.org/index.html</a></p>
+<p><strong><code>select</code></strong> and <strong><code>filter</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> PFAS_insects <span class="sc">|&gt;</span>  </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(PFOS) <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(PFOS <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 65 × 1
+    PFOS
+   &lt;dbl&gt;
+ 1  229.
+ 2  140.
+ 3 1045.
+ 4  442.
+ 5  540.
+ 6  223.
+ 7  976.
+ 8  559.
+ 9  830.
+10  162.
+# ℹ 55 more rows</code></pre>
+</div>
+</div>
+<p>Here, we first select only the PFOS variable and then filter to only include all PFOS rows that have a value above 100.</p>
+<p><strong><code>mutate</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratioPFOS_PFOA =</span> PFOS<span class="sc">/</span>PFOA) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, PFOS, PFOA, ratioPFOS_PFOA, <span class="fu">everything</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 108
+Columns: 48
+$ ID                  &lt;chr&gt; "W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W…
+$ PFOS                &lt;dbl&gt; 228.5876694, 140.0461141, 0.1487718, 1044.6492478,…
+$ PFOA                &lt;dbl&gt; 21.69212645, 8.37805605, 0.21929477, 53.87371338, …
+$ ratioPFOS_PFOA      &lt;dbl&gt; 10.5378175, 16.7158244, 0.6784101, 19.3907043, 36.…
+$ `Full ID`           &lt;chr&gt; "K1 W S17", "KS W S17", "KRef W S17", "K1 W F17", …
+$ `Sampling site`     &lt;chr&gt; "K1", "KS", "KRef", "K1", "KS", "KRef", "K1", "KS"…
+$ Number              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 6, 6, 6, 4, 4, 4,…
+$ Group               &lt;chr&gt; "Water", "Water", "Water", "Water", "Water", "Wate…
+$ Group_Family        &lt;chr&gt; "Water 1_S17", "Water S_S17", "Water Ref_S17", "Wa…
+$ `g ww`              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 226.2650, 265.…
+$ `g dw`              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 166.1500, 180.…
+$ Quantity            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "&gt;50?"…
+$ `Extraction (mL_g)` &lt;dbl&gt; 509.3000, 503.1000, 504.8000, 505.2000, 502.9000, …
+$ Year                &lt;dbl&gt; 2017, 2017, 2017, 2017, 2017, 2017, 2018, 2018, 20…
+$ Unit                &lt;chr&gt; "ng L-1", "ng L-1", "ng L-1", "ng L-1", "ng L-1", …
+$ PFBA                &lt;dbl&gt; 27.43981936, 9.58079905, 0.03025223, 36.65399842, …
+$ PFPeA               &lt;dbl&gt; 35.52523071, 22.47445836, 0.04000000, 81.99861441,…
+$ PFBS                &lt;dbl&gt; 81.77518162, 39.52752932, 0.11291601, 129.03939034…
+$ PFHxA               &lt;dbl&gt; 56.52955036, 26.18425760, 0.22167195, 131.18784640…
+$ PFHpA               &lt;dbl&gt; 25.845474180, 14.325581395, 0.229001585, 56.980997…
+$ PFPeS80             &lt;dbl&gt; 6.390536030, 3.072351421, 0.040000000, 24.10866983…
+$ PFHxS80             &lt;dbl&gt; 58.36147654, 27.92029418, 0.11945325, 211.65459224…
+$ PFHpS80             &lt;dbl&gt; 4.59866483, 2.64738621, 0.04000000, 25.81888361, 5…
+$ PFNA                &lt;dbl&gt; 7.66129982, 3.07553170, 0.04000000, 11.20051465, 6…
+$ PFOSA               &lt;dbl&gt; 5.345965050, 0.485986881, 0.001421537, 13.07422802…
+$ PFDA                &lt;dbl&gt; 2.01335166, 0.42238124, 0.04000000, 4.60768013, 1.…
+$ PFUnDA              &lt;dbl&gt; 0.77694875, 0.12482608, 0.04000000, 2.05740301, 0.…
+$ PFNS80              &lt;dbl&gt; 0.25152170, 0.14748559, 0.04000000, 0.97604909, 0.…
+$ PFDS80              &lt;dbl&gt; 0.04000000, 0.04000000, 0.04000000, 0.17537609, 0.…
+$ PFDoDA              &lt;dbl&gt; 0.10799136, 0.04000000, 0.04000000, 0.34065717, 0.…
+$ PFTrDA              &lt;dbl&gt; 0.04000000, 0.04000000, 0.04000000, 0.04000000, 0.…
+$ PFDoDS80            &lt;dbl&gt; 0.04000000, 0.04000000, 0.04000000, 0.04000000, 0.…
+$ `6_2_FTSA`          &lt;dbl&gt; 11.9654428, 1.8833234, 0.0400000, 13.1551861, 9.13…
+$ `8_2_FTSA`          &lt;dbl&gt; 1.89083055, 0.16974757, 0.04000000, 2.64806017, 0.…
+$ `10_2 FTSA`         &lt;dbl&gt; 0.31710190, 0.04000000, 0.04000000, 0.77197150, 0.…
+$ `3/4/5-PFOS80/98.9` &lt;dbl&gt; 52.09326527, 34.14410654, 0.04000000, 260.75296912…
+$ `6/2-PFOS169/80`    &lt;dbl&gt; 37.18869036, 22.57980521, 0.04000000, 186.81631037…
+$ `1-PFOS 419/169`    &lt;dbl&gt; 9.94718241, 6.85311071, 0.04000000, 52.70704671, 2…
+$ `L-PFOS 99/169`     &lt;dbl&gt; 233.8221088, 137.8682171, 0.1561014, 1014.2911718,…
+$ `L-PFHxS80`         &lt;dbl&gt; 55.95817789, 26.48558935, 0.11489699, 197.49920823…
+$ `1-PFHxS`           &lt;dbl&gt; 0.67956018, 0.45875571, 0.04000000, 2.70744260, 0.…
+$ `4/2-PFHxS`         &lt;dbl&gt; 7.68270175, 3.76446035, 0.04000000, 28.67082344, 4…
+$ `3-PFHxS`           &lt;dbl&gt; 2.47378755, 1.15543629, 0.04000000, 9.22090261, 1.…
+$ sum_PFOS            &lt;dbl&gt; 327.8168074, 203.6231366, 0.2687718, 1544.9255740,…
+$ sum_brPFOS          &lt;dbl&gt; 99.2291380, 63.5770225, 0.1200000, 500.2763262, 21…
+$ sum_PFHxS           &lt;dbl&gt; 69.1975260, 33.2989465, 0.2394532, 252.2537609, 41…
+$ sum_brPFHxS         &lt;dbl&gt; 10.8360495, 5.3786524, 0.1200000, 40.5991686, 6.45…
+$ sum_21PFAS          &lt;dbl&gt; 687.261371, 369.621785, 1.882783, 2385.928575, 880…</code></pre>
+</div>
+</div>
+<p><code>Mutate</code> creates a new variable by some conditions such as dividing the PFOS with PFOA. We can thereafter sort how the columns are arranged by <code>select</code> ID, PFOS, PFOA, ratioPFOS_PFOA in this order. The <code>everything()</code>function will select all other columns. This way, we have made a new order of the columns. The <code>glimpse()</code> function is similar as <code>str()</code> but gives a better overview of the data frame.</p>
+<p>Using mutate with <code>case_when</code> helper function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratioPFOS_PFOA =</span> <span class="fu">case_when</span>(PFOS<span class="sc">/</span>PFOA <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"HighPFOS"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                    PFOS<span class="sc">/</span>PFOA <span class="sc">&lt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> PFOS<span class="sc">/</span>PFOA <span class="sc">&gt;</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"MediumPFOS"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                    PFOS<span class="sc">/</span>PFOA  <span class="sc">&lt;=</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"LowPFOS"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, ratioPFOS_PFOA) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 108
+Columns: 2
+$ ID             &lt;chr&gt; "W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "…
+$ ratioPFOS_PFOA &lt;chr&gt; "HighPFOS", "HighPFOS", "LowPFOS", "HighPFOS", "HighPFO…</code></pre>
+</div>
+</div>
+<p><strong><code>arrange</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#arrange(desc(PFOS)) |&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(PFOS) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, PFOS, <span class="fu">everything</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 108
+Columns: 47
+$ ID                  &lt;chr&gt; "W3", "P36", "W9", "S3", "SW10", "D10", "W6", "L13…
+$ PFOS                &lt;dbl&gt; 0.1487718, 0.4887884, 0.5090367, 0.5269612, 0.5269…
+$ `Full ID`           &lt;chr&gt; "KRef W S17", "Kref Chi", "KRef W S18", "KRefS", "…
+$ `Sampling site`     &lt;chr&gt; "KRef", "KRef", "KRef", "KRef", "KRef", "KRef", "K…
+$ Number              &lt;dbl&gt; 1, 5, 1, 2, 4, 4, 1, 3, 5, 2, 3, 4, 4, 4, 3, 3, 5,…
+$ Group               &lt;chr&gt; "Water", "Terrestrial invertebrate consumers", "Wa…
+$ Group_Family        &lt;chr&gt; "Water Ref_S17", "Lithobiomorpha", "Water Ref_S18"…
+$ `g ww`              &lt;dbl&gt; NA, 0.2538, NA, 265.0800, 0.4753, 0.5937, NA, 0.60…
+$ `g dw`              &lt;dbl&gt; NA, 0.0777, NA, 180.8600, 0.2866, 0.1412, NA, 0.10…
+$ Quantity            &lt;chr&gt; NA, "6", NA, NA, "426", "388", NA, "165", "24", NA…
+$ `Extraction (mL_g)` &lt;dbl&gt; 504.8000, 0.5530, 503.5000, 0.5390, 0.1526, 0.1061…
+$ Year                &lt;dbl&gt; 2017, 2017, 2018, 2017, 2018, 2018, 2017, 2017, 20…
+$ Unit                &lt;chr&gt; "ng L-1", "ng g-1", "ng L-1", "ng g-1", "ng g-1", …
+$ PFBA                &lt;dbl&gt; 0.03025223, 0.96429560, 0.03025223, 0.32282004, 0.…
+$ PFPeA               &lt;dbl&gt; 0.04000000, 0.37956600, 0.04000000, 0.06666667, 8.…
+$ PFBS                &lt;dbl&gt; 0.11291601, 0.01699019, 0.08659384, 0.01389705, 0.…
+$ PFHxA               &lt;dbl&gt; 0.22167195, 0.06666667, 0.25878848, 0.06666667, 0.…
+$ PFHpA               &lt;dbl&gt; 0.229001585, 0.009990188, 0.186494538, 0.009072167…
+$ PFPeS80             &lt;dbl&gt; 0.040000000, 0.066666667, 0.040000000, 0.001333333…
+$ PFHxS80             &lt;dbl&gt; 0.11945325, 0.02561151, 0.13286991, 0.05092416, 0.…
+$ PFHpS80             &lt;dbl&gt; 0.040000000, 0.066666667, 0.040000000, 0.066666667…
+$ PFOA                &lt;dbl&gt; 0.21929477, 0.04596075, 0.19404171, 0.03321067, 0.…
+$ PFNA                &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ PFOSA               &lt;dbl&gt; 0.001421537, 0.066666667, 0.006752731, 0.066666667…
+$ PFDA                &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ PFUnDA              &lt;dbl&gt; 0.04000000, 0.19276673, 0.04000000, 0.02072712, 0.…
+$ PFNS80              &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ PFDS80              &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ PFDoDA              &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ PFTrDA              &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ PFDoDS80            &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ `6_2_FTSA`          &lt;dbl&gt; 0.04000000, 0.08178308, 0.04000000, 0.10336846, 0.…
+$ `8_2_FTSA`          &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ `10_2 FTSA`         &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ `3/4/5-PFOS80/98.9` &lt;dbl&gt; 0.04000000, 0.03345389, 0.13823237, 0.04474999, 0.…
+$ `6/2-PFOS169/80`    &lt;dbl&gt; 0.04000000, 0.06666667, 0.09751738, 0.06402691, 0.…
+$ `1-PFOS 419/169`    &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ `L-PFOS 99/169`     &lt;dbl&gt; 0.15610143, 0.51066908, 0.50844091, 0.57555371, 0.…
+$ `L-PFHxS80`         &lt;dbl&gt; 0.11489699, 0.01757597, 0.11519364, 0.04788187, 0.…
+$ `1-PFHxS`           &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ `4/2-PFHxS`         &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ `3-PFHxS`           &lt;dbl&gt; 0.04000000, 0.06666667, 0.04000000, 0.06666667, 0.…
+$ sum_PFOS            &lt;dbl&gt; 0.2687718, 0.6555756, 0.7847865, 0.7024048, 0.7024…
+$ sum_brPFOS          &lt;dbl&gt; 0.1200000, 0.1667872, 0.2757498, 0.1754436, 0.1754…
+$ sum_PFHxS           &lt;dbl&gt; 0.2394532, 0.2256115, 0.2528699, 0.2509242, 0.2509…
+$ sum_brPFHxS         &lt;dbl&gt; 0.1200000, 0.2000000, 0.1200000, 0.2000000, 0.2000…
+$ sum_21PFAS          &lt;dbl&gt; 1.882783, 3.439206, 2.360580, 2.324424, 11.001451,…</code></pre>
+</div>
+</div>
+<p>Here, we arranged the dataframe by descending PFOS levels (highest first)</p>
+<p>We can also group by character variables such as the Group variable and then the descending PFOS levels.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Group, <span class="fu">desc</span>(PFOS)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, Group, PFOS, <span class="fu">everything</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 108
+Columns: 47
+$ ID                  &lt;chr&gt; "L9", "L12", "L10", "L11", "L3", "L1", "L2", "L4",…
+$ Group               &lt;chr&gt; "Aquatic insect larvae", "Aquatic insect larvae", …
+$ PFOS                &lt;dbl&gt; 1990.9753846, 1651.5997401, 1148.0231884, 747.8346…
+$ `Full ID`           &lt;chr&gt; "K1L Zygo", "K1L Ani elongated", "K1L Ani small", …
+$ `Sampling site`     &lt;chr&gt; "K1", "K1", "K1", "K1", "KS", "KS", "KS", "KS", "K…
+$ Number              &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 6,…
+$ Group_Family        &lt;chr&gt; "Odonata Zygoptera", "Odonata Anisoptera", "Odonat…
+$ `g ww`              &lt;dbl&gt; 0.3027, 0.9847, 0.1802, 1.7639, 0.1880, 0.1171, 0.…
+$ `g dw`              &lt;dbl&gt; 0.0771, 0.3629, 0.0549, 0.2526, 0.0454, 0.0332, 0.…
+$ Quantity            &lt;chr&gt; "69", "4", "8", "3", "30", "59", "58", "9", "2", "…
+$ `Extraction (mL_g)` &lt;dbl&gt; 0.0650, 0.1539, 0.0345, 0.1379, 0.0307, 0.0264, 0.…
+$ Year                &lt;dbl&gt; 2017, 2017, 2017, 2017, 2017, 2017, 2017, 2017, 20…
+$ Unit                &lt;chr&gt; "ng g-1", "ng g-1", "ng g-1", "ng g-1", "ng g-1", …
+$ PFBA                &lt;dbl&gt; 6.56000000, 0.05491540, 0.05491540, 0.05491540, 0.…
+$ PFPeA               &lt;dbl&gt; 10.65076923, 3.83040936, 6.79710145, 7.38578680, 2…
+$ PFBS                &lt;dbl&gt; 1.69076923, 0.41585445, 2.15652174, 1.01812908, 0.…
+$ PFHxA               &lt;dbl&gt; 3.56615385, 2.00649773, 2.40579710, 2.38578680, 2.…
+$ PFHpA               &lt;dbl&gt; 0.706153846, 0.447693307, 0.562318841, 0.021475469…
+$ PFPeS80             &lt;dbl&gt; 1.02307692, 0.28005198, 1.25217391, 0.61131255, 0.…
+$ PFHxS80             &lt;dbl&gt; 41.52153846, 24.00000000, 29.51884058, 26.84626541…
+$ PFHpS80             &lt;dbl&gt; 9.178461538, 9.007797271, 6.121739130, 4.828861494…
+$ PFOA                &lt;dbl&gt; 3.1492308, 1.2586095, 4.2637681, 6.6403191, 1.4136…
+$ PFNA                &lt;dbl&gt; 5.35384615, 5.37037037, 4.86666667, 3.82813633, 2.…
+$ PFOSA               &lt;dbl&gt; 51.1138462, 80.8966862, 89.7362319, 66.1696882, 32…
+$ PFDA                &lt;dbl&gt; 11.44307692, 9.88369071, 9.11884058, 5.81290790, 3…
+$ PFUnDA              &lt;dbl&gt; 15.14000000, 8.40025991, 21.47826087, 12.39158811,…
+$ PFNS80              &lt;dbl&gt; 6.15692308, 4.76738142, 4.78260870, 3.39013778, 4.…
+$ PFDS80              &lt;dbl&gt; 4.93384615, 3.13255361, 5.85507246, 3.55765047, 2.…
+$ PFDoDA              &lt;dbl&gt; 9.71846154, 5.00714750, 20.84057971, 9.60261059, 1…
+$ PFTrDA              &lt;dbl&gt; 3.42153846, 2.87004548, 4.55652174, 2.36475707, 0.…
+$ PFDoDS80            &lt;dbl&gt; 1.97384615, 2.08966862, 3.44057971, 2.23205221, 0.…
+$ `6_2_FTSA`          &lt;dbl&gt; 53.76153846, 13.63157895, 48.16231884, 32.00435098…
+$ `8_2_FTSA`          &lt;dbl&gt; 117.31846154, 63.60623782, 105.01449275, 70.604786…
+$ `10_2 FTSA`         &lt;dbl&gt; 10.23384615, 2.27940221, 10.64637681, 8.78390138, …
+$ `3/4/5-PFOS80/98.9` &lt;dbl&gt; 124.37538462, 180.13840156, 46.17681159, 0.0666666…
+$ `6/2-PFOS169/80`    &lt;dbl&gt; 124.19076923, 165.70240416, 41.67826087, 31.430021…
+$ `1-PFOS 419/169`    &lt;dbl&gt; 32.37230769, 48.41520468, 14.75942029, 8.87527194,…
+$ `L-PFOS 99/169`     &lt;dbl&gt; 2.103365e+03, 1.766962e+03, 1.237420e+03, 7.963133…
+$ `L-PFHxS80`         &lt;dbl&gt; 39.40153846, 22.67446394, 28.48985507, 25.20739666…
+$ `1-PFHxS`           &lt;dbl&gt; 0.06666667, 0.06666667, 0.06666667, 0.06666667, 0.…
+$ `4/2-PFHxS`         &lt;dbl&gt; 1.34153846, 0.72709552, 1.26086957, 0.99492386, 0.…
+$ `3-PFHxS`           &lt;dbl&gt; 0.50769231, 0.46328785, 0.52753623, 0.55039884, 0.…
+$ sum_PFOS            &lt;dbl&gt; 2271.913846, 2045.855750, 1250.637681, 788.206623,…
+$ sum_brPFOS          &lt;dbl&gt; 280.9384615, 394.2560104, 102.6144928, 40.3719604,…
+$ sum_PFHxS           &lt;dbl&gt; 43.4374359, 25.2570500, 31.3739130, 28.4582548, 18…
+$ sum_brPFHxS         &lt;dbl&gt; 1.9158974, 1.2570500, 1.8550725, 1.6119894, 0.6888…
+$ sum_21PFAS          &lt;dbl&gt; 2642.445128, 2290.349652, 1634.124481, 1060.354032…</code></pre>
+</div>
+</div>
+<p>The Group variable will then be arranged alphabetically. Using the <code>desc()</code> helper function will reverse the alphabetical order.</p>
+<p><strong><code>summarise</code></strong> and <strong><code>reframe</code></strong></p>
+<p><code>summarise</code>is helpful to provide some summary statistics for variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PFOS), <span class="at">median =</span> <span class="fu">median</span>(PFOS), <span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+   mean median     n
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
+1  322.   160.   108</code></pre>
+</div>
+</div>
+<p>Here we summarise the <code>mean</code> and <code>median</code> and number (using the <code>n()</code> function) of data points for PFOS.</p>
+<p>We can also calculate the summary statistics of PFOS levels for each Group.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PFOS), <span class="at">median =</span> <span class="fu">median</span>(PFOS), <span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Group                               mean median     n
+  &lt;chr&gt;                              &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
+1 Aquatic insect larvae              517.  322.      16
+2 Earthworms                         521.  559.       3
+3 Emergent aquatic insects           226.   97.8     42
+4 Sediment                            75.0   1.34     3
+5 Terrestrial invertebrate consumers 363.  236.      35
+6 Water                              272.  140.       9</code></pre>
+</div>
+</div>
+<p>Beware that grouping is still applied in objects that have been saved which has been applied with <code>group_by()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects_grouped <span class="ot">&lt;-</span> PFAS_insects <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>PFAS_insects_grouped <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PFOS), <span class="at">median =</span> <span class="fu">median</span>(PFOS), <span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Group                               mean median     n
+  &lt;chr&gt;                              &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
+1 Aquatic insect larvae              517.  322.      16
+2 Earthworms                         521.  559.       3
+3 Emergent aquatic insects           226.   97.8     42
+4 Sediment                            75.0   1.34     3
+5 Terrestrial invertebrate consumers 363.  236.      35
+6 Water                              272.  140.       9</code></pre>
+</div>
+</div>
+<p>To remove the grouping, use <code>ungroup()</code> before performing additional operations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects_grouped <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PFOS), <span class="at">median =</span> <span class="fu">median</span>(PFOS), <span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+   mean median     n
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
+1  322.   160.   108</code></pre>
+</div>
+</div>
+<p><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="uri">https://dplyr.tidyverse.org/reference/reframe.html</a>: While summarise() requires that each argument returns a single value, and mutate() requires that each argument returns the same number of rows as the input, reframe() is a more general workhorse with no requirements on the number of rows returned per group</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  When switching from `summarise()` to `reframe()`, remember that `reframe()` always returns an ungrouped data frame and adjust accordingly.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="sc">|&gt;</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Group) <span class="sc">|&gt;</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">qs =</span> <span class="fu">quantile</span>(PFOS, <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>)), <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+   Group                                   qs  prob
+   &lt;chr&gt;                                &lt;dbl&gt; &lt;dbl&gt;
+ 1 Aquatic insect larvae              142.     0.25
+ 2 Aquatic insect larvae              597.     0.75
+ 3 Earthworms                         294.     0.25
+ 4 Earthworms                         767.     0.75
+ 5 Emergent aquatic insects            14.2    0.25
+ 6 Emergent aquatic insects           273.     0.75
+ 7 Sediment                             0.931  0.25
+ 8 Sediment                           112.     0.75
+ 9 Terrestrial invertebrate consumers  58.7    0.25
+10 Terrestrial invertebrate consumers 439.     0.75
+11 Water                                0.839  0.25
+12 Water                              442.     0.75</code></pre>
+</div>
+</div>
+<p><strong><code>across</code></strong></p>
+<p><a href="https://dplyr.tidyverse.org/reference/across.html" class="uri">https://dplyr.tidyverse.org/reference/across.html</a>: across() makes it easy to apply the same transformation to multiple columns, allowing you to use select() semantics inside in “data-masking” functions like summarise() and mutate()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round)) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 108
+Columns: 47
+$ ID                  &lt;chr&gt; "W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W…
+$ `Full ID`           &lt;chr&gt; "K1 W S17", "KS W S17", "KRef W S17", "K1 W F17", …
+$ `Sampling site`     &lt;chr&gt; "K1", "KS", "KRef", "K1", "KS", "KRef", "K1", "KS"…
+$ Number              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 6, 6, 6, 4, 4, 4,…
+$ Group               &lt;chr&gt; "Water", "Water", "Water", "Water", "Water", "Wate…
+$ Group_Family        &lt;chr&gt; "Water 1_S17", "Water S_S17", "Water Ref_S17", "Wa…
+$ `g ww`              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 226, 265, 13, …
+$ `g dw`              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 166, 181, 3, 1…
+$ Quantity            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "&gt;50?"…
+$ `Extraction (mL_g)` &lt;dbl&gt; 509, 503, 505, 505, 503, 509, 513, 503, 504, 1, 1,…
+$ Year                &lt;dbl&gt; 2017, 2017, 2017, 2017, 2017, 2017, 2018, 2018, 20…
+$ Unit                &lt;chr&gt; "ng L-1", "ng L-1", "ng L-1", "ng L-1", "ng L-1", …
+$ PFBA                &lt;dbl&gt; 27, 10, 0, 37, 16, 0, 33, 7, 0, 0, 0, 18, 0, 0, 0,…
+$ PFPeA               &lt;dbl&gt; 36, 22, 0, 82, 31, 0, 53, 10, 0, 0, 0, 11, 24, 15,…
+$ PFBS                &lt;dbl&gt; 82, 40, 0, 129, 43, 0, 175, 24, 0, 0, 0, 2, 1, 1, …
+$ PFHxA               &lt;dbl&gt; 57, 26, 0, 131, 38, 0, 85, 12, 0, 1, 0, 7, 2, 2, 0…
+$ PFHpA               &lt;dbl&gt; 26, 14, 0, 57, 15, 0, 41, 5, 0, 0, 0, 0, 0, 0, 2, …
+$ PFPeS80             &lt;dbl&gt; 6, 3, 0, 24, 4, 0, 16, 2, 0, 0, 0, 20, 21, 4, 1, 0…
+$ PFHxS80             &lt;dbl&gt; 58, 28, 0, 212, 35, 0, 138, 17, 0, 4, 0, 82, 51, 6…
+$ PFHpS80             &lt;dbl&gt; 5, 3, 0, 26, 6, 0, 13, 1, 0, 1, 0, 3, 3, 0, 6, 1, …
+$ PFOA                &lt;dbl&gt; 22, 8, 0, 54, 12, 0, 32, 4, 0, 1, 0, 4, 2, 5, 2, 1…
+$ PFNA                &lt;dbl&gt; 8, 3, 0, 11, 6, 0, 7, 1, 0, 0, 0, 2, 1, 3, 1, 1, 1…
+$ PFOSA               &lt;dbl&gt; 5, 0, 0, 13, 3, 0, 6, 0, 0, 3, 0, 2, 2, 0, 10, 5, …
+$ PFOS                &lt;dbl&gt; 229, 140, 0, 1045, 442, 1, 540, 55, 1, 223, 1, 976…
+$ PFDA                &lt;dbl&gt; 2, 0, 0, 5, 2, 0, 3, 0, 0, 0, 0, 3, 2, 1, 2, 3, 1,…
+$ PFUnDA              &lt;dbl&gt; 1, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 3, 2, 2, 3, 2, 1,…
+$ PFNS80              &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 4, 2, 0, 3, 1, 0,…
+$ PFDS80              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 0, 3, 1, 0,…
+$ PFDoDA              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 3, 2, 3, 3, 1,…
+$ PFTrDA              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 4, 4, 1, 1, 0…
+$ PFDoDS80            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 1, 0, 0…
+$ `6_2_FTSA`          &lt;dbl&gt; 12, 2, 0, 13, 9, 0, 20, 5, 0, 0, 0, 4, 3, 1, 40, 5…
+$ `8_2_FTSA`          &lt;dbl&gt; 2, 0, 0, 3, 1, 0, 11, 1, 0, 0, 0, 3, 11, 0, 42, 11…
+$ `10_2 FTSA`         &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 5, 2, 0, 6, 2, 1,…
+$ `3/4/5-PFOS80/98.9` &lt;dbl&gt; 52, 34, 0, 261, 110, 0, 136, 13, 0, 22, 0, 3, 2, 0…
+$ `6/2-PFOS169/80`    &lt;dbl&gt; 37, 23, 0, 187, 76, 0, 94, 9, 0, 18, 0, 9, 7, 1, 4…
+$ `1-PFOS 419/169`    &lt;dbl&gt; 10, 7, 0, 53, 25, 0, 27, 3, 0, 7, 0, 2, 3, 0, 10, …
+$ `L-PFOS 99/169`     &lt;dbl&gt; 234, 138, 0, 1014, 468, 1, 553, 58, 1, 236, 1, 104…
+$ `L-PFHxS80`         &lt;dbl&gt; 56, 26, 0, 197, 33, 0, 128, 16, 0, 4, 0, 80, 50, 1…
+$ `1-PFHxS`           &lt;dbl&gt; 1, 0, 0, 3, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ `4/2-PFHxS`         &lt;dbl&gt; 8, 4, 0, 29, 4, 0, 19, 2, 0, 0, 0, 0, 0, 0, 2, 0, …
+$ `3-PFHxS`           &lt;dbl&gt; 2, 1, 0, 9, 1, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ sum_PFOS            &lt;dbl&gt; 328, 204, 0, 1545, 653, 1, 796, 80, 1, 270, 1, 990…
+$ sum_brPFOS          &lt;dbl&gt; 99, 64, 0, 500, 211, 0, 256, 25, 0, 47, 0, 14, 12,…
+$ sum_PFHxS           &lt;dbl&gt; 69, 33, 0, 252, 41, 0, 165, 20, 0, 4, 0, 82, 52, 6…
+$ sum_brPFHxS         &lt;dbl&gt; 11, 5, 0, 41, 6, 0, 27, 3, 0, 0, 0, 0, 0, 0, 2, 0,…
+$ sum_21PFAS          &lt;dbl&gt; 687, 370, 2, 2386, 880, 3, 1459, 172, 2, 284, 2, 1…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#select(ID, PFOS, PFOA, PFBS) |&gt; </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#glimpse()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, we apply a <code>round</code> transformation across all variables that are numeric.</p>
+</section>
+</section>
+<section id="tidyr" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="tidyr"><span class="header-section-number">5.2</span> tidyr</h2>
+<section id="pivot_longer" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="pivot_longer"><span class="header-section-number">5.2.1</span> pivot_longer</h3>
+<p>See: <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="uri">https://tidyr.tidyverse.org/reference/pivot_longer.html</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="ot">&lt;-</span> PFAS_insects  <span class="sc">|&gt;</span>  <span class="co"># shortcut for pipe Ctrl + shift + M</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> PFBA<span class="sc">:</span>sum_21PFAS, <span class="co"># select all columns from PFBA to sum_21PFAS</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"PFAS"</span>, <span class="co"># name of the new column</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Conc"</span>) <span class="sc">|&gt;</span>  <span class="co">#name of the values from PFBA:sum_21PFAS</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PFAS =</span> <span class="fu">as.factor</span>(PFAS)) <span class="co">#make PFAS column a factor variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the PFAS group names</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PFAS) <span class="sc">|&gt;</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 35
+Columns: 2
+$ PFAS &lt;fct&gt; 1-PFHxS, 1-PFOS 419/169, 10_2 FTSA, 3-PFHxS, 3/4/5-PFOS80/98.9, 4…
+$ n    &lt;int&gt; 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select PFOS isomers</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>PFOS_branched <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1-PFOS 419/169"</span>, <span class="st">"3/4/5-PFOS80/98.9"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="sc">|&gt;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Group <span class="sc">!=</span> <span class="st">"Water"</span>) <span class="sc">|&gt;</span> <span class="co">#remove water samples and only include solid samples</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(PFAS, <span class="st">"sum_"</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="co">#remove all sum of PFAS using the argument by negate=TRUE </span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PFAS, <span class="at">y =</span> Conc)) <span class="sc">+</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Concentration of PFAS (ng/g) in solid samples"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="4_Tidyverse_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="ggplot2" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">5.3</span> ggplot2</h2>
 <p>See: <a href="https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf" class="uri">https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf</a></p>
 <p>ggplot2 includes the general components:</p>
 <ul>
@@ -247,16 +677,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Example:</p>
 <p>This will produce similar plot as @sec-baseRplots</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> PFAS_insects, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFOS)) <span class="sc">+</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> <span class="co"># add a scatter plot</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="co"># uses the linear regression model</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="co"># this will remove the confidence intervals</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"blue"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"red"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> PFAS_insects, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFOS)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> <span class="co"># add a scatter plot</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="co"># uses the linear regression model</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="co"># this will remove the confidence intervals</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"blue"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"red"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ Please use `linewidth` instead.</code></pre>
@@ -266,51 +696,197 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 `geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="4_Tidyverse_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="4_Tidyverse_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="not-finished" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="not-finished"><span class="header-section-number">5.2</span> NOT FINISHED</h2>
+<section id="not-finished-need-to-use-same-size-scale-for-pfos-and-pfbs" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="not-finished-need-to-use-same-size-scale-for-pfos-and-pfbs"><span class="header-section-number">5.3.1</span> NOT FINISHED (need to use same size scale for PFOS and PFBS)</h3>
 <p>We can add another geom by mapping again new variables (PFBS ~ PFOA)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> PFAS_insects) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFOS, <span class="at">size =</span> PFOS), <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFOS), </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"lm"</span>, </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"blue"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFOS), </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"loess"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"red"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFBS, <span class="co"># new mapping</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                           <span class="at">size =</span> PFBS), <span class="co"># size of points according to PFBS values</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">"pink"</span>) <span class="sc">+</span> <span class="co"># colour outside of mappings </span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="co"># This theme will remove the background colours and lines</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> PFAS_insects) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFOS, <span class="at">size =</span> PFOS), <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFOS), </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"lm"</span>, </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"blue"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFOS), </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"loess"</span>,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"red"</span>,</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> PFOA, <span class="at">y =</span> PFBS, <span class="co"># new mapping</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>                           <span class="at">size =</span> PFBS), <span class="co"># size of points according to PFBS values</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">"pink"</span>) <span class="sc">+</span> <span class="co"># colour outside of mappings</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"PFAS"</span>) <span class="sc">+</span> </span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="co"># This theme will remove the background colours and lines</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'
 `geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="4_Tidyverse_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="4_Tidyverse_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>You can add different layers based on conditions such as filtering the Conc variable by different colors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#options(scipen = 10000) #this avoids R to use scientific notation on values below 10000 </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="sc">|&gt;</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PFAS, <span class="at">y =</span>  Conc)) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(.x, Conc <span class="sc">&gt;</span> <span class="dv">100</span>), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(.x, Conc <span class="sc">&lt;=</span> <span class="dv">100</span> <span class="sc">&amp;</span> Conc <span class="sc">&gt;</span> <span class="dv">20</span>), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(.x, Conc <span class="sc">&lt;=</span> <span class="dv">20</span>), <span class="at">color =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">accuracy =</span> <span class="fl">0.01</span>)) <span class="sc">+</span> </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="sc">-</span><span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="4_Tidyverse_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="pivot_longer" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="pivot_longer"><span class="header-section-number">5.3</span> pivot_longer</h2>
-<p>See: <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="uri">https://tidyr.tidyverse.org/reference/pivot_longer.html</a></p>
+</section>
+<section id="stringr" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="stringr"><span class="header-section-number">5.4</span> stringr</h2>
+<p>In R, you need to escape certain special characters using <code>\</code>.</p>
+<p>Test your regula expressions here: <a href="https://regex101.com/" class="uri">https://regex101.com/</a></p>
+<p><code>str_detect</code> This function will return TRUE is it matches a string statement.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="ot">&lt;-</span> PFAS_insects <span class="sc">%&gt;%</span> <span class="co"># shortcut for pipe Ctrl + shift + M</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> PFBA<span class="sc">:</span>sum_21PFAS, <span class="co"># select all columns from PFBA to sum_21PFAS</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"PFAS"</span>, <span class="co"># name of the new column</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Conc"</span>) <span class="sc">%&gt;%</span>  <span class="co">#name of the values from PFBA:sum_21PFAS</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PFAS =</span> <span class="fu">as.factor</span>(PFAS)) <span class="co">#make PFAS column a factor variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PFCA =</span> <span class="fu">str_detect</span>(PFAS, <span class="st">"PF.*A"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PFSA =</span> <span class="fu">str_detect</span>(PFAS, <span class="st">"PF.*S.*"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3,780
+Columns: 16
+$ ID                  &lt;chr&gt; "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W…
+$ `Full ID`           &lt;chr&gt; "K1 W S17", "K1 W S17", "K1 W S17", "K1 W S17", "K…
+$ `Sampling site`     &lt;chr&gt; "K1", "K1", "K1", "K1", "K1", "K1", "K1", "K1", "K…
+$ Number              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ Group               &lt;chr&gt; "Water", "Water", "Water", "Water", "Water", "Wate…
+$ Group_Family        &lt;chr&gt; "Water 1_S17", "Water 1_S17", "Water 1_S17", "Wate…
+$ `g ww`              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ `g dw`              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ Quantity            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ `Extraction (mL_g)` &lt;dbl&gt; 509.3, 509.3, 509.3, 509.3, 509.3, 509.3, 509.3, 5…
+$ Year                &lt;dbl&gt; 2017, 2017, 2017, 2017, 2017, 2017, 2017, 2017, 20…
+$ Unit                &lt;chr&gt; "ng L-1", "ng L-1", "ng L-1", "ng L-1", "ng L-1", …
+$ PFAS                &lt;fct&gt; PFBA, PFPeA, PFBS, PFHxA, PFHpA, PFPeS80, PFHxS80,…
+$ Conc                &lt;dbl&gt; 27.4398194, 35.5252307, 81.7751816, 56.5295504, 25…
+$ PFCA                &lt;lgl&gt; TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE…
+$ PFSA                &lt;lgl&gt; FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE…</code></pre>
+</div>
+</div>
+<p>This function will create a new variable PFCA and check if the characters within the PFAS column matches anything that contain “PF.*A”. The “.*” matches any character in between “PF” and “A”. Similarily, the “PF.*S.* will return true for any string that contain the”PF” and “S” containing any characters in between these two strings and after “S”.</p>
+<p><code>str_replace</code></p>
+<p>This function replaces characters with another string. The <code>str_replace</code> will only replace the first match and ignore the rest even if these satisfy the match conditions, while <code>str_replace_all</code> will replace all match within the string.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PFAS =</span> <span class="fu">str_replace</span>(PFAS, <span class="st">"[Pp]"</span>, <span class="st">"_"</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(ID, PFAS) <span class="sc">|&gt;</span>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3,780
+Columns: 2
+$ ID   &lt;chr&gt; "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1",…
+$ PFAS &lt;chr&gt; "_FBA", "_FPeA", "_FBS", "_FHxA", "_FHpA", "_FPeS80", "_FHxS80", …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="sc">|&gt;</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PFAS =</span> <span class="fu">str_replace_all</span>(PFAS, <span class="st">"[Pp]"</span>, <span class="st">"_"</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(ID, PFAS) <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3,780
+Columns: 2
+$ ID   &lt;chr&gt; "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1", "W1",…
+$ PFAS &lt;chr&gt; "_FBA", "_F_eA", "_FBS", "_FHxA", "_FH_A", "_F_eS80", "_FHxS80", …</code></pre>
+</div>
+</div>
+<p>The above codes will match upper [P] and lower case [p] in the PFAS column. You can see that str_replace only replaces the first [Pp] with an underscore while str_replace_all will replace all [Pp] within each string.</p>
+</section>
+<section id="purr" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="purr"><span class="header-section-number">5.5</span> purr</h2>
+<p><a href="https://purrr.tidyverse.org/" class="uri">https://purrr.tidyverse.org/</a></p>
+<p><strong><code>map</code></strong></p>
+<p><a href="https://purrr.tidyverse.org/reference/map.html" class="uri">https://purrr.tidyverse.org/reference/map.html</a>: The map functions transform their input by applying a function to each element of a list or atomic vector and returning an object of the same length as the input.</p>
+</section>
+<section id="writing-functions-with-tidyverse" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="writing-functions-with-tidyverse"><span class="header-section-number">5.6</span> Writing functions with Tidyverse</h2>
+<p>We can further reduce copy-paste repetition by wrapping our dplyr workflow into a function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects_long <span class="sc">|&gt;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Group <span class="sc">!=</span> <span class="st">"Water"</span>) <span class="sc">|&gt;</span> <span class="co">#remove all water samples to only include solid samples</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(PFAS, <span class="st">"sum_"</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="co">#remove all sum of PFAS using the argument: negate=TRUE </span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PFAS, <span class="at">y =</span> Conc)) <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We cannot wrap this workflow directly in a function. Below code will throw an error.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plotPFAS <span class="ot">&lt;-</span> <span class="cf">function</span>(mydata, mygroup, x_var, y_var){</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  mydata <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Group <span class="sc">!=</span> mygroup) <span class="sc">|&gt;</span> </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(PFAS, <span class="st">"sum_"</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="co">#remove all sum of PFAS using the argument: negate=TRUE </span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x_var, <span class="at">y =</span> y_var)) <span class="sc">+</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="fu">paste0</span>(<span class="st">"Concentration of PFAS in "</span>, mygroup)) <span class="sc">+</span> </span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() </span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPFAS</span>(<span class="at">mydata =</span> PFAS_insects_long, <span class="at">mygroup =</span> <span class="st">"Water"</span>, <span class="at">x_var =</span> PFAS, <span class="at">y_var =</span> Conc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `geom_point()`:
+! Problem while computing aesthetics.
+ℹ Error occurred in the 1st layer.
+Caused by error:
+! object 'PFAS' not found</code></pre>
+</div>
+</div>
+<p>You cannot directly use the variable names in a function when using the dplyr codes with the pipe. Instead the variables should be embraced <code>{{}}</code> as below code shows.</p>
+<section id="embrace" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="embrace"><span class="header-section-number">5.6.1</span> Embrace <code>{{}}</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plotPFAS <span class="ot">&lt;-</span> <span class="cf">function</span>(mydata, mygroup, x_var, y_var){</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  mydata <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Group <span class="sc">!=</span> {{mygroup}}) <span class="sc">|&gt;</span> </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(PFAS, <span class="st">"sum_"</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="co">#remove all sum of PFAS using the argument: negate=TRUE </span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> {{x_var}}, <span class="at">y =</span> {{y_var}})) <span class="sc">+</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="fu">paste0</span>(<span class="st">"Concentration of PFAS in "</span>, {{mygroup}})) <span class="sc">+</span> </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plotPFAS</span>(<span class="at">mydata =</span> PFAS_insects_long, <span class="at">mygroup =</span> <span class="st">"Water"</span>, <span class="at">x_var =</span> PFAS, <span class="at">y_var =</span> Conc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="4_Tidyverse_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Another example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use embracing when wrapping in a function;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># see ?rlang::args_data_masking for more details</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>tidy_eval_arrange <span class="ot">&lt;-</span> <span class="cf">function</span>(data, var) {</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>({{ var }})</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy_eval_arrange</span>(PFAS_insects, PFOS) <span class="sc">|&gt;</span> <span class="fu">select</span>(ID, PFOS) <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 108
+Columns: 2
+$ ID   &lt;chr&gt; "W3", "P36", "W9", "S3", "SW10", "D10", "W6", "L13", "P35", "S1",…
+$ PFOS &lt;dbl&gt; 0.1487718, 0.4887884, 0.5090367, 0.5269612, 0.5269612, 0.8086711,…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy_eval_arrange</span>(PFAS_insects, PFOA) <span class="sc">|&gt;</span> <span class="fu">select</span>(ID, PFOA) <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 108
+Columns: 2
+$ ID   &lt;chr&gt; "L13", "S3", "SW4", "SW5", "SW6", "P36", "D28", "S1", "B2 D5", "B…
+$ PFOA &lt;dbl&gt; 0.02170220, 0.03321067, 0.03321067, 0.03321067, 0.03321067, 0.045…</code></pre>
+</div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -12,7 +12,7 @@ editor_options:
 #| message: false
 library(tidyverse)
 PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
-    sheet = "Overview")
+    sheet = "Overview") 
 ```
 
 # Tidyverse
@@ -27,10 +27,172 @@ See: <https://r4ds.hadley.nz/data-transform>
 
 <https://r4ds.hadley.nz/data-transform#sec-the-pipe>
 
-### Various dplyr functions
+To change the shortcut Ctrl+shift+M to use the new pipe, go to "Global options" -\> "Code" -\> "Use native pipe operator.."
+
+### Helpful dplyr functions
+
+<https://dplyr.tidyverse.org/index.html>
+
+**`select`** and **`filter`**
 
 ```{r}
- PFAS_insects |>  select(PFOS) |> filter(PFOS > 100)
+ PFAS_insects |>  
+   select(PFOS) |> 
+   filter(PFOS > 100)
+```
+
+Here, we first select only the PFOS variable and then filter to only include all PFOS rows that have a value above 100.
+
+**`mutate`**
+
+```{r}
+PFAS_insects |> 
+  mutate(ratioPFOS_PFOA = PFOS/PFOA) |> 
+  select(ID, PFOS, PFOA, ratioPFOS_PFOA, everything()) |> 
+  glimpse()
+
+```
+
+`Mutate` creates a new variable by some conditions such as dividing the PFOS with PFOA. We can thereafter sort how the columns are arranged by `select` ID, PFOS, PFOA, ratioPFOS_PFOA in this order. The `everything()`function will select all other columns. This way, we have made a new order of the columns. The `glimpse()` function is similar as `str()` but gives a better overview of the data frame.
+
+Using mutate with `case_when` helper function
+
+```{r}
+
+PFAS_insects |> 
+  mutate(ratioPFOS_PFOA = case_when(PFOS/PFOA > 10 ~ "HighPFOS",
+                                    PFOS/PFOA <= 10 & PFOS/PFOA > 5 ~ "MediumPFOS",
+                                    PFOS/PFOA  <= 5 ~ "LowPFOS")) |> 
+  select(ID, ratioPFOS_PFOA) |> 
+  glimpse()
+
+```
+
+**`arrange`**
+
+```{r}
+PFAS_insects |> 
+  #arrange(desc(PFOS)) |>
+  arrange(PFOS) |>
+  select(ID, PFOS, everything()) |> 
+  glimpse()
+```
+
+Here, we arranged the dataframe by descending PFOS levels (highest first)
+
+We can also group by character variables such as the Group variable and then the descending PFOS levels.
+
+```{r}
+PFAS_insects |> 
+  arrange(Group, desc(PFOS)) |> 
+  select(ID, Group, PFOS, everything()) |> 
+  glimpse()
+```
+
+The Group variable will then be arranged alphabetically. Using the `desc()` helper function will reverse the alphabetical order.
+
+**`summarise`** and **`reframe`**
+
+`summarise`is helpful to provide some summary statistics for variables.
+
+```{r}
+
+PFAS_insects |>
+  summarise(mean = mean(PFOS), median = median(PFOS), n = n())
+
+```
+
+Here we summarise the `mean` and `median` and number (using the `n()` function) of data points for PFOS.
+
+We can also calculate the summary statistics of PFOS levels for each Group.
+
+```{r}
+PFAS_insects |> 
+  group_by(Group) |> 
+  summarise(mean = mean(PFOS), median = median(PFOS), n = n())
+
+```
+
+Beware that grouping is still applied in objects that have been saved which has been applied with `group_by()`.
+
+```{r}
+PFAS_insects_grouped <- PFAS_insects |>
+  group_by(Group)
+
+PFAS_insects_grouped |> summarise(mean = mean(PFOS), median = median(PFOS), n = n())
+```
+
+To remove the grouping, use `ungroup()` before performing additional operations.
+
+```{r}
+
+PFAS_insects_grouped |> 
+  ungroup() |> 
+  summarise(mean = mean(PFOS), median = median(PFOS), n = n())
+```
+
+<https://dplyr.tidyverse.org/reference/reframe.html>: While summarise() requires that each argument returns a single value, and mutate() requires that each argument returns the same number of rows as the input, reframe() is a more general workhorse with no requirements on the number of rows returned per group
+
+```{r}
+#>  When switching from `summarise()` to `reframe()`, remember that `reframe()` always returns an ungrouped data frame and adjust accordingly.
+
+PFAS_insects |> 
+  group_by(Group) |> 
+  reframe(qs = quantile(PFOS, c(0.25, 0.75)), prob = c(0.25, 0.75))
+```
+
+**`across`**
+
+<https://dplyr.tidyverse.org/reference/across.html>: across() makes it easy to apply the same transformation to multiple columns, allowing you to use select() semantics inside in "data-masking" functions like summarise() and mutate()
+
+```{r}
+
+PFAS_insects |> 
+  mutate(across(where(is.numeric), round)) |> 
+  glimpse()
+  #select(ID, PFOS, PFOA, PFBS) |> 
+  #glimpse()
+
+```
+
+Here, we apply a `round` transformation across all variables that are numeric.
+
+## tidyr
+
+### pivot_longer
+
+See: <https://tidyr.tidyverse.org/reference/pivot_longer.html>
+
+```{r}
+
+PFAS_insects_long <- PFAS_insects  |>  # shortcut for pipe Ctrl + shift + M
+  pivot_longer(cols = PFBA:sum_21PFAS, # select all columns from PFBA to sum_21PFAS
+               names_to = "PFAS", # name of the new column
+               values_to = "Conc") |>  #name of the values from PFBA:sum_21PFAS
+  mutate(PFAS = as.factor(PFAS)) #make PFAS column a factor variable
+
+
+```
+
+```{r}
+#check the PFAS group names
+PFAS_insects_long |> 
+  group_by(PFAS) |> 
+  tally() |> 
+  glimpse() 
+# select PFOS isomers
+PFOS_branched <- c("1-PFOS 419/169", "3/4/5-PFOS80/98.9")
+
+PFAS_insects_long |>
+  filter(Group != "Water") |> #remove water samples and only include solid samples
+  filter(str_detect(PFAS, "sum_", negate = TRUE)) |> #remove all sum of PFAS using the argument by negate=TRUE 
+ggplot(aes(x = PFAS, y = Conc)) +
+  geom_point() +
+  geom_boxplot() +
+  theme_classic() +
+  ylab("Concentration of PFAS (ng/g) in solid samples")
+  
+
 ```
 
 ## ggplot2
@@ -75,7 +237,7 @@ ggplot(data = PFAS_insects, mapping = aes(x = PFOA, y = PFOS)) +
 
 ```
 
-### NOT FINISHED
+### NOT FINISHED (need to use same size scale for PFOS and PFBS)
 
 We can add another geom by mapping again new variables (PFBS \~ PFOA)
 
@@ -96,31 +258,79 @@ ggplot(data = PFAS_insects) +
               size = 2) +
   geom_point(mapping = aes(x = PFOA, y = PFBS, # new mapping
                            size = PFBS), # size of points according to PFBS values
-             colour = "pink") + # colour outside of mappings 
+             colour = "pink") + # colour outside of mappings
+  ylab("PFAS") + 
   theme_classic() # This theme will remove the background colours and lines
-```
-
-## pivot_longer
-
-See: <https://tidyr.tidyverse.org/reference/pivot_longer.html>
-
-```{r}
-
-PFAS_insects_long <- PFAS_insects %>% # shortcut for pipe Ctrl + shift + M
-  pivot_longer(cols = PFBA:sum_21PFAS, # select all columns from PFBA to sum_21PFAS
-               names_to = "PFAS", # name of the new column
-               values_to = "Conc") %>%  #name of the values from PFBA:sum_21PFAS
-  mutate(PFAS = as.factor(PFAS)) #make PFAS column a factor variable
-
 
 ```
 
+You can add different layers based on conditions such as filtering the Conc variable by different colors.
 
 ```{r}
-#check the PFAS group names
-PFAS_insects_long |> group_by(PFAS) |> tally() |> view() 
-# select PFOS isomers
-PFOS_branched <- c("1-PFOS 419/169", "3/4/5-PFOS80/98.9")
+
+#options(scipen = 10000) #this avoids R to use scientific notation on values below 10000 
+PFAS_insects_long |> 
+  ggplot(aes(x = PFAS, y =  Conc)) +
+  geom_boxplot() +
+  geom_point(data = ~filter(.x, Conc > 100), color = "red") +
+  geom_point(data = ~filter(.x, Conc <= 100 & Conc > 20), color = "blue") + 
+  geom_point(data = ~filter(.x, Conc <= 20), color = "green") +
+  scale_y_log10(labels = scales::label_number(accuracy = 0.01)) + 
+  theme(axis.text.x = element_text(angle = -90, hjust = 0))
+
+```
+
+## stringr
+
+In R, you need to escape certain special characters using `\`.
+
+Test your regula expressions here: <https://regex101.com/>
+
+`str_detect` This function will return TRUE is it matches a string statement.
+
+```{r}
+
+PFAS_insects_long |> 
+  mutate(PFCA = str_detect(PFAS, "PF.*A")) |> 
+  mutate(PFSA = str_detect(PFAS, "PF.*S.*")) |> 
+  glimpse()
+
+```
+
+This function will create a new variable PFCA and check if the characters within the PFAS column matches anything that contain "PF.\*A". The ".\*" matches any character in between "PF" and "A". Similarily, the "PF.\*S.\* will return true for any string that contain the"PF" and "S" containing any characters in between these two strings and after "S".
+
+`str_replace`
+
+This function replaces characters with another string. The `str_replace` will only replace the first match and ignore the rest even if these satisfy the match conditions, while `str_replace_all` will replace all match within the string.
+
+```{r}
+
+
+PFAS_insects_long |> 
+  mutate(PFAS = str_replace(PFAS, "[Pp]", "_")) |> select(ID, PFAS) |>  glimpse()
+
+
+PFAS_insects_long |> 
+  mutate(PFAS = str_replace_all(PFAS, "[Pp]", "_")) |> select(ID, PFAS) |> glimpse()
+
+```
+
+The above codes will match upper \[P\] and lower case \[p\] in the PFAS column. You can see that str_replace only replaces the first \[Pp\] with an underscore while str_replace_all will replace all \[Pp\] within each string.
+
+## purr
+
+<https://purrr.tidyverse.org/>
+
+**`map`**
+
+<https://purrr.tidyverse.org/reference/map.html>: The map functions transform their input by applying a function to each element of a list or atomic vector and returning an object of the same length as the input.
+
+## Writing functions with Tidyverse
+
+We can further reduce copy-paste repetition by wrapping our dplyr workflow into a function.
+
+```{r}
+#| eval: false
 
 PFAS_insects_long |>
   filter(Group != "Water") |> #remove all water samples to only include solid samples
@@ -128,9 +338,62 @@ PFAS_insects_long |>
 ggplot(aes(x = PFAS, y = Conc)) +
   geom_point() +
   geom_boxplot() +
-  theme_classic() +
-  ylab("Concentration of PFAS (ng/g) in solid samples")
+  theme_classic() 
   
-
 ```
 
+We cannot wrap this workflow directly in a function. Below code will throw an error.
+
+```{r}
+#| error: true
+plotPFAS <- function(mydata, mygroup, x_var, y_var){
+  mydata |>
+  filter(Group != mygroup) |> 
+  filter(str_detect(PFAS, "sum_", negate = TRUE)) |> #remove all sum of PFAS using the argument: negate=TRUE 
+ggplot(aes(x = x_var, y = y_var)) +
+    geom_point() +
+    geom_boxplot() +
+    ylab(paste0("Concentration of PFAS in ", mygroup)) + 
+    theme_classic() 
+}
+
+plotPFAS(mydata = PFAS_insects_long, mygroup = "Water", x_var = PFAS, y_var = Conc)
+```
+
+You cannot directly use the variable names in a function when using the dplyr codes with the pipe. Instead the variables should be embraced `{{}}` as below code shows.
+
+### Embrace `{{}}`
+
+```{r}
+
+plotPFAS <- function(mydata, mygroup, x_var, y_var){
+  mydata |>
+  filter(Group != {{mygroup}}) |> 
+  filter(str_detect(PFAS, "sum_", negate = TRUE)) |> #remove all sum of PFAS using the argument: negate=TRUE 
+ggplot(aes(x = {{x_var}}, y = {{y_var}})) +
+    geom_point() +
+    geom_boxplot() +
+    ylab(paste0("Concentration of PFAS in ", {{mygroup}})) + 
+  theme_classic() 
+}
+
+plotPFAS(mydata = PFAS_insects_long, mygroup = "Water", x_var = PFAS, y_var = Conc)
+```
+
+Another example
+
+```{r}
+
+# use embracing when wrapping in a function;
+# see ?rlang::args_data_masking for more details
+
+tidy_eval_arrange <- function(data, var) {
+  data %>%
+    arrange({{ var }})
+}
+
+tidy_eval_arrange(PFAS_insects, PFOS) |> select(ID, PFOS) |> glimpse()
+
+tidy_eval_arrange(PFAS_insects, PFOA) |> select(ID, PFOA) |> glimpse()
+
+```
