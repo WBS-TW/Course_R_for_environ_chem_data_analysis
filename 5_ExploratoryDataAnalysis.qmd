@@ -1,0 +1,55 @@
+---
+Title: Exploratory data analysis
+output: html_document
+number-sections: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(skimr)
+library(EnvStats)
+PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
+    sheet = "Overview")
+PFAS_isotopes <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
+    sheet = "Overiew Iso")
+```
+
+# Exploratory data analysis
+
+<https://www.epa.gov/caddis-vol4/exploratory-data-analysis>
+
+## Tidy the data files for R
+
+Make sure to clean up and tidy your tables before importing into R.
+
+-   Make sure that the tables have headers in the first row. Keep the variables as columns and samples as rows.
+
+-   Variable names should not start with a number or contain any special characters or space.
+
+-   If a variable contain multiple words, use either the camelCase or snake_case naming conventions:
+
+    -   camelCase: the first word is always in lowercase and every other word starts with a capital letter. The words are also not separated by spaces, dashes, or underscores.
+
+    -   snake_case: each space is replaced with an underscore "\_" character, and words are written in lowercase.
+
+## First glance of the data
+
+```{r}
+
+skim(PFAS_insects)
+```
+
+## 
+
+## Exploratory statistics
+
+Which tests should I use?
+
+<https://statsandr.com/blog/files/overview-statistical-tests-statsandr.pdf>
+
+[![Flow chart on choices of statistical tests](data/chart_statisticalanalysis.jpg)](https://doi.org/10.1016/j.aiia.2020.09.002)

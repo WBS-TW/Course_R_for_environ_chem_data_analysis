@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -165,20 +184,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./5_ExploratoryDataAnalysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Appendix_Version_control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_Quarto.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Appendix_DatabaseDesign.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How to Design a Database</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -413,7 +432,7 @@ a multiple of shorter object length</code></pre>
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If you dont name the elements within the list then these will be unamed.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To subset an element within the list you can use index <span class="citation" data-cites="rspatial_indexing">(<a href="references.html#ref-rspatial_indexing" role="doc-biblioref"><strong>rspatial_indexing?</strong></a>)</span>. There is difference between single <code>[]</code> and double brackets<code>[[]]</code>. Can you see the differences between the below indexing?</p>
+<p>To subset an element within the list you can use index <span class="citation" data-cites="rspatial">(<a href="references.html#ref-rspatial" role="doc-biblioref">Spatial Data Science, n.d.</a>)</span>. There is difference between single <code>[]</code> and double brackets<code>[[]]</code>. Can you see the differences between the below indexing?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -577,8 +596,8 @@ a multiple of shorter object length</code></pre>
 <p><em>Logical Operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 89%">
+<col style="width: 19%">
+<col style="width: 80%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -612,9 +631,9 @@ a multiple of shorter object length</code></pre>
 <p><em>Other useful operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 7%">
-<col style="width: 34%">
-<col style="width: 57%">
+<col style="width: 20%">
+<col style="width: 29%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -692,6 +711,11 @@ a multiple of shorter object length</code></pre>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-rspatial" class="csl-entry" role="listitem">
+Spatial Data Science. n.d. <span>“Spatial Data Science with r and <span>‘Terra’</span>.”</span> <a href="https://rspatial.org/intr/4-indexing.html" class="uri">https://rspatial.org/intr/4-indexing.html</a>.
+</div>
+</div>
 </section>
 </section>
 

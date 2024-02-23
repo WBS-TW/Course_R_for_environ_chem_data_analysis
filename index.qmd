@@ -20,6 +20,7 @@ library(tidyverse)
 library(plotly)
 library(DiagrammeR)
 library(readxl)
+library(skimr)
 
 
 ```

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Environmental Chemistry Data Analysis - 7&nbsp; Publish your data analysis in Quarto</title>
+<title>R for Environmental Chemistry Data Analysis - 8&nbsp; Publish your data analysis in Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Appendix_DatabaseDesign.html" rel="next">
+<link href="./Appendix_Kumla_PFAS.html" rel="next">
 <link href="./Appendix_Version_control.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Appendix_Quarto.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Appendix_Quarto.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -165,20 +165,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./5_ExploratoryDataAnalysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Appendix_Version_control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Appendix_Quarto.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Appendix_DatabaseDesign.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How to Design a Database</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,9 +203,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#publish-your-quarto-book-in-posit-cloud" id="toc-publish-your-quarto-book-in-posit-cloud" class="nav-link active" data-scroll-target="#publish-your-quarto-book-in-posit-cloud"><span class="header-section-number">7.1</span> Publish your Quarto book in Posit Cloud</a></li>
-  <li><a href="#publish-your-quarto-book-in-github" id="toc-publish-your-quarto-book-in-github" class="nav-link" data-scroll-target="#publish-your-quarto-book-in-github"><span class="header-section-number">7.2</span> Publish your Quarto book in Github</a></li>
-  <li><a href="#publish-your-quarto-webiste-in-github-pages" id="toc-publish-your-quarto-webiste-in-github-pages" class="nav-link" data-scroll-target="#publish-your-quarto-webiste-in-github-pages"><span class="header-section-number">7.3</span> Publish your Quarto webiste in Github pages</a></li>
+  <li><a href="#publish-your-quarto-book-in-posit-cloud" id="toc-publish-your-quarto-book-in-posit-cloud" class="nav-link active" data-scroll-target="#publish-your-quarto-book-in-posit-cloud"><span class="header-section-number">8.1</span> Publish your Quarto book in Posit Cloud</a></li>
+  <li><a href="#publish-your-quarto-book-in-github" id="toc-publish-your-quarto-book-in-github" class="nav-link" data-scroll-target="#publish-your-quarto-book-in-github"><span class="header-section-number">8.2</span> Publish your Quarto book in Github</a></li>
+  <li><a href="#publish-your-quarto-webiste-in-github-pages" id="toc-publish-your-quarto-webiste-in-github-pages" class="nav-link" data-scroll-target="#publish-your-quarto-webiste-in-github-pages"><span class="header-section-number">8.3</span> Publish your Quarto webiste in Github pages</a></li>
   </ul>
 </nav>
     </div>
@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Publish your data analysis in Quarto</span></h1>
 </div>
 
 
@@ -233,8 +233,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Handbook on Quarto for R can be found here: <a href="https://r4ds.hadley.nz/quarto.html" class="uri">https://r4ds.hadley.nz/quarto.html</a></p></li>
 <li><p>You can either publish your book/webpage in Posit Cloud or Github Pages. Below are instructions on how to publish in these two platforms.</p></li>
 </ul>
-<section id="publish-your-quarto-book-in-posit-cloud" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="publish-your-quarto-book-in-posit-cloud"><span class="header-section-number">7.1</span> Publish your Quarto book in Posit Cloud</h2>
+<section id="publish-your-quarto-book-in-posit-cloud" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="publish-your-quarto-book-in-posit-cloud"><span class="header-section-number">8.1</span> Publish your Quarto book in Posit Cloud</h2>
 <p>You can directly publish your quarto book or website to Posit Cloud. You need to create an account to enable publishing of your website.</p>
 <ul>
 <li><p>Make sure to click on the <code>Render Book</code> button on the <code>Build</code> tab to update the book with the newest changes.</p></li>
@@ -242,8 +242,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Check: <a href="https://quarto.org/docs/publishing/posit-cloud.html" class="uri">https://quarto.org/docs/publishing/posit-cloud.html</a></p>
 </section>
-<section id="publish-your-quarto-book-in-github" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="publish-your-quarto-book-in-github"><span class="header-section-number">7.2</span> Publish your Quarto book in Github</h2>
+<section id="publish-your-quarto-book-in-github" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="publish-your-quarto-book-in-github"><span class="header-section-number">8.2</span> Publish your Quarto book in Github</h2>
 <p>Edit your _quarto.yml to output the generated html book into a folder.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
@@ -252,8 +252,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Then follow the same steps below for websites</p>
 </section>
-<section id="publish-your-quarto-webiste-in-github-pages" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="publish-your-quarto-webiste-in-github-pages"><span class="header-section-number">7.3</span> Publish your Quarto webiste in Github pages</h2>
+<section id="publish-your-quarto-webiste-in-github-pages" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="publish-your-quarto-webiste-in-github-pages"><span class="header-section-number">8.3</span> Publish your Quarto webiste in Github pages</h2>
 <p>Tutorial: https://github.com/jtr13/website-template.</p>
 <ul>
 <li><p>You’ve now left the template page and are viewing your new repo on GitHub. On the home page, click Settings. Click the “Pages” section on the left. In the Build and Deployment section, set Source to “Deploy from a branch” (Classic Pages experience) and Branch to main with /docs folder. Click Save.</p></li>
@@ -501,12 +501,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Appendix_Version_control.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Version control using Git and Github</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Appendix_DatabaseDesign.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How to Design a Database</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Appendix_Kumla_PFAS.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data analysis of Kumla PFAS study</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

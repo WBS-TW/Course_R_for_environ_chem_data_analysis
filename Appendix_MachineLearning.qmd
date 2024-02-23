@@ -1,0 +1,30 @@
+---
+Title: Machine Learning
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Machine Learning of environmental chemistry data
+
+Resources: 
+https://rpubs.com/StatsGary/tidymodels_from_scratch  
+https://www.stepbystepdatascience.com/ml-with-tidymodels
+https://emilhvitfeldt.github.io/ISLR-tidymodels-labs/
+
+
+```{r start}
+
+library(tidymodels)
+options(scipen=9999)
+options(digits = 3)
+
+
+### Loading raw data
+
+#-----
+PFAS_ins <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
+    sheet = "Overview")
+PFAS_isot <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
+    sheet = "Overview_iso")
+

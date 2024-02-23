@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-## How to Design a Database
+# How to Design a Database
 
 https://www.youtube.com/watch?v=cepspxPAUTA
 
@@ -14,3 +14,9 @@ https://www.youtube.com/watch?v=cepspxPAUTA
 **Create MySQL Database - MySQL Workbench Tutorial**
 
 <https://www.youtube.com/watch?v=K6w0bZjl_Lw>
+
+## DuckDB
+
+<https://duckdb.org/>
+
+## Neo4j
