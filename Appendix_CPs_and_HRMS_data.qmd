@@ -1,0 +1,113 @@
+---
+Title: Data analysis of CPs (Idoia) and HRMS data (Victoria)
+output: html_document
+number-sections: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data analysis of CPs and HRMS data
+
+```{r start}
+#| echo: true
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(EnvStats)
+library(ggrepel)
+library(DT)
+```
+
+Victoria HRMS data
+
+$$
+masserror\_ppm =\frac{mz\_theor - mz\_meas}{mz\_theor}*10^6
+$$
+
+$$
+mz\_theor - mz\_meas = mz\_diff = \frac{masserror\_ppm}{10^6}*mz\_theor
+$$
+
+```{r}
+
+### Loading raw data
+
+
+
+# Need to change format to dbl for many variables as read_excel somehow converts to character
+qc5rep_hdmse_peakpicking_featurelist_MZMINE <- read_xlsx("data/qc5rep_hdmse_peakpicking_featurelist_MZMINE.xlsx") |> 
+  mutate(across(!"id" & !ends_with("_state") & !ends_with("_unit"), as.double))
+
+# add function to calculate absolute mass error based on ppm and measured mz for MSDIAL data
+mzdiff <- function(masserror_ppm, mz_meas) {
+mzdiff <- masserror_ppm*mz_meas/10^6
+return(mzdiff)
+}
+
+qc3rep_hdmse_peakpicking_featurelist_MSDIAL <- read_xlsx("data/qc3rep_hdmse_peakpicking_featurelist_MSDIAL.xlsx") |> 
+  mutate(Mz_min = `Average Mz` - mzdiff(10,`Average Mz`)) |> 
+  mutate(Mz_max = `Average Mz` + mzdiff(10,`Average Mz`)) |> 
+  select(1:3, Mz_min, Mz_max, everything()) #reorder columns
+
+
+unifi <- tibble(
+  compound=c("acetaminophen","caffeine","leucine enkephaline","reserpine","sulfadimethoxine","sulfaguanidine","terfenadine","val-tyr-val","verapamil"),
+  mz_unifi= c(152.0697, 195.0870, 556.2756, 609.2787, 311.0801, 215.0589, 472.3197, 380.2173, 455.2892),
+  rt_unifi=c(0.56,1.30,2.37,3.37,2.96,0.31,3.66,1.28,3.26),
+  dt_unifi=c(2.26,2.60,6.41,7.23,4.00,3.01,6.48,5.05,5.66)) |> 
+  mutate(rt_unifi_min = rt_unifi - 0.05) |> # adding min value of retention time
+  mutate(rt_unifi_max = rt_unifi + 0.05) # adding max value of retention time
+
+# Also needs to add filter by rt and dt
+unifi_mzmine_hits <- unifi |> 
+  inner_join(qc5rep_hdmse_peakpicking_featurelist_MZMINE,
+            join_by(mz_unifi < `mz_range:max`, 
+                    mz_unifi > `mz_range:min`,
+                    rt_unifi_min < rt,
+                     rt_unifi_max > rt))
+
+
+unifi_msdial_hits <- unifi |> 
+  inner_join(qc3rep_hdmse_peakpicking_featurelist_MSDIAL,
+             join_by(mz_unifi < Mz_max,
+                     mz_unifi < Mz_min,
+                     rt_unifi_min < `Average Rt(min)`,
+                     rt_unifi_max > `Average Rt(min)`))
+
+```
+
+MzMine hits
+
+```{r}
+
+DT::datatable(unifi_mzmine_hits)
+
+```
+
+MSDial hits
+
+```{r}
+unifi_msdial_hits |> 
+  select(-`MS1 isotopic spectrum`, -`MS/MS spectrum`) |> #remove these columns to get nicer table
+DT::datatable()
+```
+
+Idoia CP data
+
+```{r}
+
+# HRMS data 
+## find hits from a suspect list data frame in the featurelist
+
+
+
+```
+
+```{r}
+
+GC_qToF_CPsFoodResults <- read_excel("data/GC_qToF_CPsFoodResults.xlsx")
+
+```

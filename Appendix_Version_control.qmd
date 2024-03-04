@@ -43,5 +43,4 @@ Register a github account: [https://github.com](https://github.com/)
 
 It is recommended to first create a new repository in Github and then link it to a new project in Rstudio [GitHub first, then RStudio](https://happygitwithr.com/new-github-first) or link an existing project to the created repository [Existing project, GitHub first](https://happygitwithr.com/existing-github-first)
 
-- **a. GitHub first, then RStudio**: follow these steps: https://happygitwithr.com/new-github-first#make-a-repo-on-github-2
-
+-   **a. GitHub first, then RStudio**: follow these steps: https://happygitwithr.com/new-github-first#make-a-repo-on-github-2

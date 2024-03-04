@@ -35,40 +35,6 @@ This is the handbook for the PhD course on ***R for environmental chemistry data
 
 <!-- If you use RStudio, you can use the keyboard shortcut Ctrl + Shift + C (Command + Shift + C on macOS) to comment out a line of text. -->
 
-## [Recommended literature:]{.underline}
-
-Introduction to Programming with R. <https://discdown.org/rprogramming/introduction.html>
-
-Hands-On Programming with R. <https://rstudio-education.github.io/hopr/>
-
-R for Data Science (2e). Hadley Wickham. Freely available at: <https://r4ds.hadley.nz/>
-
-R for Data Science: Exercise Solutions. <https://jrnold.github.io/r4ds-exercise-solutions/>
-
-R Graphics Cookbook, 2nd edition. Winston Chang. Freely available at: <https://r-graphics.org/>
-
-Posit Cheatsheets: <https://posit.co/resources/cheatsheets/>
-
-Statistical Inference via Data Science: A ModernDive into R and the Tidyverse. <https://moderndive.com/index.html>
-
-Interactive web-based data visualization with R, plotly, and shiny. <https://plotly-r.com/>
-
-Data Visualization: A practical introduction. Kieran Healy. <https://socviz.co/>
-
-Mastering Software Development in R: <https://bookdown.org/rdpeng/RProgDA/>
-
-To learn more about Quarto books visit:
-
--   <https://quarto.org/docs/books>
-
--   <https://r4ds.hadley.nz/quarto.html>
-
--   <https://quarto.org/docs/computations/execution-options.html>
-
-Some useful links to other R for data science books:
-
--   <https://www.r4epi.com/installing-r-and-rstudio>
-
 ## **Plan for course**
 
 The final report will be an online book with chapters with one containing a learning diary, and others should contain a scientific report documenting the descriptive analysis and visualization of environmental chemistry relevant data sets.
@@ -166,6 +132,44 @@ o   <https://www.hostinger.com/tutorials/database-schema>
 o   ...
 
 -        dbplyr: https://dbplyr.tidyverse.org/
+
+## [Recommended literature:]{.underline}
+
+Introduction to Programming with R. <https://discdown.org/rprogramming/introduction.html>
+
+Hands-On Programming with R. <https://rstudio-education.github.io/hopr/>
+
+R for Data Science (2e). Hadley Wickham. Freely available at: <https://r4ds.hadley.nz/>
+
+R for Data Science: Exercise Solutions. <https://jrnold.github.io/r4ds-exercise-solutions/>
+
+R Graphics Cookbook, 2nd edition. Winston Chang. Freely available at: <https://r-graphics.org/>
+
+Posit Cheatsheets: <https://posit.co/resources/cheatsheets/>
+
+Statistical Inference via Data Science: A ModernDive into R and the Tidyverse. <https://moderndive.com/index.html>
+
+Interactive web-based data visualization with R, plotly, and shiny. <https://plotly-r.com/>
+
+Data Visualization: A practical introduction. Kieran Healy. <https://socviz.co/>
+
+Mastering Software Development in R: <https://bookdown.org/rdpeng/RProgDA/>
+
+To learn more about Quarto books visit:
+
+-   <https://quarto.org/docs/books>
+
+-   <https://r4ds.hadley.nz/quarto.html>
+
+-   <https://quarto.org/docs/computations/execution-options.html>
+
+Some useful links to other R for data science books:
+
+-   <https://www.r4epi.com/installing-r-and-rstudio>
+
+For advanced R users
+
+-   <http://adv-r.had.co.nz/>
 
 **Session information with the versions of different packages**
 

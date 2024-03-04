@@ -8,6 +8,24 @@ editor_options:
 
 # Familiarize yourself with R
 
+## Use of parentheses and brackets
+
+**( )** parentheses
+
+-   Used for parameters/information to functions, e.g., c(1,2,3) 
+
+**\[ \]** brackets
+
+-   Mostly used for indexing, i.e., getting location of an element, e.g. Mat\[1,3\] is value at row 1 and col 3
+
+**{ }** curly brackets
+
+-   Used for encompassing body (expressions) in a function
+
+**/** forward slash
+
+-   R uses forward slash `/` when indicating file path, which is different from Windows that uses backslash `\`. If you get an error when inputting a file path, then check if you have the correct forward slash (or you can also use double backslash `\\`).
+
 ## [Data types]{.underline} in R
 
 Basic data types in R can be divided into the following types:
@@ -126,7 +144,7 @@ a_vector_integers2 <- c(1, 2, 3, 4, 5)
 str(a_vector_integers1)
 ```
 
-What happens when we perform operations with two or more vectors of different length? First, we can use the `length()` function to check the length of an object
+What happens when we perform operations with two or more vectors of different length? First, we can use the `length()` function to check the length of a vector:
 
 ```{r}
 
@@ -166,6 +184,37 @@ R will therefore perform the element-wise operations `99+1`, `98+2`, `99+3`, `98
 **Matrices**
 
 A matrix is a 2 dimensional data structure for vectors of the same datatype.
+
+The elements are arranged in 2-dim rectangular layout.
+
+Example 1.
+
+```{r}
+
+a_matrix_num <- matrix(data = 1:10, nrow = 2, ncol = 5)
+
+a_matrix_num
+```
+
+Example 2. The object `letters` is a built constant in to base R and can be called to generate a sequence of lower case alphabetic letters. Yo can index it to subset the different letters.
+
+```{r}
+
+letters
+
+matrix(data = letters[1:10], nrow = 5)
+
+```
+
+You dont need to specify both ncol or nrow, then R will automatically fit based on the one specified nrwo or ncol argument.
+
+What will happen if you run this code: `matrix(data = letters[1:10], nrow = 3)` ?
+
+To check the dimension of the matrix, use `dim` function:
+
+```{r}
+dim(a_matrix_num)
+```
 
 **Lists**
 
@@ -222,7 +271,7 @@ a_list[[1]]
 
 **Dataframes**
 
-Dataframes are similar as lists but flattened into a rectangular form, similar as tables. The length of individual objects have to be the same.
+Dataframes are similar as lists but flattened into a 2-D rectangular form, similar as tables. The length of individual objects have to be the same.
 
 ```{r}
 
@@ -232,6 +281,10 @@ sample_data <- data.frame(sample_id = c(1, 2, 3, 4),
                           conc_PFOS_ngL = c(99, 5, 123, NA))
 
 ```
+
+::: callout-note
+When naming an object or variables (in a data frame), start with a letter and avoid using special characters and \`space\`. Sometimes, when importing datasets from other sources that contain space, then these variables are converted to \`Name of variable\` using the backticks. To access the variable, you will also need to use the backticks \`\`
+:::
 
 **Factors**
 
@@ -284,7 +337,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Logical Operators*
 
 | Operator | Description                                                                       |
-|--------------|----------------------------------------------------------|
+|---------------------|---------------------------------------------------|
 | &        | Element-wise Logical AND operator. It returns TRUE if both elements are TRUE      |
 | &&       | Logical AND operator - Returns TRUE if both statements are TRUE                   |
 | \|       | Elementwise- Logical OR operator. It returns TRUE if one of the statement is TRUE |
@@ -294,7 +347,7 @@ See: <https://www.w3schools.com/r/r_operators.asp>
 *Other useful operators*
 
 | Operator | Description                                | Example                                                                |
-|---------------|---------------------|------------------------------------|
+|------------------|--------------------|----------------------------------|
 | :        | Creates a series of numbers in a sequence  | 1:10 (creates a sequence from 1 to 10)                                 |
 | %in%     | Find out if an element belongs to a vector | 2%in%1:10 (check if 2 is found in the vector 1:10, evaluates to TRUE ) |
 | %\*%     | Matrix Multiplication                      | m \<- matrix(1:8, nrow=2); 2\*m (will multiply every element with 2)   |

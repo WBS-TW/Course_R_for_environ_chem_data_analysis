@@ -27,8 +27,8 @@ library(ggsignif)
 library(ggpubr)
 library(broom)
 
-options(scipen=9999)
-options(digits = 3)
+options(scipen=9999) #format all values above 9999 to scientific notations
+options(digits = 3) #round to 3 decimals
 
 
 ### Loading raw data

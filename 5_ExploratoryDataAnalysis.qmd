@@ -13,10 +13,17 @@ editor_options:
 library(tidyverse)
 library(skimr)
 library(EnvStats)
+library(gt)
 PFAS_insects <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
     sheet = "Overview")
 PFAS_isotopes <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
     sheet = "Overiew Iso")
+
+PFAS_insects_long <- PFAS_insects  |>  # shortcut for pipe Ctrl + shift + M
+  pivot_longer(cols = PFBA:sum_21PFAS, # select all columns from PFBA to sum_21PFAS
+               names_to = "PFAS", # name of the new column
+               values_to = "Conc") |>  #name of the values from PFBA:sum_21PFAS
+  mutate(PFAS = as.factor(PFAS)) #make PFAS column a factor variable
 ```
 
 # Exploratory data analysis
@@ -37,11 +44,17 @@ Make sure to clean up and tidy your tables before importing into R.
 
     -   snake_case: each space is replaced with an underscore "\_" character, and words are written in lowercase.
 
+## Installing Bioconductor packages
+
+Some packages that you might use is in the Bioconductor repository, which is a repository for bioinformatics.
+
+Check this site on how to install Bioconductor packages: <https://bioconductor.org/install/>
+
 ## First glance of the data
 
 ```{r}
 
-skim(PFAS_insects)
+skim(PFAS_isotopes)
 ```
 
 ## 
@@ -53,3 +66,61 @@ Which tests should I use?
 <https://statsandr.com/blog/files/overview-statistical-tests-statsandr.pdf>
 
 [![Flow chart on choices of statistical tests](data/chart_statisticalanalysis.jpg)](https://doi.org/10.1016/j.aiia.2020.09.002)
+
+## Adding tables
+
+<https://youtube.com/watch?v=qFOFMed18T4&si=SNQQ_T5sT_DXjnmM>
+
+```{r}
+
+PFAS_insects_conc <- PFAS_insects_long |> 
+  filter(str_detect(PFAS, "sum_21PFAS")) |> 
+  summarise(
+    min = min(Conc, na.rm = TRUE),
+    mean = mean(Conc, na.rm = TRUE),
+    max = max(Conc, na.rm = TRUE),
+    .by = c('Group', "PFAS")
+  )
+
+
+```
+
+```{r}
+
+plot_violin_Group <- function(my_group) {
+  full_range <- PFAS_insects_long |>
+    filter(str_detect(PFAS, "sum_21PFAS")) |> 
+    pull(Conc) |>
+    range(na.rm = TRUE)
+
+  PFAS_insects_long |>
+    filter(str_detect(PFAS, "sum_21PFAS")) |> 
+    filter(Group == my_group) |>
+    ggplot(aes(x = Conc, y = Group)) +
+    geom_violin(fill = 'dodgerblue4') +
+    theme_void() +
+    coord_cartesian(xlim = full_range)
+}
+
+```
+
+```{r}
+# https://youtube.com/watch?v=qFOFMed18T4&si=SNQQ_T5sT_DXjnmM
+
+PFAS_insects_conc |>
+  mutate(Distribution = Group) |>
+  gt() |>
+  tab_spanner( #adding aligned row about selected columns
+    label = 'PFAS concentrations',
+    columns = c(-Group, -PFAS)
+  ) |> 
+  fmt_number(decimals = 2) |> 
+  cols_align('left', columns = Group) |> 
+  text_transform(
+    locations = cells_body(columns = 'Distribution'),
+    fn = function(column) {
+      map(column, plot_violin_Group) |>
+        ggplot_image(height = px(50), aspect_ratio = 3)
+    }
+  ) 
+```

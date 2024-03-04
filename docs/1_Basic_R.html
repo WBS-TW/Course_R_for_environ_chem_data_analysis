@@ -202,8 +202,14 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Appendix_CPs_and_HRMS_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data analysis of CPs and HRMS data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Appendix_Kumla_PFAS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data analysis of Kumla PFAS study</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data analysis of Kumla PFAS study</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -222,13 +228,14 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-types-in-r" id="toc-data-types-in-r" class="nav-link active" data-scroll-target="#data-types-in-r"><span class="header-section-number">2.1</span> <u>Data types</u> in R</a></li>
-  <li><a href="#data-structures-in-r" id="toc-data-structures-in-r" class="nav-link" data-scroll-target="#data-structures-in-r"><span class="header-section-number">2.2</span> <u>Data structures</u> in R</a>
+  <li><a href="#use-of-parentheses-and-brackets" id="toc-use-of-parentheses-and-brackets" class="nav-link active" data-scroll-target="#use-of-parentheses-and-brackets"><span class="header-section-number">2.1</span> Use of parentheses and brackets</a></li>
+  <li><a href="#data-types-in-r" id="toc-data-types-in-r" class="nav-link" data-scroll-target="#data-types-in-r"><span class="header-section-number">2.2</span> <u>Data types</u> in R</a></li>
+  <li><a href="#data-structures-in-r" id="toc-data-structures-in-r" class="nav-link" data-scroll-target="#data-structures-in-r"><span class="header-section-number">2.3</span> <u>Data structures</u> in R</a>
   <ul class="collapse">
-  <li><a href="#object-types-in-r" id="toc-object-types-in-r" class="nav-link" data-scroll-target="#object-types-in-r"><span class="header-section-number">2.2.1</span> <u>Object types</u> in R</a></li>
-  <li><a href="#operators-in-r" id="toc-operators-in-r" class="nav-link" data-scroll-target="#operators-in-r"><span class="header-section-number">2.2.2</span> Operators in R</a></li>
-  <li><a href="#sec-loadfiles" id="toc-sec-loadfiles" class="nav-link" data-scroll-target="#sec-loadfiles"><span class="header-section-number">2.2.3</span> <u>Loading or importing data files</u></a></li>
-  <li><a href="#sec-baseRplots" id="toc-sec-baseRplots" class="nav-link" data-scroll-target="#sec-baseRplots"><span class="header-section-number">2.2.4</span> <u>Base R plots</u></a></li>
+  <li><a href="#object-types-in-r" id="toc-object-types-in-r" class="nav-link" data-scroll-target="#object-types-in-r"><span class="header-section-number">2.3.1</span> <u>Object types</u> in R</a></li>
+  <li><a href="#operators-in-r" id="toc-operators-in-r" class="nav-link" data-scroll-target="#operators-in-r"><span class="header-section-number">2.3.2</span> Operators in R</a></li>
+  <li><a href="#sec-loadfiles" id="toc-sec-loadfiles" class="nav-link" data-scroll-target="#sec-loadfiles"><span class="header-section-number">2.3.3</span> <u>Loading or importing data files</u></a></li>
+  <li><a href="#sec-baseRplots" id="toc-sec-baseRplots" class="nav-link" data-scroll-target="#sec-baseRplots"><span class="header-section-number">2.3.4</span> <u>Base R plots</u></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -253,8 +260,27 @@ div.csl-indent {
 
 </header>
 
-<section id="data-types-in-r" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="data-types-in-r"><span class="header-section-number">2.1</span> <u>Data types</u> in R</h2>
+<section id="use-of-parentheses-and-brackets" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="use-of-parentheses-and-brackets"><span class="header-section-number">2.1</span> Use of parentheses and brackets</h2>
+<p><strong>( )</strong> parentheses</p>
+<ul>
+<li>Used for parameters/information to functions, e.g., c(1,2,3)&nbsp;</li>
+</ul>
+<p><strong>[ ]</strong> brackets</p>
+<ul>
+<li>Mostly used for indexing, i.e., getting location of an element, e.g.&nbsp;Mat[1,3] is value at row 1 and col 3</li>
+</ul>
+<p><strong>{ }</strong> curly brackets</p>
+<ul>
+<li>Used for encompassing body (expressions) in a function</li>
+</ul>
+<p><strong>/</strong> forward slash</p>
+<ul>
+<li>R uses forward slash <code>/</code> when indicating file path, which is different from Windows that uses backslash <code>\</code>. If you get an error when inputting a file path, then check if you have the correct forward slash (or you can also use double backslash <code>\\</code>).</li>
+</ul>
+</section>
+<section id="data-types-in-r" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="data-types-in-r"><span class="header-section-number">2.2</span> <u>Data types</u> in R</h2>
 <p>Basic data types in R can be divided into the following types:</p>
 <ul>
 <li><p><code>numeric</code> : (10.5, 55, 787)</p></li>
@@ -346,8 +372,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="data-structures-in-r" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="data-structures-in-r"><span class="header-section-number">2.2</span> <u>Data structures</u> in R</h2>
+<section id="data-structures-in-r" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="data-structures-in-r"><span class="header-section-number">2.3</span> <u>Data structures</u> in R</h2>
 <p>Below are some basic data structures in R:</p>
 <ul>
 <li><code>vectors</code></li>
@@ -378,7 +404,7 @@ div.csl-indent {
 <pre><code> num [1:2] 99 98</code></pre>
 </div>
 </div>
-<p>What happens when we perform operations with two or more vectors of different length? First, we can use the <code>length()</code> function to check the length of an object</p>
+<p>What happens when we perform operations with two or more vectors of different length? First, we can use the <code>length()</code> function to check the length of a vector:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(a_vector_integers1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -419,49 +445,87 @@ a multiple of shorter object length</code></pre>
 <p>R will therefore perform the element-wise operations <code>99+1</code>, <code>98+2</code>, <code>99+3</code>, <code>98+4</code>, <code>99+5</code>, and the resulting object will have the same length as a_vector_integers2.</p>
 <p><strong>Matrices</strong></p>
 <p>A matrix is a 2 dimensional data structure for vectors of the same datatype.</p>
+<p>The elements are arranged in 2-dim rectangular layout.</p>
+<p>Example 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>a_matrix_num <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>a_matrix_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    7    9
+[2,]    2    4    6    8   10</code></pre>
+</div>
+</div>
+<p>Example 2. The object <code>letters</code> is a built constant in to base R and can be called to generate a sequence of lower case alphabetic letters. Yo can index it to subset the different letters.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>letters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+[20] "t" "u" "v" "w" "x" "y" "z"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="at">data =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="at">nrow =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,] "a"  "f" 
+[2,] "b"  "g" 
+[3,] "c"  "h" 
+[4,] "d"  "i" 
+[5,] "e"  "j" </code></pre>
+</div>
+</div>
+<p>You dont need to specify both ncol or nrow, then R will automatically fit based on the one specified nrwo or ncol argument.</p>
+<p>What will happen if you run this code: <code>matrix(data = letters[1:10], nrow = 3)</code> ?</p>
+<p>To check the dimension of the matrix, use <code>dim</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(a_matrix_num)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 5</code></pre>
+</div>
+</div>
 <p><strong>Lists</strong></p>
 <p>We can also store elements of different datatypes in list objects.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>a_vector_integers1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">99</span>, <span class="dv">98</span>)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>a_vector_strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"This"</span>, <span class="st">"is"</span>, <span class="st">"a"</span>, <span class="st">"vector"</span>, <span class="st">"of"</span>, <span class="st">"string"</span>, <span class="st">"elements"</span>)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case, we use the list() function.</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>a_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec_int =</span> a_vector_integers1, </span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">vec_str =</span> a_vector_strings)</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If you dont name the elements within the list then these will be unamed.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>a_vector_integers1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">99</span>, <span class="dv">98</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>a_vector_strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"This"</span>, <span class="st">"is"</span>, <span class="st">"a"</span>, <span class="st">"vector"</span>, <span class="st">"of"</span>, <span class="st">"string"</span>, <span class="st">"elements"</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case, we use the list() function.</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>a_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec_int =</span> a_vector_integers1, </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">vec_str =</span> a_vector_strings)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If you dont name the elements within the list then these will be unamed.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To subset an element within the list you can use index <span class="citation" data-cites="rspatial">(<a href="references.html#ref-rspatial" role="doc-biblioref">Spatial Data Science, n.d.</a>)</span>. There is difference between single <code>[]</code> and double brackets<code>[[]]</code>. Can you see the differences between the below indexing?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vec_int
 [1] 99 98</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 99 98</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="dv">1</span>][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="dv">1</span>][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vec_int
 [1] 99 98</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 99</code></pre>
 </div>
 </div>
 <p>You can also use the name of the element for subsetting.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="st">"vec_int"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="st">"vec_int"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vec_int
 [1] 99 98</code></pre>
@@ -469,35 +533,48 @@ a multiple of shorter object length</code></pre>
 </div>
 <p>The dollar-sign <code>$</code> can also be used.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These three subsetting operations will give the same results</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>a_list<span class="sc">$</span>vec_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These three subsetting operations will give the same results</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>a_list<span class="sc">$</span>vec_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 99 98</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="st">"vec_int"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>a_list[<span class="st">"vec_int"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vec_int
 [1] 99 98</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>a_list[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 99 98</code></pre>
 </div>
 </div>
 <p><strong>Dataframes</strong></p>
-<p>Dataframes are similar as lists but flattened into a rectangular form, similar as tables. The length of individual objects have to be the same.</p>
+<p>Dataframes are similar as lists but flattened into a 2-D rectangular form, similar as tables. The length of individual objects have to be the same.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sample_id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sample_name =</span> <span class="fu">c</span>(<span class="st">"Inflow"</span>, <span class="st">"Mid_stream"</span>, <span class="st">"Outflow"</span>, <span class="st">"River"</span>),</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">measured_PFOS =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">conc_PFOS_ngL =</span> <span class="fu">c</span>(<span class="dv">99</span>, <span class="dv">5</span>, <span class="dv">123</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sample_id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sample_name =</span> <span class="fu">c</span>(<span class="st">"Inflow"</span>, <span class="st">"Mid_stream"</span>, <span class="st">"Outflow"</span>, <span class="st">"River"</span>),</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">measured_PFOS =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">conc_PFOS_ngL =</span> <span class="fu">c</span>(<span class="dv">99</span>, <span class="dv">5</span>, <span class="dv">123</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When naming an object or variables (in a data frame), start with a letter and avoid using special characters and `space`. Sometimes, when importing datasets from other sources that contain space, then these variables are converted to `Name of variable` using the backticks. To access the variable, you will also need to use the backticks ``</p>
+</div>
 </div>
 <p><strong>Factors</strong></p>
 <p>See these videos:</p>
 <p><a href="https://www.youtube.com/watch?v=xkRBfy8_2MU" class="uri">https://www.youtube.com/watch?v=xkRBfy8_2MU</a></p>
 <p><a href="https://www.youtube.com/watch?v=cspQYQLZbCo" class="uri">https://www.youtube.com/watch?v=cspQYQLZbCo</a></p>
-<section id="object-types-in-r" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="object-types-in-r"><span class="header-section-number">2.2.1</span> <u>Object types</u> in R</h3>
+<section id="object-types-in-r" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="object-types-in-r"><span class="header-section-number">2.3.1</span> <u>Object types</u> in R</h3>
 <p>(from https://discdown.org/rprogramming/vectors.html)</p>
 <p>R is an object-oriented programming language with the fundamental design principle: Everything in R is an object. In R, objects can be:</p>
 <ul>
@@ -507,8 +584,8 @@ a multiple of shorter object length</code></pre>
 <li>…</li>
 </ul>
 </section>
-<section id="operators-in-r" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="operators-in-r"><span class="header-section-number">2.2.2</span> Operators in R</h3>
+<section id="operators-in-r" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="operators-in-r"><span class="header-section-number">2.3.2</span> Operators in R</h3>
 <p>The different comparison operators will be handy for various data analysis:</p>
 <p>See: <a href="https://www.w3schools.com/r/r_operators.asp" class="uri">https://www.w3schools.com/r/r_operators.asp</a></p>
 <p><em>Comparison operators</em></p>
@@ -596,8 +673,8 @@ a multiple of shorter object length</code></pre>
 <p><em>Logical Operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 80%">
+<col style="width: 29%">
+<col style="width: 70%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -631,9 +708,9 @@ a multiple of shorter object length</code></pre>
 <p><em>Other useful operators</em></p>
 <table class="table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 29%">
-<col style="width: 50%">
+<col style="width: 25%">
+<col style="width: 27%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -661,52 +738,52 @@ a multiple of shorter object length</code></pre>
 </tbody>
 </table>
 </section>
-<section id="sec-loadfiles" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="sec-loadfiles"><span class="header-section-number">2.2.3</span> <u>Loading or importing data files</u></h3>
+<section id="sec-loadfiles" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="sec-loadfiles"><span class="header-section-number">2.3.3</span> <u>Loading or importing data files</u></h3>
 <p>See: <a href="https://r-graphics.org/loading-a-delimited-text-data-file" class="uri">https://r-graphics.org/loading-a-delimited-text-data-file</a>, and <a href="https://r-graphics.org/loading-data-from-an-excel-file" class="uri">https://r-graphics.org/loading-data-from-an-excel-file</a></p>
 <p>We will use a dataset in excel format from a study on PFAS levels in insects around a pond in Kumla in Sweden for our data analysis. You can find the dataset here: <a href="https://github.com/WBS-TW/Course_R_for_environ_chem_data_analysis/tree/master/data" class="uri">https://github.com/WBS-TW/Course_R_for_environ_chem_data_analysis/tree/master/data</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/Statistics_Kumla_20200408.xlsx"</span>, </span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sheet =</span> <span class="st">"Overview"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>PFAS_insects <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/Statistics_Kumla_20200408.xlsx"</span>, </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sheet =</span> <span class="st">"Overview"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="sec-baseRplots" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="sec-baseRplots"><span class="header-section-number">2.2.4</span> <u>Base R plots</u></h3>
+<section id="sec-baseRplots" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="sec-baseRplots"><span class="header-section-number">2.3.4</span> <u>Base R plots</u></h3>
 <p>Base R plots are those functions that come with the R version. Additional packages that are easier to handle and have more advanced features will be demonstrated later.</p>
 <p><strong>Scatter plot: plot()</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># http://www.sthda.com/english/wiki/scatter-plots-r-base-graphs</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> PFAS_insects<span class="sc">$</span>PFOA, <span class="at">y =</span> PFAS_insects<span class="sc">$</span>PFOS, <span class="at">main =</span> <span class="st">"PFOA vs PFOS concentrations"</span>,</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"PFOA concentrations (ng/L)"</span>,</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"PFOS concentrations (ng/L"</span>,</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>) <span class="co"># choosing symbol for points in a graph (see ?pch for number/symbol) </span></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We can add a regression line into the same graph</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(PFAS_insects<span class="sc">$</span>PFOS <span class="sc">~</span> PFAS_insects<span class="sc">$</span>PFOA, <span class="at">data =</span> PFAS_insects), <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">3</span>) <span class="co"># lwd is the line width</span></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as a loess fit</span></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(PFAS_insects<span class="sc">$</span>PFOA, PFAS_insects<span class="sc">$</span>PFOS), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># http://www.sthda.com/english/wiki/scatter-plots-r-base-graphs</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> PFAS_insects<span class="sc">$</span>PFOA, <span class="at">y =</span> PFAS_insects<span class="sc">$</span>PFOS, <span class="at">main =</span> <span class="st">"PFOA vs PFOS concentrations"</span>,</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"PFOA concentrations (ng/L)"</span>,</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"PFOS concentrations (ng/L"</span>,</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>) <span class="co"># choosing symbol for points in a graph (see ?pch for number/symbol) </span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We can add a regression line into the same graph</span></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(PFAS_insects<span class="sc">$</span>PFOS <span class="sc">~</span> PFAS_insects<span class="sc">$</span>PFOA, <span class="at">data =</span> PFAS_insects), <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">3</span>) <span class="co"># lwd is the line width</span></span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as a loess fit</span></span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(PFAS_insects<span class="sc">$</span>PFOA, PFAS_insects<span class="sc">$</span>PFOS), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="1_Basic_R_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+<p><img src="1_Basic_R_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to clear the graphics from the Plots pane, use graphics.off() in the script or dev.off() in the console</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to clear the graphics from the Plots pane, use graphics.off() in the script or dev.off() in the console</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Bar plots: barplot()</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>groupsPFOS <span class="ot">&lt;-</span> PFAS_insects[, <span class="fu">c</span>(<span class="st">"Group"</span>, <span class="st">"PFOS"</span>)] <span class="co"># subset two variables from the dataframe</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>groupsPFOS<span class="sc">$</span>Group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(groupsPFOS<span class="sc">$</span>Group)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> PFAS_insects<span class="sc">$</span>PFOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>groupsPFOS <span class="ot">&lt;-</span> PFAS_insects[, <span class="fu">c</span>(<span class="st">"Group"</span>, <span class="st">"PFOS"</span>)] <span class="co"># subset two variables from the dataframe</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>groupsPFOS<span class="sc">$</span>Group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(groupsPFOS<span class="sc">$</span>Group)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> PFAS_insects<span class="sc">$</span>PFOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="1_Basic_R_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<p><img src="1_Basic_R_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><strong>Box plots: boxplot()</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot of one variable</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(PFAS_insects<span class="sc">$</span>PFBS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot of one variable</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(PFAS_insects<span class="sc">$</span>PFBS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="1_Basic_R_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+<p><img src="1_Basic_R_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
