@@ -21,7 +21,7 @@ library(ggrepel)
 library(DT)
 ```
 
-Victoria HRMS data
+### Victoria HRMS data
 
 $$
 masserror\_ppm =\frac{mz\_theor - mz\_meas}{mz\_theor}*10^6
@@ -61,27 +61,20 @@ unifi <- tibble(
   mutate(rt_unifi_min = rt_unifi - 0.05) |> # adding min value of retention time
   mutate(rt_unifi_max = rt_unifi + 0.05) # adding max value of retention time
 
-# Also needs to add filter by rt and dt
+
+```
+
+MzMine hits: use `inner_join` (<https://dplyr.tidyverse.org/reference/mutate-joins.html>)
+
+```{r}
+# Also needs to add filter by drift time
+
 unifi_mzmine_hits <- unifi |> 
   inner_join(qc5rep_hdmse_peakpicking_featurelist_MZMINE,
             join_by(mz_unifi < `mz_range:max`, 
                     mz_unifi > `mz_range:min`,
                     rt_unifi_min < rt,
                      rt_unifi_max > rt))
-
-
-unifi_msdial_hits <- unifi |> 
-  inner_join(qc3rep_hdmse_peakpicking_featurelist_MSDIAL,
-             join_by(mz_unifi < Mz_max,
-                     mz_unifi < Mz_min,
-                     rt_unifi_min < `Average Rt(min)`,
-                     rt_unifi_max > `Average Rt(min)`))
-
-```
-
-MzMine hits
-
-```{r}
 
 DT::datatable(unifi_mzmine_hits)
 
@@ -90,21 +83,20 @@ DT::datatable(unifi_mzmine_hits)
 MSDial hits
 
 ```{r}
+
+unifi_msdial_hits <- unifi |> 
+  inner_join(qc3rep_hdmse_peakpicking_featurelist_MSDIAL,
+             join_by(mz_unifi < Mz_max,
+                     mz_unifi < Mz_min,
+                     rt_unifi_min < `Average Rt(min)`,
+                     rt_unifi_max > `Average Rt(min)`))
+
 unifi_msdial_hits |> 
   select(-`MS1 isotopic spectrum`, -`MS/MS spectrum`) |> #remove these columns to get nicer table
 DT::datatable()
 ```
 
-Idoia CP data
-
-```{r}
-
-# HRMS data 
-## find hits from a suspect list data frame in the featurelist
-
-
-
-```
+### Idoia CP data
 
 ```{r}
 
