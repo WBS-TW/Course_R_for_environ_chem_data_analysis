@@ -102,4 +102,15 @@ DT::datatable()
 
 GC_qToF_CPsFoodResults <- read_excel("data/GC_qToF_CPsFoodResults.xlsx")
 
+Skyline_Report_Method_20240305 <- read_csv("data/Skyline_Report_Method_20240305.csv", na = c("NA", NaN, "∞"))
+
+
+Skyline_Report_Method_20240305_ISnorm <- Skyline_Report_Method_20240305 |>
+  filter(`Transition Note` == "Quan")
+# Use group_by and mutate to calculate the Sample/IS area ratio?
+  
+  
+  
+
+
 ```

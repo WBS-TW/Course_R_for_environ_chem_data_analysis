@@ -1,6 +1,7 @@
 ---
 Title: Example data analysis from a PFAS study
 output: html_document
+
 editor_options: 
   chunk_output_type: console
 ---
@@ -293,6 +294,8 @@ PFAS_ins %>%
 ```
 
 ```{r sum_21PFAS}
+#| out-width: 100%
+
 # boxplot concentrations
 
 #sum21_TPFASs pond
@@ -328,7 +331,7 @@ PFAS_ins %>%
 ```
 
 ```{r isotopes}
-
+#| out-width: 100%
 #--------------------------------------
 
 #All sites
@@ -433,6 +436,7 @@ ggplot() +
 
 ```{r isomers}
 #| eval: false
+#| out-width: 100%
 
 # %br PFOS Pond
 
@@ -488,7 +492,7 @@ Values sharing a letter are not significantly different
 
 ```{r Kruskal Wallis Dunn post hoc}
 #| eval: false
-
+#| out-width: 100%
 
 #------------ISotopes 
 
@@ -632,6 +636,7 @@ Correlations
 
 ```{r correlation}
 #| eval: false
+#| out-width: 100%
 
 conc_PFAS %>%
   filter(Site == "Pond") %>% 
@@ -682,6 +687,8 @@ BAFs
 
 ```{r BAFs}
 #| eval: false
+#| out-width: 100%
+
 
 ##PFSAs
 

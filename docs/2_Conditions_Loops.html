@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -208,17 +208,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#for-loops" id="toc-for-loops" class="nav-link active" data-scroll-target="#for-loops"><span class="header-section-number">3.1</span> <code>For</code> loops</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -269,8 +261,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">[4]: 'No actions'</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5531d2e6217fe9671087" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5531d2e6217fe9671087">{"x":{"diagram":"\ndigraph condition_PFOS {\n\n# node definitions with substituted label text\nnode [fontname = Helvetica]\na [label = \"Pollutant level\", shape = \"box\"]\nb [label = \"Higher than threshold level\", shape = \"box\"]\nc [label = \"Take actions\"]\nd [label = \"No actions\"]\n\n\n# edge definitions with the node IDs\na -> b [label = \"IF\"]\nb -> c [label = \"TRUE\"]\nb -> d [label = \"ELSE\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ccae774e884b7724ab1f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ccae774e884b7724ab1f">{"x":{"diagram":"\ndigraph condition_PFOS {\n\n# node definitions with substituted label text\nnode [fontname = Helvetica]\na [label = \"Pollutant level\", shape = \"box\"]\nb [label = \"Higher than threshold level\", shape = \"box\"]\nc [label = \"Take actions\"]\nd [label = \"No actions\"]\n\n\n# edge definitions with the node IDs\na -> b [label = \"IF\"]\nb -> c [label = \"TRUE\"]\nb -> d [label = \"ELSE\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Example</p>
@@ -684,7 +676,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
+<nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="./1_Basic_R.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Familiarize yourself with R</span></span>
