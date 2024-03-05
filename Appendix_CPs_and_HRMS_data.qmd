@@ -39,7 +39,7 @@ $$
 
 # Need to change format to dbl for many variables as read_excel somehow converts to character
 qc5rep_hdmse_peakpicking_featurelist_MZMINE <- read_xlsx("data/qc5rep_hdmse_peakpicking_featurelist_MZMINE.xlsx") |> 
-  mutate(across(!"id" & !ends_with("_state") & !ends_with("_unit"), as.double))
+  mutate(across(!"id" & !ends_with("_state") & !ends_with("_unit"), as.double)) #convert to double for all except "_id" and "_state" columns
 
 # add function to calculate absolute mass error based on ppm and measured mz for MSDIAL data
 mzdiff <- function(masserror_ppm, mz_meas) {
@@ -80,7 +80,7 @@ DT::datatable(unifi_mzmine_hits)
 
 ```
 
-MSDial hits
+MS-DIAL hits
 
 ```{r}
 

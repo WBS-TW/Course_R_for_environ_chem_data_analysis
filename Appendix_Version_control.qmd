@@ -11,6 +11,8 @@ editor_options:
 
 This guide to install and use Git and Github follows the guide: https://happygitwithr.com
 
+Also check version control: <https://r-bio.github.io/intro-git-rstudio/>
+
 You should consult this website for more detailed instructions.
 
 ### 1. [Register a Github account](https://happygitwithr.com/github-acct)

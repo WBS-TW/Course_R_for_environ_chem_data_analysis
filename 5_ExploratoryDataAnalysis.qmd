@@ -57,7 +57,6 @@ Check this site on how to install Bioconductor packages: <https://bioconductor.o
 skim(PFAS_isotopes)
 ```
 
-## 
 
 ## Exploratory statistics
 
@@ -66,6 +65,15 @@ Which tests should I use?
 <https://statsandr.com/blog/files/overview-statistical-tests-statsandr.pdf>
 
 [![Flow chart on choices of statistical tests](data/chart_statisticalanalysis.jpg)](https://doi.org/10.1016/j.aiia.2020.09.002)
+
+
+
+### Testing normal distribution
+
+
+Q-Q plot
+
+
 
 ## Adding tables
 
