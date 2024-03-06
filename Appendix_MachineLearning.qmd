@@ -7,24 +7,20 @@ editor_options:
 
 # Machine Learning of environmental chemistry data
 
-Resources: 
-https://rpubs.com/StatsGary/tidymodels_from_scratch  
-https://www.stepbystepdatascience.com/ml-with-tidymodels
-https://emilhvitfeldt.github.io/ISLR-tidymodels-labs/
+Resources:
 
+<https://rpubs.com/StatsGary/tidymodels_from_scratch> <https://www.stepbystepdatascience.com/ml-with-tidymodels>
+
+<https://emilhvitfeldt.github.io/ISLR-tidymodels-labs>
+
+<https://bookdown.org/michela_cameletti/mlfe2223rlabsnotes/classifier1.html>
 
 ```{r start}
 
-library(tidymodels)
-options(scipen=9999)
-options(digits = 3)
-
+library(tidymodels) 
 
 ### Loading raw data
 
-#-----
-PFAS_ins <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
-    sheet = "Overview")
-PFAS_isot <- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", 
-    sheet = "Overview_iso")
+#----- PFAS_ins \<- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", sheet = "Overview") PFAS_isot \<- readxl::read_excel("data/Statistics_Kumla_20200408.xlsx", sheet = "Overview_iso")
 
+```

@@ -100,16 +100,60 @@ DT::datatable()
 
 ```{r}
 
-GC_qToF_CPsFoodResults <- read_excel("data/GC_qToF_CPsFoodResults.xlsx")
+# GC_qToF_CPsFoodResults <- read_excel("data/GC_qToF_CPsFoodResults.xlsx")
 
-Skyline_Report_Method_20240305 <- read_csv("data/Skyline_Report_Method_20240305.csv", na = c("NA", NaN, "∞"))
+# Importing new Skyline report "CP" from 2024-03-05
+# These are currently: 
+# "Replicate Name", "Sample Type", "Molecule", "Molecule List", Molecule Name", "Precursor Ion Formula", "Isotope Label Type",
+# "Transition Note", "Standard Type", "Precursor Adduct", "Precursor Mz", "Average Measured Retention Time", "Explicit Retention Time", 
+# "Explicit Retention Time Window", "Area", "Molecule Note" 
+
+Skyline_Report_Method_20240305 <- read_csv("data/Skyline_Report_Method_20240305.csv", 
+                                           na = c("NA", NaN, "∞", "#N/A")) |> # Specify some strings as NA values
+  glimpse()
+
+# Which variables are IS and RS
+IS <- "[13]C10H16Cl6"
+RS <- "[13]C12H18Cl8"
+
+# Add sample injection order
 
 
-Skyline_Report_Method_20240305_ISnorm <- Skyline_Report_Method_20240305 |>
-  filter(`Transition Note` == "Quan")
-# Use group_by and mutate to calculate the Sample/IS area ratio?
+# Make df wider to prepare for normalization to RS area
+Skyline_Report_Method_20240305_wide <- Skyline_Report_Method_20240305 |>
+  filter(`Transition Note` == "Quan") |>
+  select(-c(Molecule, `Molecule List`, `Precursor Ion Formula`, `Molecule Note`, `Standard Type`,
+            `Isotope Label Type`, `Transition Note`, `Average Measured Retention Time`, `Explicit Retention Time`, `Explicit Retention Time Window`, 
+            `Precursor Adduct`, `Precursor Mz`)) |> #removing these as they are associated with the homologues and will split area columns (i.e. make even wider)
+  pivot_wider(names_from = c("Molecule Name"), values_from = "Area") |> 
+  replace_na(list(0)) # in case NA values then replace with 0
+
+
+Samples_RSnormalize <- Skyline_Report_Method_20240305_wide |> 
+  filter(`Sample Type` == "Unknown") |> 
+  mutate(across(C9H17Cl3:`[13]C10H16Cl6`, ~ .x/`[13]C12H18Cl8`))
+
+# plot the area of IS and RS between samples
+Samples_RSnormalize |> 
+  plot_ly() |> 
+  add_trace(x = ~`Replicate Name`, name = "RS area",  y = ~`[13]C12H18Cl8`, type = 'scatter', mode = 'markers') |> 
+  add_trace(x = ~`Replicate Name`, name = "IS area normalized by RS", y = ~`[13]C10H16Cl6`, type = 'scatter', mode = 'markers', yaxis = "y2") |> 
+  layout(yaxis2 = list(
+    overlaying = "y",
+    side = "right")
+    ) 
   
-  
+# plot areas of IS and RS separately
+Samples_RSnormalize_RS <- Samples_RSnormalize |> 
+  plot_ly() |> 
+  add_trace(x = ~`Replicate Name`, name = "RS area",  y = ~`[13]C12H18Cl8`, type = 'scatter', mode = 'markers') 
+ 
+Samples_RSnormalize_IS <- Samples_RSnormalize |> 
+  plot_ly() |>
+  add_trace(x = ~`Replicate Name`, name = "IS area normalized by RS", y = ~`[13]C10H16Cl6`, type = 'scatter', mode = 'markers', yaxis = "y2") 
+
+subplot(Samples_RSnormalize_RS, Samples_RSnormalize_IS, nrows = 3) |> 
+  layout(legend = list(x =0.1, y = 0.4))
   
 
 

@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="publish-your-quarto-book-in-github" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="publish-your-quarto-book-in-github"><span class="header-section-number">8.2</span> Publish your Quarto book in Github</h2>
-<p>Edit your _quarto.yml to output the generated html book into a folder.</p>
+<p>Edit your _quarto.yml to output the generated html book into a folder. Otherwise Github pages cannot publish the book on your project website (it will instead generate the html files in the _books folder).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> book</span>
@@ -252,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="8.3" class="anchored" data-anchor-id="publish-your-quarto-webiste-in-github-pages"><span class="header-section-number">8.3</span> Publish your Quarto webiste in Github pages</h2>
 <p>Tutorial: https://github.com/jtr13/website-template.</p>
 <ul>
-<li><p>You’ve now left the template page and are viewing your new repo on GitHub. On the home page, click Settings. Click the “Pages” section on the left. In the Build and Deployment section, set Source to “Deploy from a branch” (Classic Pages experience) and Branch to main with /docs folder. Click Save.</p></li>
+<li><p>You’ve now left the template page and are viewing your new repo on GitHub. On the home page, click “Settings”. Click the “Pages” section on the left. In the Build and Deployment section, set Source to “Deploy from a branch” (Classic Pages experience) and Branch to main with “/docs” folder. Click Save.</p></li>
 <li><p>Click the little gear button near “About” on the top right side of the home page of the repo and check the “Use your Github Pages website” box under “Website”. Click “Save changes”. Test the link and you should see a web site with a stick figure on it. It may take a few minutes to build so if it’s not working do a few more steps and then come back to check.</p></li>
 <li><p>Click the green Code button, choose “HTTPS” and copy the link below.</p></li>
 </ul>
