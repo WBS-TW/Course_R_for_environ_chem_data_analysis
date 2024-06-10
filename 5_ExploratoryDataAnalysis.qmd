@@ -30,6 +30,9 @@ PFAS_insects_long <- PFAS_insects  |>  # shortcut for pipe Ctrl + shift + M
 
 <https://www.epa.gov/caddis-vol4/exploratory-data-analysis>
 
+![](images/data-science-explore.png)  
+<https://r4ds.had.co.nz/explore-intro.html>
+
 ## Tidy the data files for R
 
 Make sure to clean up and tidy your tables before importing into R.

@@ -17,6 +17,10 @@ Resources:
 
 <https://training.galaxyproject.org/training-material/topics/statistics/>
 
+<https://bookdown.org/taylordunn/islr-tidy-1655226885741/>
+
+<https://www.statlearning.com/>
+
 ```{r start}
 
 library(tidymodels) 

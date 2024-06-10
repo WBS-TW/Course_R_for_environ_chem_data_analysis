@@ -135,3 +135,9 @@ stderror(PFAS_insects$PFOS)
 
 
 ```
+
+### Writing functions with the pipe operator
+
+Use embrace {{}}
+
+<https://uoftcoders.github.io/studyGroup/lessons/r/packages/lesson/>

@@ -15,6 +15,10 @@ https://www.youtube.com/watch?v=cepspxPAUTA
 
 <https://www.youtube.com/watch?v=K6w0bZjl_Lw>
 
+## SQL
+
+<https://r4ds.hadley.nz/databases>
+
 ## DuckDB
 
 <https://duckdb.org/>

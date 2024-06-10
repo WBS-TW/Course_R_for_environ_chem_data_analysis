@@ -7,11 +7,15 @@ editor_options:
 
 # Version control using Git and Github
 
-### Step-by-step instructions
+## Step-by-step instructions
 
 This guide to install and use Git and Github follows the guide: https://happygitwithr.com
 
-Also check version control: <https://r-bio.github.io/intro-git-rstudio/>
+Also check other resources for version control:
+
+<https://r-bio.github.io/intro-git-rstudio/>
+
+<https://aberdeenstudygroup.github.io/studyGroup/lessons/SG-T1-GitHubVersionControl/VersionControl/>
 
 You should consult this website for more detailed instructions.
 
